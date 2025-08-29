@@ -1,69 +1,59 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ # InzoziSchool
 
-Currently, two official plugins are available:
+ InzoziSchool is a digital platform that helps parents register their children in schools without visiting physically. It also allows schools to register themselves on the platform, making the admission process easier, faster, and more accessible. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ # Key Features
 
-## Expanding the ESLint configuration
+Parent page:  Parents can  register their students online without  creating an acoount.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+School Registration Portal : Schools can sign up , manage their school and list their information (location, programs, fees, etc.) and wait to be accepted.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Search & Compare Schools : Parents can browse and compare different schools before registering.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Student Enrollment Management : Schools can manage admitted students through the system.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Notifications & Updates : Parents and schools receive updates (like admission status, deadlines, or announcements).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Payment Integration (optional) : Parents can pay fees online.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Secure Data Handling : Protects student and school information safely.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+# technologies used 
+
+
+
+# UI/UX Design
+
+Figma – used to design user interfaces, create prototypes, and ensure a consistent user experience before development.
+
+# Frontend
+
+React.js – for building interactive user interfaces.
+
+TypeScript – adds strong typing for more reliable and scalable code.
+
+Tailwind CSS – for fast and responsive styling.
+
+Hosting: Vercel – to deploy and host the frontend application.
+
+# Backend
+
+Node.js – runtime environment for scalable server-side applications.
+
+TypeScript – ensures type safety and clean backend code.
+
+PostgreSQL – relational database for secure and structured data storage.
+
+Hosting: Render – to host backend services and connect with the database.
+
+# How to Run the Project
+
+. Clone the repository : git clone https://github.com/Solvit-Africa-Training-Center/InzoziSchool_Frontend.git
+
+. Go inside the project folder: like this cd InzoziSchool_Frontend
+.Install dependencies :npm install
+.Start the development server:npm run dev
+.Open in browser: by clicking to the below link which looks like this http://localhost:5173/
+
