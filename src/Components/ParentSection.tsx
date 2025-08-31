@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartBar, FaSearch, FaClock } from 'react-icons/fa';
-import FeatureCard from './FeatureCard';
+import FeatureCard from './cards/FeatureCard';
 
 const ParentSection: React.FC = () => {
   const features = [
