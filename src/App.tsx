@@ -1,7 +1,6 @@
 import ParentSection from './Components/ParentSection';
-import ParentsTestmonials from './Components/ParentsTestimonials';
 import PowerfulFeaturesSection from './Components/PowerfulFeaturesSection';
-import SchoolOwnersSection from './Components/SchoolOwnersSection';
+import ResourcesSupportSection from './Components/ResourcesSupportSection';
 import WhyChooseInzoziSection from './Components/WhyChooseInzoziSection';
 
 function App() {
@@ -10,8 +9,7 @@ function App() {
       <WhyChooseInzoziSection />
       <ParentSection />
       <PowerfulFeaturesSection/>
-      <ParentsTestmonials />
-      <SchoolOwnersSection />
+      <ResourcesSupportSection />
     </>
   );
 }
