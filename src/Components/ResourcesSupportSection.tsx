@@ -1,4 +1,3 @@
-// src/Components/ResourcesSupportSection.tsx
 import React from 'react';
 import { 
   FaBook, 
@@ -8,7 +7,6 @@ import {
   FaEnvelope,
   FaComments,
 } from 'react-icons/fa';
-// import FeatureBenefitCard from './cards/FeatureBenefitCard';
 
 const ResourcesSupportSection: React.FC = () => {
   const resources = [
@@ -54,7 +52,6 @@ const ResourcesSupportSection: React.FC = () => {
   return (
     <section className="bg-gray-100 py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             Resources & Support
@@ -65,27 +62,22 @@ const ResourcesSupportSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Resources Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {resources.map((resource, index) => (
             <div key={index} className="relative">
-              {/* Resource Card */}
               <div className="bg-[#0B111E] p-6 rounded-lg hover:transform hover:scale-105 transition-all duration-200">
-                {/* Label */}
                 <div className="mb-4">
                   <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
                     {resource.label}
                   </span>
                 </div>
                 
-                {/* Icon Container */}
                 <div className="mb-6">
                   <div className={`${resource.iconGradient} w-12 h-12 rounded-lg flex items-center justify-center text-white`}>
                     {resource.icon}
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="space-y-3">
                   <h3 className="text-white font-semibold text-lg leading-tight">
                     {resource.title}
@@ -99,9 +91,7 @@ const ResourcesSupportSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Help & Support Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Popular Help Topics */}
           <div>
             <h3 className="text-xl font-semibold text-blue-600 mb-6">
               Popular Help Topics
@@ -121,7 +111,6 @@ const ResourcesSupportSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Need More Help */}
           <div>
             <h3 className="text-xl font-semibold text-blue-600 mb-6">
               Need More Help?
@@ -138,7 +127,6 @@ const ResourcesSupportSection: React.FC = () => {
               </div>
 
               <div className="space-y-4 mb-6">
-                {/* Email Support */}
                 <div className="flex items-center space-x-3">
                   <FaEnvelope className="w-4 h-4 text-blue-400" />
                   <div>
@@ -147,7 +135,6 @@ const ResourcesSupportSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Live Chat */}
                 <div className="flex items-center space-x-3">
                   <FaComments className="w-4 h-4 text-green-400" />
                   <div>
@@ -157,7 +144,6 @@ const ResourcesSupportSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Contact Button */}
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-colors duration-200">
                 Contact Support
               </button>
