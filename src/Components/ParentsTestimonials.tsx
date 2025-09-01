@@ -19,7 +19,7 @@ const ParentsTestimonials: React.FC = () => {
     <section className="bg-white py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          <h2 className="text-3xl font-bold text-[#000000] mb-2">
             Parents Testimonies
           </h2>
         </div>

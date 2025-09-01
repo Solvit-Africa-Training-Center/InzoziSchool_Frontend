@@ -1,13 +1,13 @@
 import ParentSection from './Components/ParentSection';
 import ParentsTestmonials from './Components/ParentsTestimonials';
-import Schools from './Components/Schools';
+import SchoolOwnersSection from './Components/SchoolOwnersSection';
 
 function App() {
   return (
     <>
-      <Schools />
       <ParentSection />
       <ParentsTestmonials />
+      <SchoolOwnersSection />
     </>
   );
 }

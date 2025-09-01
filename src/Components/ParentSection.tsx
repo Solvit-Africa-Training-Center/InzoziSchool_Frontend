@@ -22,20 +22,21 @@ const ParentSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#C8C1AD] py-16 px-4">
+    <section className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
-            <span className="text-[#223D60]">You Are a </span>
-            <span className="text-[#C96134]">Parent?</span>
+            <span className="text-[#223D60]">You Are </span>
+            <span className="text-[#E69500]">a  Parent?</span>
           </h2>
           <p className="text-[#223D60] text-lg max-w-2xl mx-auto">
             Simplify your child's educational journey with powerful tools designed for Rwandan families.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Feature Cards */}
+          <div className="space-y-4 flex flex-col justify-center">
             {features.map((feature, index) => (
               <FeatureCard
                 key={index}
@@ -47,24 +48,29 @@ const ParentSection: React.FC = () => {
             ))}
           </div>
 
-          <div className="relative">
-            <img
-              src="/images/student.png"
-              alt="Professional consultation scene showing parents meeting with school administrators"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
+          <div className="relative h-full min-h-[400px] lg:min-h-[500px]">
+            <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
+              <video
+                src="/videos/studentVideo.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
           </div>
         </div>
 
         <div className="text-center mt-12">
-          <div className="bg-[rgb(212,209,200)] bg-opacity-70 rounded-xl p-8 w-full mx-auto backdrop-blur-sm">
+          <div className="bg-[hsl(40,5%,88%)] bg-opacity-70 rounded-xl p-8 w-full mx-auto backdrop-blur-sm">
             <h3 className="text-[#223D60] text-xl font-semibold mb-2">
               Join thousands of families already using Inzozi
             </h3>
             <p className="text-[#223D60] mb-6">
               Make informed decisions about your child's education with comprehensive school data and seamless application management.
             </p>
-            <button className="bg-gradient-to-r from-[#C35B2D] to-[#E69500] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95">
+            <button className="bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95">
               Continue As a Parent
             </button>
           </div>

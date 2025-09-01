@@ -36,8 +36,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       default:
         return {
           card: 'bg-[#E1E5E7] hover:bg-[#E1E5E7]/90',
-          text: 'text-gray-700',
-          name: 'text-gray-800',
+          text: 'text-[#000000]',
+          name: 'text-[#000000]',
         };
     }
   };
