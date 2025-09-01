@@ -1,4 +1,3 @@
-// src/Components/PowerfulFeaturesSection.tsx
 import React from 'react';
 import { 
   FaShieldAlt, 

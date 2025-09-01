@@ -35,7 +35,6 @@ const ParentSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {/* Feature Cards */}
           <div className="space-y-4 flex flex-col justify-center">
             {features.map((feature, index) => (
               <FeatureCard
