@@ -1,4 +1,3 @@
-// src/Components/cards/FeatureBenefitCard.tsx
 import React from 'react';
 
 interface FeatureBenefitCardProps {
@@ -46,15 +45,13 @@ const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
   const variantClasses = getVariantClasses();
 
   return (
-    <div className="text-center p-6 hover:transform hover:scale-105 transition-all duration-200">
-      {/* Icon Container */}
-      <div className="flex justify-center mb-6">
+    <div className="bg-gradient-to-br from-[#ffffff] to-[#F9FAFB] rounded-sm  p-6 hover:transform hover:scale-105 transition-all duration-200">
+      <div className="mb-6">
         <div className={`${iconGradient || variantClasses.iconBg} w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg`}>
           {icon}
         </div>
       </div>
 
-      {/* Content */}
       <div className="space-y-3">
         <h3 className={`${titleColor || variantClasses.title} font-semibold text-lg leading-tight`}>
           {title}
