@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import type { RootState } from "../App/store/index";
+import { useSelector } from 'react-redux';
+import type { RootState } from '../App/store/index';
 
 export default function Schools() {
   const Schools = useSelector((state: RootState) => state.school.schools);
