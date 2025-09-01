@@ -63,7 +63,7 @@ const ParentSection: React.FC = () => {
         </div>
 
         <div className="text-center mt-12">
-          <div className="bg-[hsl(40,5%,88%)] bg-opacity-70 rounded-xl p-8 w-full mx-auto backdrop-blur-sm">
+          <div className="bg-opacity-10 rounded-xl p-8 w-full mx-auto backdrop-blur-sm">
             <h3 className="text-[#223D60] text-xl font-semibold mb-2">
               Join thousands of families already using Inzozi
             </h3>
