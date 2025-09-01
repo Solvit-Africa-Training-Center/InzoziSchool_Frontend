@@ -1,6 +1,5 @@
 import { IoMdArrowDropdown } from 'react-icons/io';
 import logo from '../assets/logo 2.png';
-//bg-[#C8C1AD]
 
 export default function Navigation() {
   return (

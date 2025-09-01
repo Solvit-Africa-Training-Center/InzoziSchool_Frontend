@@ -4,12 +4,12 @@ export type ButtonType = {
 };
 
 const classVariant = {
-  defolt: ' border-none  text-white bg-gradient-to-r from-orange-600 to-orange-400 ',
-  primary: 'border-none   text-white ',
-  secondary:'w-[150px] h-[40px] bg-gradient-to-r from-orange-600 to-orange-400 text-white',
-  thirdly:'w-[150px] h-[40px]',
+  defolt: 'py-1 px-4 border-none  text-white bg-gradient-to-r from-orange-600 to-orange-400 ',
+  primary: 'py-1 px-4 border-none   text-white ',
+  secondary:'h-[38px] px-[20px] bg-gradient-to-r from-orange-600 to-orange-400 text-white',
+  thirdly:' h-[40px]',
 };
 
 export default function Button({ label, variant }: ButtonType) {
-  return <button className={`${classVariant[variant]} py-1 cursor-pointer px-4 rounded-[12px]`}>{label}</button>;
+  return <button className={`${classVariant[variant]}  cursor-pointer  rounded-[12px]`}>{label}</button>;
 }

@@ -1,11 +1,15 @@
 
+import Footer from './Components/Footer';
 import Hero from './Components/Hero';
-import SchoolCard from './Components/SchoolCard';
+import HowItWorks from './Components/HowItWorks';
+import SchoolSection from './Components/SchoolSection';
 function App() {
   return (
     <div>
       <Hero/>
-      <SchoolCard images='K' title='Kigali international Academy' category='primary and secondary ' location='Kigali , Gasabo District' seats={25} schoolfees={180000000} rating={4.6} />
+      <SchoolSection/>
+      <HowItWorks/>
+      <Footer/>
     </div>
   );
 }
