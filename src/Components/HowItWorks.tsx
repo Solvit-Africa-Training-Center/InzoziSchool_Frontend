@@ -7,8 +7,8 @@ import { WiDirectionRight } from 'react-icons/wi';
 import { LuCircleCheckBig } from 'react-icons/lu';
 export default function HowItWorks() {
   return (
-    <div className="py-[90px]">
-      <h1 className="text-[#282C34] text-[60px] text-center font-bold font-family-playfair max-sm:text-[40px]">
+    <div className="py-[90px] bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA]">
+      <h1 className="text-[#282C34] text-[40px] text-center font-bold font-family-playfair max-sm:text-[40px]">
         How It Works
       </h1>
       <p className="text-[#6B7280] text-[20px] py-3 text-center mb-[30px] font-family-poppins max-sm:text-[18px]" >
