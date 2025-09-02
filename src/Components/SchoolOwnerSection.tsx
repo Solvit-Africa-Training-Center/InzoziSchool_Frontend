@@ -23,7 +23,7 @@ const SchoolOwnerSection: React.FC = () => {
 
   return (
     <section className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:px-[80px]">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
             <span className="text-[#223D60]">You own </span>
@@ -50,7 +50,7 @@ const SchoolOwnerSection: React.FC = () => {
           <div className="relative h-full min-h-[400px] lg:min-h-[500px]">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
                <video
-                src="/videos/studentVideo.mp4"
+                src="/videos/pinterest-video.mp4"
                 className="w-full h-full object-cover"
                 autoPlay
                 loop

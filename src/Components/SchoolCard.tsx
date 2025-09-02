@@ -26,25 +26,25 @@ export default function SchoolCard({
   return (
     <div className="w-full border border-[#6B7280]">
       <div className="relative w-full flex justify-center items-center h-[225px] bg-gradient-to-r from-[#05416B] to-[#0867AA]">
-        <h1 className="font-bold text-[48px] text-[#FAFAFA]">{images}</h1>
+        <h1 className="font-bold text-[48px] text-[#FAFAFA] font-family-playfair">{images}</h1>
         <h1 className="absolute top-3 right-3 bg-white px-3 rounded-2xl text-[12px] text-[#05416B] font-semibold">
           {category}
         </h1>
       </div>
 
       <div className="flex justify-between px-3 items-center pt-5">
-        <h1 className="font-bold text-[20px]">{title}</h1>
+        <h1 className="font-bold text-[20px] font-family-playfair">{title}</h1>
         <div className="flex gap-1 bg-red-50 rounded-2xl px-2 justify-center items-center">
-          <FaStar className="text-[#F09C00] pt-1" /> <h1>{rating}</h1>
+          <FaStar className="text-[#F09C00] pt-1 font-family-poppins" /> <h1>{rating}</h1>
         </div>
       </div>
       <div className="flex gap-3 text-[#6B7280] text-[14px] px-3 py-4">
-        <SlLocationPin className="pt-1 text-xl" /> <h1>{location}</h1>
+        <SlLocationPin className="pt-1 text-xl font-family-poppins" /> <h1>{location}</h1>
       </div>
       <div className="flex gap-3 px-3 py-4">
         <LuUsers className="text-[#6B7280]" />
         <h1>
-          <span className="text-[#157F3C] text-[14px] font-medium">
+          <span className="text-[#157F3C] text-[14px] font-medium font-family-poppins">
             {seats} seats available
           </span>
         </h1>
@@ -52,13 +52,13 @@ export default function SchoolCard({
       </div>
 
       <div className="text-[#282C34] font-semibold text-[10px] flex gap-4">
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl">library</h2>
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl">ComputerLab</h2>
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl">
+        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">library</h2>
+        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">ComputerLab</h2>
+        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">
           Sport Ground
         </h2>
         <div>
-          <h2 className="px-2 border cursor-pointer border-red-50 rounded-2xl">+2 more</h2>
+          <h2 className="px-2 border cursor-pointer border-red-50 rounded-2xl font-family-poppins">+2 more</h2>
         </div>
         <br />
       </div>
@@ -66,8 +66,8 @@ export default function SchoolCard({
      <div className="px-3 flex justify-between items-center border-t border-gray-200 mt-4 py-3">
   {/* Left: Fees */}
   <div>
-    <h3 className="text-[#6B7280] text-[14px]">From</h3>
-    <h3 className="text-[18px] text-[#F09C00] font-bold">
+    <h3 className="text-[#6B7280] text-[14px] font-family-poppins">From</h3>
+    <h3 className="text-[18px] text-[#F09C00] font-bold font-family-playfair">
       RWF {schoolfees}/term
     </h3>
   </div>

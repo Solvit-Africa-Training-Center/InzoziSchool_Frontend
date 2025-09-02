@@ -57,7 +57,7 @@ const WhyChooseInzoziSection: React.FC = () => {
 
   return (
     <section className="bg-gray-50 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className=" md:px-[80px]">
         <div className="text-center mb-16">
           <div className="text-center">
             <div className="text-[#E69500] inline-flex items-center space-x-2 bg-yelow-500 px-6 py-3 mb-4 rounded-full shadow-sm border border-gray-100">
@@ -96,7 +96,7 @@ const WhyChooseInzoziSection: React.FC = () => {
         <div className="text-center">
           <div className="text-[#E69500]  flex justify-center items-center gap-1">
             <div className=" w-6 h-6 rounded-full flex items-center justify-center">
-              <HiOutlineUser className="w-5 h-5 text-yellow-400" />
+              <HiOutlineUser className="w-5 h-5 text-[#E69500]" />
             </div>
             <span className="font-semibold text-sm">
               Trusted by 5,000+ Families

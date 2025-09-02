@@ -3,8 +3,8 @@ import SchoolCard from './SchoolCard';
 export default function SchoolSection() {
   return (
     <div className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-[40px] px-[80px]">
-      <h1 className="font-bold text-[30px] text-[#282C34]">Featured Schools</h1>
-      <p className="text-[#6B7280] text-[16px] py-1 mb-5">
+      <h1 className="font-bold text-[30px] text-[#282C34] font-family-playfair">Featured Schools</h1>
+      <p className="text-[#6B7280] text-[16px] py-1 mb-5 font-family-poppins">
         Discover quality education opportunities across Rwanda
       </p>
 

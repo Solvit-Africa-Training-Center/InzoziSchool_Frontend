@@ -11,5 +11,5 @@ const classVariant = {
 };
 
 export default function Button({ label, variant }: ButtonType) {
-  return <button className={`${classVariant[variant]}  cursor-pointer  rounded-[12px]`}>{label}</button>;
+  return <button className={`${classVariant[variant]} font-family-poppins  cursor-pointer  rounded-[12px]`}>{label}</button>;
 }
