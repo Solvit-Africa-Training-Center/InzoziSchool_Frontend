@@ -23,7 +23,7 @@ const ParentSection: React.FC = () => {
 
   return (
     <section className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:px-[80px]">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
             <span className="text-[#223D60]">You Are </span>

@@ -4,40 +4,56 @@ interface FeatureBenefitCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  variant?: 'default' | 'light' | 'dark';
+  label?: string;
+  variant?: 'default' | 'light' | 'dark' | 'resource';
   iconGradient?: string;
   titleColor?: string;
   descriptionColor?: string;
+  cardBgColor?: string;
 }
 
 const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
   icon,
   title,
   description,
+  label,
   variant = 'default',
   iconGradient,
   titleColor,
   descriptionColor,
+  cardBgColor,
 }) => {
   const getVariantClasses = () => {
     switch (variant) {
       case 'light':
         return {
-          title: 'text-gray-800',
+          title: 'text-gray-900',
           description: 'text-gray-600',
           iconBg: 'bg-gradient-to-br from-blue-500 to-purple-600',
+          cardBg: 'bg-white',
         };
       case 'dark':
         return {
           title: 'text-white',
           description: 'text-gray-300',
           iconBg: 'bg-gradient-to-br from-indigo-600 to-purple-700',
+          cardBg: 'bg-[#0B111E]',
+        };
+      case 'resource':
+        return {
+          title: 'text-white',
+          description: 'text-gray-400',
+          iconBg: 'bg-[#054069]',
+          cardBg: 'bg-[#0B111E]',
+          iconSize: 'w-12 h-12',
+          iconRounding: 'rounded-lg',
         };
       default:
         return {
-          title: 'text-gray-800',
+          title: 'text-gray-900',
           description: 'text-gray-600',
           iconBg: 'bg-gradient-to-br from-orange-400 to-yellow-500',
+          cardBg: 'bg-white',
         };
     }
   };
@@ -45,18 +61,41 @@ const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
   const variantClasses = getVariantClasses();
 
   return (
-    <div className="bg-gradient-to-br from-[#ffffff] to-[#F9FAFB] rounded-sm  p-6 hover:transform hover:scale-105 transition-all duration-200">
-      <div className="mb-6">
-        <div className={`${iconGradient || variantClasses.iconBg} w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg`}>
+    <div
+      className={`relative p-8 hover:transform hover:scale-105 transition-all duration-300 rounded-2xl shadow-lg ${
+        cardBgColor || variantClasses.cardBg
+      }`}
+    >
+     
+
+      <div className=" mb-6 mt-4">
+        <div
+          className={`${
+            iconGradient || variantClasses.iconBg
+          } w-20 h-20 rounded-2xl flex items-center justify-center text-white shadow-lg`}
+        >
           {icon}
         </div>
+      {label && (
+        <div>
+          <span className="inline-block text-xs font-semibold uppercase text-white">
+            {label}
+          </span>
+        </div>
+      )}
       </div>
 
+      
+
       <div className="space-y-3">
-        <h3 className={`${titleColor || variantClasses.title} font-semibold text-lg leading-tight`}>
+        <h3
+          className={`${titleColor || variantClasses.title} font-semibold text-xl leading-tight`}
+        >
           {title}
         </h3>
-        <p className={`${descriptionColor || variantClasses.description} text-sm leading-relaxed`}>
+        <p
+          className={`${descriptionColor || variantClasses.description} text-base leading-relaxed`}
+        >
           {description}
         </p>
       </div>
