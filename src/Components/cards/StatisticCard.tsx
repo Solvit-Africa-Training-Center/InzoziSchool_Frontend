@@ -57,8 +57,10 @@ const StatisticCard: React.FC<StatisticCardProps> = ({
     <div className={`${cardBgColor || variantClasses.cardBg} p-8 rounded-2xl text-center hover:transform hover:scale-105 transition-all duration-200 shadow-lg`}>
       {/* Icon */}
       <div className="flex justify-center mb-4">
-        <div className={`${iconColor || variantClasses.iconColor} text-4xl`}>
-          {icon}
+        <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-xl flex items-center justify-center border border-white/30">
+          <div className={`${iconColor || variantClasses.iconColor} text-2xl`}>
+            {icon}
+          </div>
         </div>
       </div>
 

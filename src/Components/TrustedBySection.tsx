@@ -1,6 +1,6 @@
 // src/Components/TrustedBySection.tsx
 import React from 'react';
-import { HiOutlineHeart } from 'react-icons/hi';
+import { HiTrendingUp } from 'react-icons/hi';
 import { FaSchool, FaUsers, FaMapMarkerAlt, FaAward } from 'react-icons/fa';
 import StatisticCard from './cards/StatisticCard';
 
@@ -42,14 +42,14 @@ const TrustedBySection: React.FC = () => {
         <div className="w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="md:px-[80px]">
         {/* Header Section */}
         <div className="text-center mb-16">
           {/* Growing Every Day Button */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/30">
               <div className="w-6 h-6 rounded-full flex items-center justify-center">
-                <HiOutlineHeart className="w-5 h-5 text-white" />
+                <HiTrendingUp className="w-5 h-5 text-white" />
               </div>
               <span className="text-white font-semibold text-sm">
                 Growing Every Day
@@ -87,11 +87,11 @@ const TrustedBySection: React.FC = () => {
         {/* Call to Action */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center space-x-3 bg-white/15 backdrop-blur-sm px-8 py-4 rounded-full shadow-lg border border-white/30">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-              <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+            <div className="flex">
+              <div className="w-4 h-4 bg-gradient-to-br from-[#4ADE80] to-[#16A34A] rounded-full" style={{opacity: '0.8'}}></div>
+              <div className="w-4 h-4 bg-gradient-to-br from-[#60A5FA] to-[#2563EB] rounded-full" style={{opacity: '0.8'}}></div>
+              <div className="w-4 h-4 bg-gradient-to-br from-[#C084FC] to-[#9333EA] rounded-full" style={{opacity: '0.8'}}></div>
+              <div className="w-4 h-4 bg-gradient-to-br from-[#F87171] to-[#DC2626] rounded-full" style={{opacity: '0.8'}}></div>
             </div>
             <span className="text-white font-semibold text-sm">
               Join our growing community today!
