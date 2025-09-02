@@ -1,17 +1,19 @@
 import React from 'react';
-import {HiOutlineUser } from 'react-icons/hi';
+import {HiOutlineUser,HiSearch } from 'react-icons/hi';
 import {
   FaShieldAlt,
   FaClock,
   FaUsers,
   FaMapMarkerAlt,
   FaStar,
+  
 } from 'react-icons/fa';
 import FeatureBenefitCard from './cards/FeatureBenefitCard';
 
 const WhyChooseInzoziSection: React.FC = () => {
   const features = [
     {
+      icon: <HiSearch className="w-7 h-7" />,
       title: 'Smart Discovery',
       description:
         'AI-powered search that learns your preferences and finds schools that truly match your needs.',
