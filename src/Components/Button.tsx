@@ -13,6 +13,10 @@ const classVariant = {
   thirdly: 'h-[40px]',
   registerschool:'bg-white/30  w-[211px] h-[40px] font-semiBold text-[14px]          max-sm:w-[160px] h-[29px] text-[12px]',
   applychild:'text-[#054069]   bg-white w-[211px] h-[40px] font-semiBold text-[14px] max-sm:w-[160px] h-[29px] text-[12px]',
+  formbutton:'w-[1036px] h-[58px] text-[26px] bg-[#053F69] text-white',
+  login:'w-[685px] h-[40px] text-primary-color text-[24px] border border-primary-color',
+  loginForm:'bg-primary-color text-white text-22px w-[384px] h-[43px]',
+  signupForm:'w-[280px] h-[32px] text-primary-color text-[15px] border border-primary-color',
 };
 
 export default function Button({ label, variant, onClick }: ButtonType) {

@@ -4,7 +4,7 @@ import { CiSearch } from 'react-icons/ci';
 import { IoMdMenu } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
-// import { FiUser } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
   const [open, setIsOpen] = useState(false);
@@ -37,9 +37,9 @@ export default function Navigation() {
           <CiSearch className="text-[#6B7280] text-xl cursor-pointer" />
         </div>
         <nav className="flex items-center gap-[32px] text-white max-sm:hidden">
-          <a className="text-[15px] font-family-poppins" href="#">
+          <Link to='/'><a className="text-[15px] font-family-poppins" href="#">
             Home
-          </a>
+          </a></Link>
           <a className="text-[15px] font-family-poppins" href="#">
             How It Works
           </a>
@@ -49,9 +49,9 @@ export default function Navigation() {
           </div>
         </nav>
         <div className="flex items-center text-white">
-          <a className="text-[15px] font-family-poppins" href="#">
+         <Link to='/login'> <a className="text-[15px] font-family-poppins" href="#">
             Login
-          </a>
+          </a></Link>
         </div>
       </div>
    {/* phone responsiveness */}

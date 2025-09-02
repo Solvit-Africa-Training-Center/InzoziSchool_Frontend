@@ -2,6 +2,7 @@
 import Select from './Select';
 import Button from './Button';
 import { CiSearch } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
 export default function Hero() {
    const option1 = [
   { value: 'Kicukiro', label: 'Kicukiro' },
@@ -58,7 +59,8 @@ export default function Hero() {
 </div>
     <div className='flex justify-center gap-3 pt-[100px] pb-[30px]'>
      <Button label='Apply For Child' variant='applychild'/>
-     <Button label='Register School' variant='registerschool'/>
+     <Link to="/register"><Button label='Register School' variant='registerschool'/></Link>
+     
   </div>
 
 
