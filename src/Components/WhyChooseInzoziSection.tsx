@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiOutlineHeart, HiOutlineUser } from 'react-icons/hi';
+import {HiOutlineUser } from 'react-icons/hi';
 import {
   FaShieldAlt,
   FaClock,
@@ -12,7 +12,6 @@ import FeatureBenefitCard from './cards/FeatureBenefitCard';
 const WhyChooseInzoziSection: React.FC = () => {
   const features = [
     {
-      icon: <HiOutlineHeart className="w-7 h-7" />,
       title: 'Smart Discovery',
       description:
         'AI-powered search that learns your preferences and finds schools that truly match your needs.',
@@ -59,17 +58,6 @@ const WhyChooseInzoziSection: React.FC = () => {
     <section className="bg-gray-50 py-16 px-4">
       <div className=" md:px-[80px]">
         <div className="text-center mb-16">
-          <div className="text-center">
-            <div className="text-[#E69500] inline-flex items-center space-x-2 bg-yelow-500 px-6 py-3 mb-4 rounded-full shadow-sm border border-gray-100">
-              <div className=" w-6 h-6 rounded-full flex items-center justify-center">
-                <HiOutlineHeart className="w-5 h-5" />
-              </div>
-              <span className=" font-semibold text-sm">
-                Why Families Love Us
-              </span>
-            </div>
-          </div>
-
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             Why Choose <span className="text-[#E69500]">Inzozi</span>?
           </h2>
