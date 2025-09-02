@@ -1,4 +1,4 @@
-import work from '../assets/work.png';
+
 import Works from './Works';
 import { FiUserPlus } from 'react-icons/fi';
 import { RiSchoolFill } from 'react-icons/ri';
@@ -8,18 +8,14 @@ import { LuCircleCheckBig } from 'react-icons/lu';
 export default function HowItWorks() {
   return (
     <div className="py-[90px]">
-      <h1 className="text-[#282C34] text-[60px] text-center font-bold">
+      <h1 className="text-[#282C34] text-[60px] text-center font-bold font-family-playfair max-sm:text-[40px]">
         How It Works
       </h1>
-      <p className="text-[#6B7280] text-[20px] py-3 text-center mb-[30px]">
+      <p className="text-[#6B7280] text-[20px] py-3 text-center mb-[30px] font-family-poppins max-sm:text-[18px]" >
         Simple steps to connect schools and families across Rwanda
       </p>
 
-      <div className="flex justify-center items-center bg-gradient-to-r from-[#a8b8c5] to-[#9299a0] w-[876px] h-[331px] rounded-md mx-auto">
-        <img className="h-full" src={work} />
-      </div>
-
-      <div className="flex justify-between px-[120px] py-[40px]">
+      <div className="flex justify-between px-[120px] py-[40px] max-sm:flex-col max-sm:px-[30px]">
         <div>
           <h1 className="text-[#1672b4] text-[30px] font-medium text-center py-5">
             For Parents
@@ -89,9 +85,9 @@ export default function HowItWorks() {
           />
         </div>
       </div>
-      <div className='mx-auto w-[1000px] h-[240px] bg-[#053F69] rounded-xl'>
-         <h1 className='text-center text-white text-[32px] py-3'>Connect. Apply. Grow</h1>
-         <p className='text-[16px] text-[#6B7280] mb-[30px] text-center'>Inzozi bridges the gap between educational institutions and families, creating opportunities for every child in Rwanda.</p>
+      <div className='mx-auto w-[1000px] h-[240px] bg-[#053F69] rounded-xl max-sm:w-[350px] max-sm:h-[255px]'>
+         <h1 className='text-center text-white text-[32px] py-3 font-family-playfair max-sm:text-[27px]'>Connect. Apply. Grow</h1>
+         <p className='text-[16px] text-[#6B7280] mb-[30px] text-center font-family-poppins max-sm:text-[14px]'>Inzozi bridges the gap between educational institutions and families, creating opportunities for every child in Rwanda.</p>
 
          <div className='flex justify-center items-center'>
             <div>

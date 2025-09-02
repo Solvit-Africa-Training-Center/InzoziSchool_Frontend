@@ -6,8 +6,8 @@ import { MdOutlineMailOutline } from 'react-icons/md';
 import Icons from './Icons';
 export default function Footer() {
   return (
-    <div className="bg-gray-200 pt-[60px]  px-[130px]">
-      <div className="flex justify-between">
+    <div className="bg-gray-200 pt-[60px]  px-[130px] max-sm:px-[40px]">
+      <div className="flex justify-between max-sm:flex-col">
         <div className="mb-3">
           <div className="flex items-center mb-3">
             <div className="text-white font-bold text-xl">
@@ -86,8 +86,7 @@ export default function Footer() {
 
       <div className="pt-[20px] flex justify-between pb-[150px]">
            <h1>© 2025 Inzozi. All rights reserved.</h1>
-           <div className="flex gap-[50px]">
-            <h1>Made with  in Rwanda</h1>
+           <div className="flex gap-[10px]">
             <h1>Kigali, Rwanda</h1>
            </div>
       </div>

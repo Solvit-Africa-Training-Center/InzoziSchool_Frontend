@@ -56,30 +56,27 @@ const WhyChooseInzoziSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-16 px-4">
-      <div className=" md:px-[80px]">
+    <section className="bg-gray-50 py-16">
+      <div className="container mx-auto px-4 md:px-[80px]">
         <div className="text-center mb-16">
           <div className="text-center">
-            <div className="text-[#E69500] inline-flex items-center space-x-2 bg-yelow-500 px-6 py-3 mb-4 rounded-full shadow-sm border border-gray-100">
-              <div className=" w-6 h-6 rounded-full flex items-center justify-center">
+            <div className="text-[#E69500] inline-flex items-center space-x-2 bg-yellow-500 px-6 py-3 mb-4 rounded-full shadow-sm border border-gray-100">
+              <div className="w-6 h-6 rounded-full flex items-center justify-center">
                 <HiOutlineHeart className="w-5 h-5" />
               </div>
-              <span className=" font-semibold text-sm">
+              <span className="font-semibold text-sm">
                 Why Families Love Us
               </span>
             </div>
           </div>
-
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             Why Choose <span className="text-[#E69500]">Inzozi</span>?
           </h2>
-
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
             We're not just a directory – we're your trusted partner in finding
             the perfect educational journey for your child.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <FeatureBenefitCard
@@ -92,10 +89,9 @@ const WhyChooseInzoziSection: React.FC = () => {
             />
           ))}
         </div>
-
         <div className="text-center">
-          <div className="text-[#E69500]  flex justify-center items-center gap-1">
-            <div className=" w-6 h-6 rounded-full flex items-center justify-center">
+          <div className="text-[#E69500] flex justify-center items-center gap-1">
+            <div className="w-6 h-6 rounded-full flex items-center justify-center">
               <HiOutlineUser className="w-5 h-5 text-[#E69500]" />
             </div>
             <span className="font-semibold text-sm">

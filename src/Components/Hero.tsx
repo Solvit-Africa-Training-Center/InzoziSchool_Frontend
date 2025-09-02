@@ -16,7 +16,7 @@ export default function Hero() {
 ];
 
   return (
-    <div className="relative w-full h-screen bg-[#C8C1AD] overflow-hidden ">
+    <div className="relative w-full h-screen bg-[#C8C1AD] overflow-hidden pt-[30px]">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay
@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white">
          
-        <h1 className="font-medium text-5xl  font-family-playfair ">
+        <h1 className="font-medium text-5xl  font-family-playfair max-sm:text-2xl ">
           Bridging <span className='text-[#F09C00]'>Schools</span> and Parents <br />
           <span className="text-4xl font-light">Seamlessly</span>
         </h1>
@@ -40,7 +40,7 @@ export default function Hero() {
          <span className='text-[#F09C00]'>Discover, compare, and apply with confidence.</span>
         </h2>
        
-      <div className="bg-white/40 pt-4 rounded-xl mt-4 ">
+      <div className="bg-white/40 pt-4 rounded-xl mt-4 max-sm:hidden">
   <h1 className="text-black font-semibold text-2xl py-1 font-family-playfair">Start your Search</h1>
   <p className="text-[#6B7280] font-family-poppins">Find schools that match your preferences</p>
 
@@ -56,6 +56,10 @@ export default function Hero() {
     </form>
   </div>
 </div>
+    <div className='flex justify-center gap-3 pt-[100px] pb-[30px]'>
+     <Button label='Apply For Child' variant='applychild'/>
+     <Button label='Register School' variant='registerschool'/>
+  </div>
 
 
       </div>
