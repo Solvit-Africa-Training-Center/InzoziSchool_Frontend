@@ -28,9 +28,9 @@ export default function HowItWorks() {
           <Works
             icon={<FiUserPlus />}
             step="Step 1"
-            description="Sign up with your family details and preferences"
+            description=" with your family details and preferences"
             variant="defolt"
-            title="Create Account"
+            title="Visit Our sites"
           />
           <Works
             icon={<RiSchoolFill />}

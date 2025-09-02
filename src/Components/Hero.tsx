@@ -11,7 +11,7 @@ export default function Hero() {
 ];
 
    const option2 = [
-  { value: 'Primary', label: 'Primary' },
+  { value: 'Secondary', label: 'Secondary' },
 ];
 
    const option3 = [
@@ -45,8 +45,8 @@ export default function Hero() {
 
          </div>
         <h1 className="font-medium text-5xl pt-4 ">
-          Find The <span className='text-[#F09C00]'>Perfect</span> School <br />
-          <span className="text-4xl font-light">For Your Child</span>
+          Bridging <span className='text-[#F09C00]'>Schools</span> and Parents <br />
+          <span className="text-4xl font-light">Seamlessly</span>
         </h1>
 
         <h2 className="pt-11 font-normal text-[17px] max-w-3xl">
@@ -63,7 +63,7 @@ export default function Hero() {
       <Select options={option1} />
       <Select options={option2} />
       <Select options={option3} />
-      <div className="px-3 flex bg-gradient-to-r from-[#F09C00] to-[#FFB833] rounded-xl">
+      <div className="px-3 flex bg-gradient-to-r cursor-pointer from-[#F09C00] to-[#FFB833] rounded-xl">
         <CiSearch className="pt-2 text-3xl"/>
         <Button label="Search School" variant="primary"/>
       </div>

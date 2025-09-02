@@ -87,7 +87,7 @@ export default function Footer() {
       <div className="pt-[20px] flex justify-between pb-[150px]">
            <h1>© 2025 Inzozi. All rights reserved.</h1>
            <div className="flex gap-[50px]">
-            <h1>Made with ❤️ in Rwanda</h1>
+            <h1>Made with  in Rwanda</h1>
             <h1>Kigali, Rwanda</h1>
            </div>
       </div>
