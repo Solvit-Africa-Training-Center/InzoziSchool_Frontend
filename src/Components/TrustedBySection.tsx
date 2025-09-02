@@ -1,4 +1,3 @@
-// src/Components/TrustedBySection.tsx
 import React from 'react';
 import { HiTrendingUp } from 'react-icons/hi';
 import { FaSchool, FaUsers, FaMapMarkerAlt, FaAward } from 'react-icons/fa';
@@ -34,7 +33,6 @@ const TrustedBySection: React.FC = () => {
 
   return (
     <section className="bg-gradient-to-br from-[#D2A24A] to-[#B99043] py-16 px-4 relative overflow-hidden">
-      {/* Decorative Elements */}
       <div className="absolute top-4 right-8">
         <div className="w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
       </div>
@@ -43,9 +41,7 @@ const TrustedBySection: React.FC = () => {
       </div>
 
       <div className="md:px-[80px]">
-        {/* Header Section */}
         <div className="text-center mb-16">
-          {/* Growing Every Day Button */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/30">
               <div className="w-6 h-6 rounded-full flex items-center justify-center">
@@ -70,7 +66,6 @@ const TrustedBySection: React.FC = () => {
           </p>
         </div>
 
-        {/* Statistics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {statistics.map((stat, index) => (
             <StatisticCard
@@ -84,12 +79,11 @@ const TrustedBySection: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center space-x-3 bg-white/15 backdrop-blur-sm px-8 py-4 rounded-full shadow-lg border border-white/30">
             <div className="flex">
-              <div className="w-4 h-4 bg-gradient-to-br from-[#4ADE80] to-[#16A34A] rounded-full" style={{opacity: '0.8'}}></div>
               <div className="w-4 h-4 bg-gradient-to-br from-[#60A5FA] to-[#2563EB] rounded-full" style={{opacity: '0.8'}}></div>
+              <div className="w-4 h-4 bg-gradient-to-br from-[#4ADE80] to-[#16A34A] rounded-full" style={{opacity: '0.8'}}></div>
               <div className="w-4 h-4 bg-gradient-to-br from-[#C084FC] to-[#9333EA] rounded-full" style={{opacity: '0.8'}}></div>
               <div className="w-4 h-4 bg-gradient-to-br from-[#F87171] to-[#DC2626] rounded-full" style={{opacity: '0.8'}}></div>
             </div>
