@@ -1,4 +1,3 @@
-// ResetPasswordForm.tsx
 import React, { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import LoginInput from '../LoginInput';
@@ -15,7 +14,7 @@ const ResetPasswordForm: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-sm p-8">
         <div className="text-center mb-8">
-          <h1 className=" text-2xl md:text-[32px]  md:text-center font-bold text-primary-color font-playfair mb-2">
+          <h1 className=" text-2xl md:text-[32px]  md:text-center font-bold text-primary-color font-playfair mb-2 font-family-playfair">
             Reset Your Password
           </h1>
         </div>
