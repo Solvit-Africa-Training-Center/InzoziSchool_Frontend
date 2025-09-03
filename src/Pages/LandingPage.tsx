@@ -7,6 +7,7 @@ import PowerfulFeaturesSection from '../Components/PowerfulFeaturesSection';
 import ResourcesSupportSection from '../Components/ResourcesSupportSection';
 import SchoolOwnerSection from '../Components/SchoolOwnerSection';
 import SchoolSection from '../Components/SchoolSection';
+import TrustedBySection from '../Components/TrustedBySection';
 import WhyChooseInzoziSection from '../Components/WhyChooseInzoziSection';
 
 export default function LandingPage() {
@@ -21,6 +22,7 @@ export default function LandingPage() {
         <SchoolOwnerSection/>
         <HowItWorks/>
         <ResourcesSupportSection/>
+        <TrustedBySection/>
         <Footer/>
     </div>
   );

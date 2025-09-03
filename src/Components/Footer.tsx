@@ -6,7 +6,7 @@ import { MdOutlineMailOutline } from 'react-icons/md';
 import Icons from './Icons';
 export default function Footer() {
   return (
-    <div className="bg-gray-200 pt-[60px]  px-[130px] max-sm:px-[40px]">
+    <div className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] pt-[60px]  px-[130px] max-sm:px-[40px]">
       <div className="flex justify-between max-sm:flex-col">
         <div className="mb-3">
           <div className="flex items-center mb-3">
@@ -15,10 +15,10 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-0">
-              <h1 className="m-0 font-bold text-[25px] text-white leading-none">
+              <h1 className="m-0 font-bold text-[25px] text-[#F09C00] leading-none">
                 inzozI
               </h1>
-              <span className="m-0 text-[11px] text-white leading-none">
+              <span className="m-0 text-[11px] text-[#FFB833] leading-none">
                 Smart Dreams. Bright Futures
               </span>
             </div>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           <div className="py-6">
-            <h1 className="text-white text-[15px] py-2 ">Legal</h1>
+            <h1 className="text-[#F09C00] text-[15px] py-2 ">Legal</h1>
             <p className="text-black text-[14px] py-1 ">Privacy Policy</p>
             <p className="text-black text-[14px] py-1 ">Terms of Service</p>
             <p className="text-black text-[14px] py-1 ">Cookie Policy</p>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="py-6">
-          <h1 className="text-white text-[15px] py-2 ">Products</h1>
+          <h1 className="text-[#F09C00] text-[15px] py-2 ">Products</h1>
           <p className="text-black text-[14px] py-1 ">Features</p>
           <p className="text-black text-[14px] py-1 ">How It Works</p>
           <p className="text-black text-[14px] py-1 ">Pricing</p>
@@ -57,14 +57,14 @@ export default function Footer() {
         </div>
 
         <div className="py-6">
-          <h1 className="text-white text-[15px] py-2 ">Resources</h1>
+          <h1 className="text-[#F09C00] text-[15px] py-2 ">Resources</h1>
           <p className="text-black text-[14px] py-1 ">Documentation</p>
           <p className="text-black text-[14px] py-1 ">Guide</p>
           <p className="text-black text-[14px] py-1 ">Api</p>
           <p className="text-black text-[14px] py-1 ">Support</p>
         </div>
         <div className="py-6">
-          <h1 className="text-white text-[15px] py-2 ">Company</h1>
+          <h1 className="text-[#F09C00] text-[15px] py-2 ">Company</h1>
           <p className="text-black text-[14px] py-1 ">About Us</p>
           <p className="text-black text-[14px] py-1 ">Carrers</p>
           <p className="text-black text-[14px] py-1 ">Press</p>
@@ -72,14 +72,14 @@ export default function Footer() {
         </div>
       </div>
       <div className=" border-t border-black border-b ">
-        <h1 className="text-center text-white pt-[30px] py-6">Stay Updated</h1>
+        <h1 className="text-center text-[#F09C00] pt-[30px] py-6">Stay Updated</h1>
         <p className="text-center">
           Get the latest news and updates about Inzozi's features and <br />
           <span className="pl-[20px]"> Rwanda's education sector.</span>
         </p>
 
         <div className="flex justify-center gap-2 py-7 ">
-            <input className="w-[319px] py-2 h-[40px]  px-2 focus:outline-none rounded-md bg-blue-950 text-white " placeholder="Enter your Email"/>
+            <input className="w-[319px] py-2 h-[40px]  px-2 focus:outline-none rounded-md bg-white text-primary-color " placeholder="Enter your Email"/>
             <button className="bg-[#054069] text-white flex justify-center items-center rounded-md cursor-pointer px-2">Subscribe</button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "flag-icon-css/css/flag-icons.min.css";
 
 @theme {
   --font-family-poppins: 'Poppins', sans-serif;

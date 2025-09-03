@@ -1,13 +1,28 @@
-import { IoMdArrowDropdown } from 'react-icons/io';
+
 import logo from '../assets/logo 2.png';
 import { CiSearch } from 'react-icons/ci';
 import { IoMdMenu } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import Language from './Language';
 
 export default function Navigation() {
+
+  const languages =[
+     {label:'English' , value:'English' , icon:<span></span>},
+     {label:'Kinyarwanda' , value:'kinyarwanda', icon:<span></span>},
+     {label:'French' , value:'French' , icon:<span></span>},
+  ];
   const [open, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('English');
+
+  const handleSelect = (value: string) => {
+    setSelectedLanguage(value);
+    const selected = languages.find((lang) => lang.value === value);
+    console.log('Selected Language:', selected?.label);
+  };
 
   const handleClick = () => {
     setIsOpen(!open);
@@ -15,7 +30,8 @@ export default function Navigation() {
   return (
     <>
       <div className="px-[50px] flex justify-between py-2 bg-[#0b4d7c] border-none max-sm:hidden">
-        <div className="flex items-center">
+        <Link to='/'>
+          <div className="flex items-center">
           <div className="text-white font-bold text-xl">
             <img className="w-[70px]" src={logo} />
           </div>
@@ -28,6 +44,7 @@ export default function Navigation() {
             </span>
           </div>
         </div>
+        </Link>
 
         <div className="flex justify-center items-center gap-2 py-4 rounded-xl mt-2 bg-white w-[259px] h-[25px] max-sm:hidden">
           <input
@@ -43,10 +60,7 @@ export default function Navigation() {
           <a className="text-[15px] font-family-poppins" href="#">
             How It Works
           </a>
-          <div className="flex items-center gap-1">
-            <span className="text-[16px] font-family-poppins">English</span>
-            <IoMdArrowDropdown className="text-xl" />
-          </div>
+            <Language options={languages} value={selectedLanguage} onChange={handleSelect} />
         </nav>
         <div className="flex items-center text-white">
          <Link to='/login'> <a className="text-[15px] font-family-poppins" href="#">
@@ -84,10 +98,7 @@ export default function Navigation() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
-            <span className="text-[16px] font-family-poppins">English</span>
-            <IoMdArrowDropdown className="text-xl " />
-          </div>
+          <Language options={languages} value={selectedLanguage} onChange={handleSelect} />
         </div>
 
         <div className="flex justify-center items-center">

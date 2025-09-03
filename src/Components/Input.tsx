@@ -2,7 +2,7 @@ import React from 'react';
 
 const classVariant = {
   default:
-    'border border-[#EBEBEB] text-[#4E5155] focus:outline-none focus:ring-2 focus:ring-blue-300',
+    'border border-[#EBEBEB] text-[#4E5155] focus:outline-none focus:ring-2 focus:ring-primary-color',
   primary:
     'border border-blue-500 text-[#4E5155] focus:outline-none focus:ring-2 focus:ring-blue-600',
   danger:
