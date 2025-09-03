@@ -53,7 +53,7 @@ const ResourcesSupportSection: React.FC = () => {
 
   return (
     <section className="bg-gray-100 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="md:px-[80px]">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
