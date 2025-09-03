@@ -11,9 +11,9 @@ import Language from './Language';
 export default function Navigation() {
 
   const languages =[
-     {label:'English' , value:'English' , icon:<span></span>},
-     {label:'Kinyarwanda' , value:'kinyarwanda', icon:<span></span>},
-     {label:'French' , value:'French' , icon:<span></span>},
+     {label:'English' , value:'English'},
+     {label:'Kinyarwanda' , value:'kinyarwanda'},
+     {label:'French' , value:'French'},
   ];
   const [open, setIsOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('English');
@@ -60,7 +60,7 @@ export default function Navigation() {
           <a className="text-[15px] font-family-poppins" href="#">
             How It Works
           </a>
-            <Language options={languages} value={selectedLanguage} onChange={handleSelect} />
+            <Language options={languages} value={selectedLanguage} variant='defoult' onChange={handleSelect} />
         </nav>
         <div className="flex items-center text-white">
          <Link to='/login'> <a className="text-[15px] font-family-poppins" href="#">
@@ -98,7 +98,7 @@ export default function Navigation() {
             </div>
           </div>
 
-          <Language options={languages} value={selectedLanguage} onChange={handleSelect} />
+          <Language options={languages} variant='defoult' value={selectedLanguage} onChange={handleSelect} />
         </div>
 
         <div className="flex justify-center items-center">
