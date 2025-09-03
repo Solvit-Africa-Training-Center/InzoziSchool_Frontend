@@ -1,4 +1,3 @@
-// src/Components/ResourcesSupportSection.tsx
 import React from 'react';
 import { 
   FaBook, 
@@ -54,7 +53,6 @@ const ResourcesSupportSection: React.FC = () => {
   return (
     <section className="bg-gray-100 py-16 px-4">
       <div className="md:px-[80px]">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             Resources & Support
@@ -65,7 +63,6 @@ const ResourcesSupportSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Resources Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {resources.map((resource, index) => (
             <FeatureBenefitCard
@@ -80,9 +77,7 @@ const ResourcesSupportSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Help & Support Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Popular Help Topics */}
           <div>
             <h3 className="text-xl font-semibold text-blue-600 mb-6">
               Popular Help Topics
@@ -102,7 +97,6 @@ const ResourcesSupportSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Need More Help */}
           <div>
             <h3 className="text-xl font-semibold text-blue-600 mb-6">
               Need More Help?
@@ -119,7 +113,6 @@ const ResourcesSupportSection: React.FC = () => {
               </div>
 
               <div className="space-y-4 mb-6">
-                {/* Email Support */}
                 <div className="flex items-center space-x-3">
                   <div className="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center">
                     <FaEnvelope className="w-4 h-4 text-white" />
@@ -130,7 +123,6 @@ const ResourcesSupportSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Live Chat */}
                 <div className="flex items-center space-x-3">
                   <div className="bg-green-600 w-8 h-8 rounded-lg flex items-center justify-center">
                     <FaComments className="w-4 h-4 text-white" />
@@ -142,7 +134,6 @@ const ResourcesSupportSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Contact Button */}
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-colors duration-200">
                 Contact Support
               </button>
