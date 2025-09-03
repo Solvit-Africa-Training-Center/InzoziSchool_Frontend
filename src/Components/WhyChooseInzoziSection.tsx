@@ -60,10 +60,10 @@ const WhyChooseInzoziSection: React.FC = () => {
     <section className="bg-gray-50 py-16">
       <div className="container mx-auto px-4 md:px-[80px]">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+          <h2 className="text-[30px] font-bold font-family-playfair mb-6 text-gray-800">
             Why Choose <span className="text-[#E69500]">Inzozi</span>?
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed font-family-poppins">
             We're not just a directory – we're your trusted partner in finding
             the perfect educational journey for your child.
           </p>

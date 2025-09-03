@@ -25,7 +25,7 @@ const SchoolOwnerSection: React.FC = () => {
     <section className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-16 px-4">
       <div className="md:px-[80px]">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-[30px] font-bold mb-4 font-family-playfair">
             <span className="text-[#223D60]">You own </span>
             <span className="text-[#E69500]">a School?</span>
           </h2>
