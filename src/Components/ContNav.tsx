@@ -15,6 +15,11 @@ type Navigation = {
 };
 
 export default function ContNav({ variant = 'defoult' }: Navigation) {
+
+   const handleGoBack=()=>{
+    window.history.back();
+   };
+
   const languages = [
     { label: 'English', value: 'English' },
     { label: 'Kinyarwanda', value: 'kinyarwanda' },
@@ -32,7 +37,7 @@ export default function ContNav({ variant = 'defoult' }: Navigation) {
     <div
       className={`px-[50px] flex justify-between py-2  ${classVariant[variant]}  border-none max-sm:hidden`}
     >
-      <div className='flex gap-1 justify-center items-center'>
+      <div className='flex gap-1 justify-center items-center cursor-pointer' onClick={handleGoBack}>
         <div>
           <IoIosArrowBack className='text-2xl text-white'/>
         </div>
@@ -41,10 +46,8 @@ export default function ContNav({ variant = 'defoult' }: Navigation) {
 
       <div className="flex gap-[90px]">
         <nav className="flex items-center gap-[32px] text-white max-sm:hidden">
-          <Link to="/">
-            <a className="text-[15px] font-family-poppins" href="#">
-              Home
-            </a>
+          <Link className="text-[15px] font-family-poppins" to="/"> Home
+            
           </Link>
           <a className="text-[15px] font-family-poppins" href="#">
             How It Works

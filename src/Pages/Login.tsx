@@ -92,10 +92,11 @@ export default function Login() {
                     <Button label="Log in" variant="loginForm" />
                   </div>
                 </Link>
-
-                <h1 className="ml-[260px] py-2 text-[#F09C00] cursor-pointer">
-                  Forgot password
-                </h1>
+                <Link to="/reset">
+                  <h1 className="ml-[260px] py-2 text-[#F09C00] cursor-pointer">
+                    Forgot password
+                  </h1>
+                </Link>
               </form>
             </div>
 

@@ -3,8 +3,8 @@ import React from 'react';
 
 const buttonVariants = {
   primary: 'bg-primary-color hover:bg-primary-color/90 text-white py-3 px-4 font-semibold',
-  secondary: 'bg-[#E69500] hover:bg-[#E69500]/90 text-white py-3 px-4 font-semibold',
-  outline: 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 py-2 px-4 font-medium',
+  secondary: 'bg-[#E69500] cursor-pointer hover:bg-[#E69500]/90 text-white py-3 px-4 font-semibold',
+  outline: 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 py-2 px-4 font-medium cursor-pointer',
   danger: 'bg-red-600 hover:bg-red-700 text-white py-3 px-4 font-semibold',
   success: 'bg-green-600 hover:bg-green-700 text-white py-3 px-4 font-semibold',
 };

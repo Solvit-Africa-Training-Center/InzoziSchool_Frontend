@@ -7,6 +7,7 @@ import SchoolPage from '../Pages/SchoolPage';
 import SchoolRegister from '../Pages/SchoolRegister';
 import SuccessPage from '../Pages/SuccessPage';
 import Pending from '../Pages/Pending';
+import CreateNewPasswordPage from '../Pages/ResetPasswordPage';
 
 
 export default function AppRoutes() {
@@ -20,6 +21,7 @@ export default function AppRoutes() {
             <Route path='/schoolRegister' element={<SchoolRegister/>}/>
             <Route path='/success' element={<SuccessPage/>}/>
             <Route path='/pending' element={<Pending/>}/>
+            <Route path='/reset' element={<CreateNewPasswordPage/>}/>
 
             
         </Routes>

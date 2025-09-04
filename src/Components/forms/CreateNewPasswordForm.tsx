@@ -22,7 +22,7 @@ const CreateNewPasswordForm: React.FC = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-sm p-8">
         <div className="text-center mb-8">
-          <h1 className="text-[32px] font-bold text-primary-color font-playfair mb-2">
+          <h1 className="text-[32px] font-bold text-primary-color font-family-playfair mb-2">
             Create New Password
           </h1>
         </div>
@@ -62,14 +62,7 @@ const CreateNewPasswordForm: React.FC = () => {
           </Button>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-xs text-gray-500 font-poppins">
-            Copyright © 2025
-          </p>
-          <p className="text-xs text-gray-500 font-poppins">
-            Inzozi Limited
-          </p>
-        </div>
+       
       </div>
     </div>
   );
