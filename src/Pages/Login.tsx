@@ -110,7 +110,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm">{errors.email}</p>
+                  <p className="text-red-500 text-[12px]">{errors.email}</p>
                 )}
 
                 <LoginInput
@@ -124,7 +124,7 @@ export default function Login() {
                  
                 />
                 {errors.password && (
-                  <p className="text-red-500 text-sm">{errors.password}</p>
+                  <p className="text-red-500 text-[12px]">{errors.password}</p>
                 )}
 
                 <div className="py-[20px]">
