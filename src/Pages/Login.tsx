@@ -4,7 +4,7 @@ import Navigation from '../Components/Navigation';
 import { FaRegUser } from 'react-icons/fa';
 import { RxLockClosed } from 'react-icons/rx';
 import Button from '../Components/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import loginImage from '../assets/login.jpg';
 import logo from '../assets/logo 2.png';
@@ -14,6 +14,8 @@ export default function Login() {
     email: '',
     password: '',
   });
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -23,6 +25,37 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
+
+    // clear error when user types
+    setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
+  const validateForm = () => {
+    const newErrors: { email?: string; password?: string } = {};
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Enter a valid email address';
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      // ✅ If valid, navigate or call API
+      console.log('Form Submitted:', formData);
+      navigate('/pending');
+    }
   };
 
   return (
@@ -37,7 +70,8 @@ export default function Login() {
         }}
       >
         <div className="flex justify-center">
-          <div className="bg-white my-[45px] rounded-md">
+          <div className="bg-white my-[45px] rounded-md w-[500px] max-sm:w-full">
+            {/* Logo Section */}
             <div className="flex justify-between py-[25px] pl-[40px] pr-[10px]">
               <div>
                 <Link to="/">
@@ -64,10 +98,8 @@ export default function Login() {
             </h1>
             <div className="border-t border-gray-100"></div>
 
-            <div className="border-t border-gray-200 mx-[250px]"></div>
-
             <div className="flex justify-center items-center pt-[40px]">
-              <form>
+              <form onSubmit={handleSubmit} className="w-[80%]">
                 <LoginInput
                   icon={<FaRegUser />}
                   label="Email"
@@ -77,6 +109,9 @@ export default function Login() {
                   type="email"
                   onChange={handleChange}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
 
                 <LoginInput
                   icon={<RxLockClosed />}
@@ -86,20 +121,25 @@ export default function Login() {
                   name="password"
                   type="password"
                   onChange={handleChange}
+                 
                 />
-                <Link to="/pending">
-                  <div className="py-[20px]">
-                    <Button label="Log in" variant="loginForm" />
-                  </div>
-                </Link>
+                {errors.password && (
+                  <p className="text-red-500 text-sm">{errors.password}</p>
+                )}
+
+                <div className="py-[20px]">
+                  <Button label="Log in" variant="loginForm" type="submit" />
+                </div>
+
                 <Link to="/reset">
-                  <h1 className="ml-[260px] py-2 text-[#F09C00] cursor-pointer">
+                  <h1 className="text-right py-2 text-[#F09C00] cursor-pointer">
                     Forgot password
                   </h1>
                 </Link>
               </form>
             </div>
 
+            {/* Signup Section */}
             <div className="py-[5px]">
               <h1 className="text-primary-color text-[14px] text-center">
                 Don’t have an account?
