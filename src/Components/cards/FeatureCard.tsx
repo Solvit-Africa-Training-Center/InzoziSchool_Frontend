@@ -26,6 +26,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       case 'light':
         return {
           card: 'bg-white hover:bg-gray-50',
+          description: 'text-gray-300',
           text: 'text-gray-800',
           iconBg: 'bg-blue-100',
           iconText: 'text-blue-600',
@@ -33,6 +34,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       case 'dark':
         return {
           card: 'bg-gray-800 hover:bg-gray-700',
+          description: 'text-gray-300',
           text: 'text-white',
           iconBg: 'bg-white',
           iconText: 'text-gray-800',
@@ -40,7 +42,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       default:
         return {
           card: 'bg-[#0A303F] hover:bg-[#0A303F]/90',
-          text: 'text-[#F6FCFF]',
+          description: 'font-family-poppins',
+          text: 'text-[#F6FCFF] font-family-playfair',
           iconBg: 'bg-white',
           iconText: 'text-[#223D60]',
         };

@@ -27,21 +27,21 @@ const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
     switch (variant) {
       case 'light':
         return {
-          title: 'text-gray-900',
+          title: 'text-gray-900 font-family-playfair',
           description: 'text-gray-600',
           iconBg: 'bg-gradient-to-br from-blue-500 to-purple-600',
           cardBg: 'bg-white',
         };
       case 'dark':
         return {
-          title: 'text-white',
+          title: 'text-white font-family-playfair',
           description: 'text-gray-300',
           iconBg: 'bg-gradient-to-br from-indigo-600 to-purple-700',
           cardBg: 'bg-[#0B111E]',
         };
       case 'resource':
         return {
-          title: 'text-white',
+          title: 'text-white font-family-playfair',
           description: 'text-gray-400',
           iconBg: 'bg-[#054069]',
           cardBg: 'bg-[#0B111E]',
@@ -50,8 +50,8 @@ const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
         };
       default:
         return {
-          title: 'text-gray-900',
-          description: 'text-gray-600',
+          title: 'text-gray-900 font-family-playfair text-sm',
+          description: 'text-gray-600 font-family-poppins text-sm',
           iconBg: 'bg-gradient-to-br from-orange-400 to-yellow-500',
           cardBg: 'bg-white',
         };
@@ -72,7 +72,7 @@ const FeatureBenefitCard: React.FC<FeatureBenefitCardProps> = ({
         <div
           className={`${
             iconGradient || variantClasses.iconBg
-          } w-20 h-20 rounded-2xl flex items-center justify-center text-white shadow-lg`}
+          } w-[48px] h-[48px] rounded-lg flex items-center justify-center text-white shadow-lg`}
         >
           {icon}
         </div>

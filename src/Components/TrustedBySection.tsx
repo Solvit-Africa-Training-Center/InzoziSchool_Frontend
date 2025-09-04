@@ -53,12 +53,12 @@ const TrustedBySection: React.FC = () => {
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-[30px] font-bold text-white mb-4 font-family-playfair">
             Trusted by Families and Schools
           </h2>
           
-          <h3 className="text-2xl md:text-3xl font-semibold text-white/90 mb-6">
-            Across Rwanda
+          <h3 className="text-2xl md:text-3xl font-semibold text-white/90 mb-6 font-family-playfair">
+            Across Rwanda font-family-playfair
           </h3>
 
           <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed">

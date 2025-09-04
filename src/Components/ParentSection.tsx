@@ -25,11 +25,11 @@ const ParentSection: React.FC = () => {
     <section className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-16 px-4">
       <div className="md:px-[80px]">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="text-[#223D60]">You Are </span>
-            <span className="text-[#E69500]">a  Parent?</span>
+          <h2 className="text-[30px] font-bold  mb-4">
+            <span className="text-[#223D60] font-family-playfair">You Are </span>
+            <span className="text-[#E69500] font-family-playfair">a  Parent?</span>
           </h2>
-          <p className="text-[#223D60] text-lg max-w-2xl mx-auto">
+          <p className="text-[#223D60] text-lg max-w-2xl mx-auto font-family-poppins">
             Simplify your child's educational journey with powerful tools designed for Rwandan families.
           </p>
         </div>
@@ -63,10 +63,10 @@ const ParentSection: React.FC = () => {
 
         <div className="text-center mt-12">
           <div className="bg-opacity-10 rounded-xl p-8 w-full mx-auto backdrop-blur-sm">
-            <h3 className="text-[#223D60] text-xl font-semibold mb-2">
+            <h3 className="text-[#223D60] text-xl font-semibold mb-2 font-family-playfair">
               Join thousands of families already using Inzozi
             </h3>
-            <p className="text-[#223D60] mb-6">
+            <p className="text-[#223D60] mb-6 font-family-poppins">
               Make informed decisions about your child's education with comprehensive school data and seamless application management.
             </p>
             <button className="bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95">

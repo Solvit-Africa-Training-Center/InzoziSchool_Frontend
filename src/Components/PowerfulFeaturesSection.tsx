@@ -53,7 +53,7 @@ const PowerfulFeaturesSection: React.FC = () => {
     <section className="bg-white py-16 px-4">
       <div className="md:px-[80px]">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+          <h2 className="text-[30px] font-bold mb-6 text-gray-800 font-family-playfair">
             Powerful Features
           </h2>
           
