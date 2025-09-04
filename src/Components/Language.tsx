@@ -28,13 +28,13 @@ export default function Language({ options, value, onChange, variant }: Language
     <div className={`relative  max-sm:w-[120px] max-sm:text-[13px] ${classVariant[variant]}`}>
       {/* Custom dropdown */}
       <div
-        className="flex items-center justify-between bg-white border px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors"
+        className="flex items-center border-none px-3 py-2 rounded-lg cursor-pointer  transition-colors"
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-2">
-          <span className="text-black font-medium">{selectedOption.label}</span>
+          <span className="text-white font-medium">{selectedOption.label}</span>
         </div>
-        <span className={`text-gray-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>▼</span>
+        <span className={`text-white text-[10px] pt-1 pl-1 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>▼</span>
       </div>
 
       {open && (

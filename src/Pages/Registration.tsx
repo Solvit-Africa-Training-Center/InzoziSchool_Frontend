@@ -6,19 +6,16 @@ import Footer from '../Components/Footer';
 import { Link } from 'react-router-dom';
 import signupImage from '../assets/signup.jpg';
  import logo from '../assets/logo 2.png';
+ import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
+
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
-    telephone: '',
     email: '',
-    gender: '',
-    province: '',
     district: '',
-    sector: '',
-    cell: '',
-    village: '',
     password: '',
     confirmPassword: '',
   });
@@ -31,6 +28,12 @@ export default function Registration() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleCreate = (e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    navigate('/schoolManager');
+
   };
 
   
@@ -50,7 +53,7 @@ export default function Registration() {
       >
         <div className="w-[542px] bg-white mx-auto rounded-sm ">
           <div className=" ">
-                        <div className='flex justify-between py-[25px] pl-[40px] pr-[10px]'>
+            <div className='flex justify-between py-[25px] pl-[40px] pr-[10px]'>
               <div>
                 <Link to="/">
                   <div className="flex items-center">
@@ -75,7 +78,7 @@ export default function Registration() {
             </h1>
             <div className='border-t border-gray-100 pb-[35px]'></div>
 
-            <form className=" px-[50px] ">
+            <form onSubmit={handleCreate} className=" px-[50px] ">
               <div className=" mb-3">
                   <Input
                     label="First name"

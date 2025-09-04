@@ -17,6 +17,7 @@ const classVariant = {
   login:'w-[285px] h-[37px] text-[20px] text-white bg-gradient-to-r from-[#F09C00] via-[#FFB833] to-[#F09C00]',
   loginForm:'bg-primary-color text-white text-22px w-[384px] h-[43px]',
   signupForm:'w-[280px] h-[32px] text-primary-color text-[15px] border border-primary-color',
+  newSchool:'w-[724px] h-[50px] bg-gradient-to-r from-[#F09C00] via-[#FFB833] to-[#F09C00] text-white text-[16px] ',
 };
 
 export default function Button({ label, variant, onClick }: ButtonType) {

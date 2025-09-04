@@ -38,7 +38,7 @@ export default function Login() {
       >
         <div className="flex justify-center">
           <div className="bg-white my-[45px] rounded-md">
-            <div className='flex justify-between py-[25px] pl-[40px] pr-[10px]'>
+            <div className="flex justify-between py-[25px] pl-[40px] pr-[10px]">
               <div>
                 <Link to="/">
                   <div className="flex items-center">
@@ -58,11 +58,11 @@ export default function Login() {
               </div>
             </div>
 
-            <div className='border-t border-gray-100'></div>
+            <div className="border-t border-gray-100"></div>
             <h1 className="text-center text-[32px] text-primary-color py-[22px] font-family-playfair font-bold">
               Log into your <br /> account
             </h1>
-            <div className='border-t border-gray-100'></div>
+            <div className="border-t border-gray-100"></div>
 
             <div className="border-t border-gray-200 mx-[250px]"></div>
 
@@ -87,9 +87,11 @@ export default function Login() {
                   type="password"
                   onChange={handleChange}
                 />
-                <div className="py-[20px]">
-                  <Button label="Log in" variant="loginForm" />
-                </div>
+                <Link to="/pending">
+                  <div className="py-[20px]">
+                    <Button label="Log in" variant="loginForm" />
+                  </div>
+                </Link>
 
                 <h1 className="ml-[260px] py-2 text-[#F09C00] cursor-pointer">
                   Forgot password
