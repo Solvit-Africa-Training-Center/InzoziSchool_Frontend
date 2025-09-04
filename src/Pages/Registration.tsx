@@ -10,12 +10,18 @@ import signupImage from '../assets/signup.jpg';
 
 export default function Registration() {
 
-  const navigate=useNavigate();
+   const navigate=useNavigate();
+  const[formError , setFormError]=useState({
+    firstname:'',
+    lastname:'',
+    email:'',
+    password:'',
+    confirmpass:'',
+  });
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
-    district: '',
     password: '',
     confirmPassword: '',
   });
@@ -30,11 +36,87 @@ export default function Registration() {
     }));
   };
 
-  const handleCreate = (e:React.FormEvent<HTMLFormElement>)=>{
-    e.preventDefault();
-    navigate('/schoolManager');
-
+    const isStrongPassword = (password: string) => {
+    // Accept any non-alphanumeric as "special"
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+    return regex.test(password);
   };
+
+
+  const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const firstname = formData.firstname.trim();
+  const lastname = formData.lastname.trim();
+  const email = formData.email.trim();
+  const password = formData.password.trim();
+  const confirmpass = formData.confirmPassword.trim();
+
+  const errors = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    confirmpass: '',
+  };
+
+  // First name
+  if (!firstname || firstname.length < 2) {
+    errors.firstname = 'First name must be at least 2 characters';
+  }
+
+  // Last name
+  if (!lastname || lastname.length < 2) {
+    errors.lastname = 'Last name must be at least 2 characters';
+  }
+
+  // Email
+  if (!email || !email.includes('@')) {
+    errors.email = 'Please enter a valid email';
+  }
+
+  // Password
+  if (!password) {
+    errors.password = 'Password is required';
+  } else if (!isStrongPassword(password)) {
+    errors.password =
+      'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
+  }
+
+  // Confirm password
+  if (!confirmpass) {
+    errors.confirmpass = 'Please confirm password';
+  } else if (password !== confirmpass) {
+    errors.confirmpass = 'Passwords do not match';
+  }
+
+  setFormError(errors);
+
+  // Stop if any errors exist
+  if (
+    errors.firstname ||
+    errors.lastname ||
+    errors.email ||
+    errors.password ||
+    errors.confirmpass
+  ) {
+    return;
+  }
+
+  //  continue with other logic 
+
+  console.log('Form submitted successfully', formData);
+  navigate('/schoolManager');
+
+
+ setFormData({
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+});
+};
 
   
   return (
@@ -88,6 +170,9 @@ export default function Registration() {
                     name="firstname"
                     type="text"
                   />
+                  {formError.firstname &&(
+                     <span className='text-red-500 text-[12px]'>{formError.firstname}</span>
+                  )}
 
                   <Input
                     label="Last name"
@@ -97,6 +182,9 @@ export default function Registration() {
                     name="lastname"
                     type="text"
                   />
+                     {formError.lastname &&(
+                     <span className='text-red-500 text-[12px]'>{formError.lastname}</span>
+                  )}
                   <Input
                     label="School Email  (Don’t use a personal email)"
                     placeholder="Email"
@@ -105,6 +193,9 @@ export default function Registration() {
                     name="email"
                     type="email"
                   />
+                     {formError.email &&(
+                     <span className='text-red-500 text-[12px]'>{formError.email}</span>
+                  )}
                  
       
               
@@ -116,6 +207,9 @@ export default function Registration() {
                     name="password"
                     type="password"
                   />
+                     {formError.password &&(
+                     <span className='text-red-500 text-[12px]'>{formError.password}</span>
+                  )}
                   <Input
                     label="Confirm Password"
                     placeholder="confirmPassword"
@@ -124,6 +218,9 @@ export default function Registration() {
                     name="confirmPassword"
                     type="password"
                   />
+                     {formError.confirmpass &&(
+                     <span className='text-red-500 text-[12px]'>{formError.confirmpass}</span>
+                  )}
               </div>
 
               <div className="py-4 pb-5">
