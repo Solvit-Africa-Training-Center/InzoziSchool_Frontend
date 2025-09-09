@@ -5,7 +5,7 @@ import Footer from '../Components/Footer';
 import Button from '../Components/Button';
 import { Link } from 'react-router-dom';
 
-export default function ResetPasswordSuccessPage() {
+export default function ResetPasswordSuccessPagenp() {
   return (
     <div>
       <ContNav />
