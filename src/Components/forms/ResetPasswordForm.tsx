@@ -4,18 +4,42 @@ import LoginInput from '../LoginInput';
 import Button from '../buttons/Button';
 import logo from '../../assets/logo 2.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import {useForgotPasswordMutation} from '../../App/api/Auth/auth';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+
+type ErrorResponse={
+  message:string;
+}
 
 const ResetPasswordForm: React.FC = () => {
+  const[ForgotPassword , {isError , error}]=useForgotPasswordMutation();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
+  const [errorm , setError] = useState('');
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handleReset = (e:React.FormEvent<HTMLFormElement>)=>{
+ 
+
+  const handleReset = async(e:React.FormEvent<HTMLFormElement>)=>{
 
     e.preventDefault();
-    console.log(email);
+     if(!email){
+    setError('please Email is required');
+  }
+
+    try {
+       await ForgotPassword({ email }).unwrap();
+       navigate('/newpassword');
+
+    } catch (error) {
+       console.log(error);
+    }
+
+    
     
     setEmail('');
   };
@@ -43,7 +67,7 @@ const ResetPasswordForm: React.FC = () => {
         <div className="text-center mb-8">
            <div className="border-t border-gray-100 "></div>
           <h1 className=" text-2xl md:text-[28px]  md:text-center font-bold text-primary-color font-family-playfair mb-2 py-[20px]">
-            Reset Your Password
+            Forgot Password
           </h1>
            <div className="border-t border-gray-100"></div>
         </div>
@@ -59,14 +83,15 @@ const ResetPasswordForm: React.FC = () => {
               onChange={handleEmailChange}
               variant="default"
             />
+            <p className='text-red-500 pt-[30px]'>{errorm}</p>
             <p className="text-sm text-gray-600 mt-2 font-poppins">
-              You will get a reset link on the Email that you provided.
+              You will get OTP on the Email that you provided.
             </p>
           </div>
 
           <div className="mb-4">
             <Button type="submit" variant="primary" fullWidth>
-              Get a Reset Link
+              Get  Otp
             </Button>
           </div>
         </form>
@@ -88,6 +113,13 @@ const ResetPasswordForm: React.FC = () => {
             Sign Up
           </Button>
           </Link>
+
+                  {isError && (
+            <p className="text-red-500 text-[13px] font-family-poppins pt-[30px]">
+               {'status' in (error as FetchBaseQueryError)
+                ? (error as FetchBaseQueryError & { data: ErrorResponse }).data?.message || 'Invalid email or password'
+                : 'Invalid email or password'}
+            </p>)}
         </div>
       </div>
     </div>

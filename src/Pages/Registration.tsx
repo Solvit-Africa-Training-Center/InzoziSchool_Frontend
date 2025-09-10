@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import Input from '../Components/Input';
-import Navigation from '../Components/Navigation';
 import Button from '../Components/Button';
-import Footer from '../Components/Footer';
 import { Link } from 'react-router-dom';
 import signupImage from '../assets/signup.jpg';
  import logo from '../assets/logo 2.png';
  import { useNavigate } from 'react-router-dom';
+ import Navigation from '../Components/Navigation';
+ import Footer from '../Components/Footer';
+ import {districts , genders} from '../Types/district';
+import Select from '../Components/Select';
 
 export default function Registration() {
+
 
    const navigate=useNavigate();
   const[formError , setFormError]=useState({
@@ -16,25 +19,29 @@ export default function Registration() {
     lastname:'',
     email:'',
     password:'',
-    confirmpass:'',
+    district:'',
+    gender:'',
   });
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    district: '',
+    gender:'',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+ // Input handler (receives event)
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
+// Select handler (receives value string)
+const handleSelectChange = (name: string) => (value: string) => {
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
+
 
     const isStrongPassword = (password: string) => {
     // Accept any non-alphanumeric as "special"
@@ -43,21 +50,24 @@ export default function Registration() {
   };
 
 
-  const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreate = async(e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const firstname = formData.firstname.trim();
   const lastname = formData.lastname.trim();
   const email = formData.email.trim();
   const password = formData.password.trim();
-  const confirmpass = formData.confirmPassword.trim();
+  const district = formData.district.trim();
+  const gender = formData.gender.trim();
+
 
   const errors = {
     firstname: '',
     lastname: '',
     email: '',
     password: '',
-    confirmpass: '',
+    district: '',
+    gender: '',
   };
 
   // First name
@@ -83,11 +93,12 @@ export default function Registration() {
       'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
   }
 
-  // Confirm password
-  if (!confirmpass) {
-    errors.confirmpass = 'Please confirm password';
-  } else if (password !== confirmpass) {
-    errors.confirmpass = 'Passwords do not match';
+  if(!district){
+    errors.district='district is required';
+  }
+
+  if(!gender){
+    errors.gender ='gender is required';
   }
 
   setFormError(errors);
@@ -98,15 +109,18 @@ export default function Registration() {
     errors.lastname ||
     errors.email ||
     errors.password ||
-    errors.confirmpass
+    errors.gender ||
+    errors.district
   ) {
     return;
   }
 
   //  continue with other logic 
+  
+   
 
   console.log('Form submitted successfully', formData);
-  navigate('/schoolManager');
+   navigate('/schoolManager');
 
 
  setFormData({
@@ -114,24 +128,22 @@ export default function Registration() {
   lastname: '',
   email: '',
   password: '',
-  confirmPassword: '',
+  district: '',
+  gender: '',
 });
 };
 
   
   return (
     <div>
-      <div>
-        <Navigation />
-      </div>
-
+    <Navigation/>
       <div
         style={{
           backgroundImage: `url(${signupImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           width: '100%',
-        }} className='py-[50px] '
+        }} className='py-[90px] '
       >
         <div className="w-[542px] bg-white mx-auto rounded-sm ">
           <div className=" ">
@@ -166,7 +178,7 @@ export default function Registration() {
                     label="First name"
                     placeholder="First name"
                     value={formData.firstname}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     name="firstname"
                     type="text"
                   />
@@ -178,7 +190,7 @@ export default function Registration() {
                     label="Last name"
                     placeholder="Last name"
                     value={formData.lastname}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     name="lastname"
                     type="text"
                   />
@@ -189,7 +201,7 @@ export default function Registration() {
                     label="School Email  (Don’t use a personal email)"
                     placeholder="Email"
                     value={formData.email}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     name="email"
                     type="email"
                   />
@@ -197,30 +209,40 @@ export default function Registration() {
                      <span className='text-red-500 text-[12px]'>{formError.email}</span>
                   )}
                  
-      
+               
+                  
+
+                  <Select
+  options={districts}
+  value={formData.district}
+  onChange={handleSelectChange('district')}
+/>
+  {formError.district &&(
+                     <span className='text-red-500 text-[12px]'>{formError.district}</span>
+                  )}
+
+<Select
+  options={genders}
+  value={formData.gender}
+  onChange={handleSelectChange('gender')}
+/>
+
+                  
+
+                   
               
                   <Input
                     label="Password"
                     placeholder="Password"
                     value={formData.password}
-                    onChange={handleChange}
+                    onChange={handleInputChange}
                     name="password"
                     type="password"
                   />
                      {formError.password &&(
                      <span className='text-red-500 text-[12px]'>{formError.password}</span>
                   )}
-                  <Input
-                    label="Confirm Password"
-                    placeholder="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    name="confirmPassword"
-                    type="password"
-                  />
-                     {formError.confirmpass &&(
-                     <span className='text-red-500 text-[12px]'>{formError.confirmpass}</span>
-                  )}
+                    
               </div>
 
               <div className="py-4 pb-5">
@@ -242,7 +264,7 @@ export default function Registration() {
         </div>
       </div>
 
-      <Footer />
+      <Footer/>
     </div>
   );
 }

@@ -13,14 +13,21 @@ import WhyChooseInzoziSection from '../Components/WhyChooseInzoziSection';
 export default function LandingPage() {
   return (
     <div>
+
         <Navigation/>
+        <div className='pt-[40px]'>
         <Hero/>
+        </div>
+        
         <SchoolSection/>
         <WhyChooseInzoziSection/>
         <ParentSection/>
         <PowerfulFeaturesSection/>
         <SchoolOwnerSection/>
+        <div id='howitWorks'>
         <HowItWorks/>
+        </div>
+        
         <ResourcesSupportSection/>
         <TrustedBySection/>
         <Footer/>

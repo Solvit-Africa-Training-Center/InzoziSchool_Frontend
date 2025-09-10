@@ -18,6 +18,7 @@ const classVariant = {
 export type ButtonVariant = keyof typeof classVariant;
 
 export type ButtonType = {
+  disabled?:boolean;
   label?: string; // ✅ optional now
   children?: ReactNode; // ✅ support children
   variant: ButtonVariant;

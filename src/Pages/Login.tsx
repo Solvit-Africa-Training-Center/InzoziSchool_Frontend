@@ -1,15 +1,23 @@
 import { useState } from 'react';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import LoginInput from '../Components/LoginInput';
-import Navigation from '../Components/Navigation';
 import { FaRegUser } from 'react-icons/fa';
 import { RxLockClosed } from 'react-icons/rx';
 import Button from '../Components/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import Footer from '../Components/Footer';
 import loginImage from '../assets/login.jpg';
 import logo from '../assets/logo 2.png';
+import Navigation from '../Components/Navigation';
+import Footer from '../Components/Footer';
+import {useLoginMutation} from '../App/api/Auth/auth';
+
+type ErrorResponse={
+  message:string;
+}
 
 export default function Login() {
+
+  const[Login , {isLoading , isError ,error }] = useLoginMutation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -40,27 +48,38 @@ export default function Login() {
 
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
     }
+    // } else if (formData.password.length >= 6) {
+    //   newErrors.password = 'Password must be at least 6 characters';
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (validateForm()) {
-      // ✅ If valid, navigate or call API
-      console.log('Form Submitted:', formData);
-      navigate('/pending');
+  if (validateForm()) {
+    try {
+      await Login({
+        email: formData.email,
+        password: formData.password,
+      }).unwrap(); // unwrap throws error if request failed
+
+      //  only navigate if login succeeds
+      navigate('/success');
+
+    } catch (error) {
+      console.error('Login failed:', error);
     }
-  };
+  }
+};
+
 
   return (
     <div>
-      <Navigation />
+      <Navigation /> 
       <div
         style={{
           backgroundImage: `url(${loginImage})`,
@@ -70,7 +89,7 @@ export default function Login() {
         }}
       >
         <div className="flex justify-center">
-          <div className="bg-white my-[45px] rounded-md w-[500px] max-sm:w-full">
+          <div className="bg-white my-[90px] rounded-md w-[500px] max-sm:w-full">
             {/* Logo Section */}
             <div className="flex justify-between py-[25px] pl-[40px] pr-[10px]">
               <div>
@@ -147,8 +166,15 @@ export default function Login() {
               <div className="flex justify-center ">
                 <div className="pt-4 pb-[60px]">
                   <Link to="/register">
-                    <Button label="Sign Up" variant="signupForm" />
+                    <Button disabled={isLoading} label="Sign Up" variant="signupForm" />
                   </Link>
+
+                  {isError && (
+  <p className="text-red-500 text-[13px] font-family-poppins pt-[30px]">
+     {'status' in (error as FetchBaseQueryError)
+      ? (error as FetchBaseQueryError & { data: ErrorResponse }).data?.message || 'Invalid email or password'
+      : 'Invalid email or password'}
+  </p>)}
                 </div>
               </div>
             </div>
@@ -156,7 +182,7 @@ export default function Login() {
         </div>
       </div>
 
-      <Footer />
+       <Footer /> 
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white">
          
-        <h1 className="font-medium text-5xl  font-family-playfair max-sm:text-2xl ">
+        <h1 className="font-medium text-5xl pt-[60px]  font-family-playfair max-sm:text-2xl ">
           Bridging <span className='text-[#F09C00]'>Schools</span> and Parents <br />
           <span className="text-4xl font-light">Seamlessly</span>
         </h1>

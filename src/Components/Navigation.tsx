@@ -1,4 +1,4 @@
-import { FaUser } from 'react-icons/fa6';
+// import { FaUser } from 'react-icons/fa6';
 import logo from '../assets/logo 2.png';
 import { CiSearch } from 'react-icons/ci';
 import { IoMdMenu } from 'react-icons/io';
@@ -38,7 +38,7 @@ export default function Navigation({variant='defoult'}:Navigation) {
   };
   return (
     <>
-      <div className={`px-[50px] flex justify-between py-2  ${classVariant[variant]}  border-none max-sm:hidden`}>
+      <div className={` fixed w-full z-50 px-[50px] flex justify-between py-2  ${classVariant[variant]}  border-none max-sm:hidden`}>
         <Link to='/'>
           <div className="flex items-center">
           <div className="text-white font-bold text-xl">
@@ -66,21 +66,21 @@ export default function Navigation({variant='defoult'}:Navigation) {
           <Link to='/'><a className="text-[15px] font-family-poppins" href="#">
             Home
           </a></Link>
-          <a className="text-[15px] font-family-poppins" href="#">
+          <a className="text-[15px] font-family-poppins" href="#howitWorks">
             How It Works
           </a>
             <Language options={languages} value={selectedLanguage} variant='defoult' onChange={handleSelect} />
         </nav>
         <div className="flex items-center text-white">
-         {/* <Link to='/login'> <a className="text-[15px] font-family-poppins" href="#">
+         <Link to='/login' className="text-[15px] font-family-poppins"> 
             Login
-          </a></Link> */}
+          </Link>
 
-         <Link to='/login'> <div className='flex justify-center'>
+         {/* <Link to='/login'> <div className='flex justify-center'>
             <div className='flex justify-center items-center rounded-[50%] bg-[#D9D9D9] w-[40px] h-[40px]'><FaUser className='text-2xl  text-[#605F5F]'/></div>
             <div className='text-[12px] pt-3 pl-1 text-[#605F5F]' >▼</div>
           </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
    {/* phone responsiveness */}

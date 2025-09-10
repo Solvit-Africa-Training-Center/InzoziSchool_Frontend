@@ -22,7 +22,7 @@ export default function SchoolCard({
   seats,
 }: customSchool) {
   return (
-    <div className="w-full rounded-lg  bg-gradient-to-r from-[#FFFFFF] to-[#F9FAFB]">
+    <div className="w-full cursor-pointer transform hover:scale-101 duration-200 rounded-lg  bg-gradient-to-r from-[#FFFFFF] to-[#F9FAFB] ">
       <div className="relative w-full flex justify-center items-center h-[225px] bg-gradient-to-r from-[#05416B] to-[#0867AA]">
         <h1 className="font-bold text-[48px] text-[#FAFAFA] font-family-playfair">{images}</h1>
         <h1 className="absolute top-3 right-3 bg-white px-3 rounded-2xl text-[12px] text-[#05416B] font-semibold">
