@@ -1,17 +1,15 @@
-// import { BrowserRouter } from 'react-router-dom';
-// import AppRoutes from './Routes/AppRoutes';
-
-import { SchoolAdminPage } from './Pages/SchoolAdminPage';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './Routes/AppRoutes';
 
 
 
 function App() {
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <AppRoutes />
-      </BrowserRouter> */}
-      <SchoolAdminPage/>
+      </BrowserRouter>
+      
     </div>
   );
 }
