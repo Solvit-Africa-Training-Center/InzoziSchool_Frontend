@@ -3,6 +3,7 @@ import AppRoutes from './Routes/AppRoutes';
 import ScrollToTop from './Components/ScrollTop';
 
 
+
 function App() {
   return (
     <div>
@@ -10,6 +11,7 @@ function App() {
         <ScrollToTop/>
         <AppRoutes />
       </BrowserRouter>
+      
     </div>
   );
 }

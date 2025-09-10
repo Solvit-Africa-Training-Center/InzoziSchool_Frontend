@@ -9,6 +9,7 @@ import SuccessPage from '../Pages/SuccessPage';
 import Pending from '../Pages/Pending';
 import ResetPasswordPage from '../Pages/ResetPasswordPage';
 import CreateNewPasswordPage from '../Pages/CreateNewPasswordPage';
+import { SchoolAdminPage } from '../Pages/SchoolAdminPage';
 
 
 
@@ -25,7 +26,7 @@ export default function AppRoutes() {
             <Route path='/pending' element={<Pending/>}/>
             <Route path='/reset' element={<ResetPasswordPage/>}/>
             <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
-
+            <Route path='/schoolAdmin' element={<SchoolAdminPage/>}> </Route>
             
         </Routes>
     </div>
