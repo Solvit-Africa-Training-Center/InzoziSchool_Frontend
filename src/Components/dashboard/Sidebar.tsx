@@ -60,7 +60,7 @@ const Sidebar = ({
             <div 
               key={item.id}
               className={`flex items-center px-4 py-3 cursor-pointer hover:bg-white hover:text-primary-color transition-all duration-200 relative group ${
-                isActive ? 'text-white hover:txt-primary-color' : ''
+                isActive ? 'text-primary-color hover:text-primary-' : ''
               }`}
               onClick={onClose}
             >
@@ -69,10 +69,10 @@ const Sidebar = ({
               )}
               
               <item.icon className={`mr-3 text-xl flex-shrink-0 transition-colors ${
-                isActive ? 'text-primary-color' : 'text-white group-hover:text-primary-color'
+                isActive ? 'text-white' : 'text-white group-hover:text-primary-color'
               }`} />
               <span className={`text-sm font-medium transition-colors ${
-                isActive ? 'text-primary-color' : 'text-gray-300 group-hover:text-primary-color'
+                isActive ? 'text-white' : 'text-gray-300 group-hover:text-primary-color'
               }`}>
                 {item.label}
               </span>
