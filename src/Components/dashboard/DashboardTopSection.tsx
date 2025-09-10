@@ -1,4 +1,3 @@
-// src/Components/DashboardTopSection.tsx
 import React from 'react';
 import { 
   FaUsers, 
@@ -57,15 +56,13 @@ const DashboardTopSection: React.FC = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 w-full">
-      {/* Header */}
+    <div className="p-6  w-full">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 font-poppins">
           Dashboard
         </h1>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {stats.map((stat, index) => (
           <DashboardStatCard

@@ -16,6 +16,7 @@ const Sidebar = ({
   schoolImage ='/images/school.png',
   activeItem ='Dashboard',
   className = '',
+  onClose = () => {}, 
 }) => {
   
   const sidebarItems = [
@@ -34,7 +35,7 @@ const Sidebar = ({
  
 
   return (
-    <div className={`w-64 bg-primary-color text-white h-full flex flex-col ${className}`}>
+    <div className={`fixed w-64 bg-primary-color text-white h-full flex flex-col ${className}`}>
       <div className="p-4 flex items-center justify-center bg-primary-color">
         <img 
           src={schoolImage} 
@@ -61,6 +62,7 @@ const Sidebar = ({
               className={`flex items-center px-4 py-3 cursor-pointer hover:bg-white hover:text-primary-color transition-all duration-200 relative group ${
                 isActive ? 'bg-white hover:bg-white hover:text-primary-color text-primary-color' : ''
               }`}
+              onClick={onClose}
             >
               {isActive && (
                 <div className="absolute right-0 top-0 bottom-0 w-1 bg-white"></div>
