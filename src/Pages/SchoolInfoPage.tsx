@@ -82,19 +82,19 @@ const SchoolInfoPage: React.FC = () => {
               <div className="grid grid-cols-4 gap-8">
                 <div>
                   <div className="text-sm font-medium text-[#F4A30D] mb-1">District</div>
-                  <div className="font-semibold text-gray-900">Bugesera</div>
+                  <div className="font-semibold text-black">Bugesera</div>
                 </div>
                 <div>
                   <div className="text-sm font-medium text-[#F4A30D] mb-1">Sector</div>
-                  <div className="font-semibold text-gray-900">Ntarama</div>
+                  <div className="font-semibold text-black">Ntarama</div>
                 </div>
                 <div>
                   <div className="text-sm font-medium text-[#F4A30D] mb-1">Kanzenze</div>
-                  <div className="font-semibold text-gray-900">Kanzenze</div>
+                  <div className="font-semibold text-black">Kanzenze</div>
                 </div>
                 <div>
                   <div className="text-sm font-medium text-[#F4A30D] mb-1">Village</div>
-                  <div className="font-semibold text-gray-900">Karumuna</div>
+                  <div className="font-semibold text-black">Karumuna</div>
                 </div>
               </div>
             </div>
