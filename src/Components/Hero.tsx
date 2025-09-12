@@ -47,9 +47,9 @@ export default function Hero() {
 
   <div>
     <form className="flex gap-2 justify-center px-6 py-7">
-      <Select options={option1} />
-      <Select options={option2} />
-      <Select options={option3} />
+      <Select options={option1} variant='primary' />
+      <Select options={option2} variant='primary' />
+      <Select options={option3} variant='primary'/>
       <div className="px-3 flex bg-gradient-to-r cursor-pointer from-[#F09C00] to-[#FFB833] rounded-xl">
         <CiSearch className="pt-2 text-3xl"/>
         <Button label="Search School" variant="primary"/>

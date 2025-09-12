@@ -3,6 +3,7 @@ import type{Option} from '../Components/Select';
 
 // Districts array
 export const districts: Option[] = [
+  { value: '------', label: '--district--' },
   { value: 'Nyarugenge', label: 'Nyarugenge' },
   { value: 'Gasabo', label: 'Gasabo' },
   { value: 'Kicukiro', label: 'Kicukiro' },
@@ -37,6 +38,7 @@ export const districts: Option[] = [
 
 // Gender array
 export const genders: Option[] = [
+  { value: '----', label: '--gender--' },
   { value: 'Male', label: 'Male' },
   { value: 'Female', label: 'Female' },
 ];

@@ -10,6 +10,12 @@ import Pending from '../Pages/Pending';
 import ResetPasswordPage from '../Pages/ResetPasswordPage';
 import CreateNewPasswordPage from '../Pages/CreateNewPasswordPage';
 import { SchoolAdminPage } from '../Pages/SchoolAdminPage';
+import Admin from '../Pages/Admin';
+import Settings from '../Pages/Settings';
+import { Application } from '../Pages/Admin/Application';
+import Dashboard from '../Pages/Admin/Dashboard';
+import NotFound from '../Pages/NotFound';
+import ProtectedRoute from '../Components/ProtectedRoutes';
 
 
 
@@ -18,6 +24,7 @@ export default function AppRoutes() {
     <div>
         <Routes>
             <Route path='/' element={<LandingPage/>}/>
+            <Route path='*' element={<NotFound/>}/>
             <Route path='/register' element={<Registration/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/schoolManager' element={<SchoolPage/>}/>
@@ -26,7 +33,15 @@ export default function AppRoutes() {
             <Route path='/pending' element={<Pending/>}/>
             <Route path='/reset' element={<ResetPasswordPage/>}/>
             <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
-            <Route path='/schoolAdmin' element={<SchoolAdminPage/>}> </Route>
+          
+            <Route path='/schoolAdmin' element={
+              <ProtectedRoute><SchoolAdminPage/> </ProtectedRoute>}>
+               <Route path='application' element={<Application />} />
+               <Route path='dashboard' element={<Dashboard />} />
+             </Route>
+             
+            <Route path='/admin' element={<Admin/>}> </Route>
+            <Route path='/setting' element={<Settings/>}> </Route>
             
         </Routes>
     </div>

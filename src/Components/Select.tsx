@@ -1,5 +1,12 @@
 import React from 'react';
 
+const classVariant = {
+   defoult :' w-[370px]  border border-gray-200',
+   primary:'w-[230px] border-none bg-white',
+};
+
+type selectVariant = keyof typeof classVariant;
+
 export type Option = {
   value: string;
   label: string;
@@ -7,16 +14,17 @@ export type Option = {
 
 type SelectProps = {
   options: Option[];
+  variant?:selectVariant;
   value?: string;
   onChange?: (value: string) => void;
   className?: string;
 };
 
-const Select: React.FC<SelectProps> = ({ options, value, onChange, className }) => (
+const Select: React.FC<SelectProps> = ({ options, value, onChange, className , variant='defoult' }) => (
   <select
     value={value}
     onChange={e => onChange?.(e.target.value)}
-    className={`w-[370px] border border-gray-200 focus:outline-none rounded-lg px-3 py-2 text-gray-700 mb-2 ${className}`}
+    className={` ${classVariant[variant]} focus:outline-none rounded-lg px-3 py-2 text-gray-700 mb-2 ${className}`}
   >
     {options.map(option => (
       <option key={option.value} value={option.value}>

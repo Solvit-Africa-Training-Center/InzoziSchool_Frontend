@@ -9,22 +9,26 @@ import signupImage from '../assets/signup.jpg';
  import Footer from '../Components/Footer';
  import {districts , genders} from '../Types/district';
 import Select from '../Components/Select';
+import {useRegistrationMutation} from '../App/api/Auth/auth';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type{ErrorResponse} from '../Pages/Login';
 
 export default function Registration() {
 
+  const[Registration ,{ error , isError , isLoading}] = useRegistrationMutation();
 
    const navigate=useNavigate();
   const[formError , setFormError]=useState({
-    firstname:'',
-    lastname:'',
+    firstName:'',
+    lastName:'',
     email:'',
     password:'',
     district:'',
     gender:'',
   });
   const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     district: '',
@@ -53,17 +57,16 @@ const handleSelectChange = (name: string) => (value: string) => {
   const handleCreate = async(e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
-  const firstname = formData.firstname.trim();
-  const lastname = formData.lastname.trim();
+  const firstname = formData.firstName.trim();
+  const lastname = formData.lastName.trim();
   const email = formData.email.trim();
   const password = formData.password.trim();
-  const district = formData.district.trim();
-  const gender = formData.gender.trim();
+
 
 
   const errors = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     district: '',
@@ -72,12 +75,12 @@ const handleSelectChange = (name: string) => (value: string) => {
 
   // First name
   if (!firstname || firstname.length < 2) {
-    errors.firstname = 'First name must be at least 2 characters';
+    errors.firstName = 'First name must be at least 2 characters';
   }
 
   // Last name
   if (!lastname || lastname.length < 2) {
-    errors.lastname = 'Last name must be at least 2 characters';
+    errors.lastName = 'Last name must be at least 2 characters';
   }
 
   // Email
@@ -93,20 +96,12 @@ const handleSelectChange = (name: string) => (value: string) => {
       'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
   }
 
-  if(!district){
-    errors.district='district is required';
-  }
-
-  if(!gender){
-    errors.gender ='gender is required';
-  }
-
   setFormError(errors);
 
   // Stop if any errors exist
   if (
-    errors.firstname ||
-    errors.lastname ||
+    errors.firstName ||
+    errors.lastName ||
     errors.email ||
     errors.password ||
     errors.gender ||
@@ -116,16 +111,30 @@ const handleSelectChange = (name: string) => (value: string) => {
   }
 
   //  continue with other logic 
-  
-   
 
-  console.log('Form submitted successfully', formData);
-   navigate('/schoolManager');
+   console.log('Form submitted successfully', formData);
+  
+   try {
+
+    await Registration({
+      firstName:formData.firstName ,
+      lastName:formData.lastName , 
+      email:formData.email ,
+      district:formData.district , 
+      gender:formData.gender , 
+      password:formData.password,
+    }).unwrap();
+
+    navigate('/schoolManager');
+    
+   } catch (error) {
+     console.log('error' , error);
+   }
 
 
  setFormData({
-  firstname: '',
-  lastname: '',
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
   district: '',
@@ -177,28 +186,28 @@ const handleSelectChange = (name: string) => (value: string) => {
                   <Input
                     label="First name"
                     placeholder="First name"
-                    value={formData.firstname}
+                    value={formData.firstName}
                     onChange={handleInputChange}
-                    name="firstname"
+                    name="firstName"
                     type="text"
                   />
-                  {formError.firstname &&(
-                     <span className='text-red-500 text-[12px]'>{formError.firstname}</span>
+                  {formError.firstName &&(
+                     <span className='text-red-500 text-[12px]'>{formError.firstName}</span>
                   )}
 
                   <Input
                     label="Last name"
                     placeholder="Last name"
-                    value={formData.lastname}
+                    value={formData.lastName}
                     onChange={handleInputChange}
-                    name="lastname"
+                    name="lastName"
                     type="text"
                   />
-                     {formError.lastname &&(
-                     <span className='text-red-500 text-[12px]'>{formError.lastname}</span>
+                     {formError.lastName &&(
+                     <span className='text-red-500 text-[12px]'>{formError.lastName}</span>
                   )}
                   <Input
-                    label="School Email  (Don’t use a personal email)"
+                    label="Email"
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleInputChange}
@@ -246,7 +255,7 @@ const handleSelectChange = (name: string) => (value: string) => {
               </div>
 
               <div className="py-4 pb-5">
-                <Button label="Create Account" variant="formbutton" />
+                <Button disabled={isLoading} label="Create Account" variant="formbutton" />
               </div>
             </form>
             <div>
@@ -259,6 +268,13 @@ const handleSelectChange = (name: string) => (value: string) => {
               <Link to="/login">
                 <Button variant="login" label="Login" />
               </Link>
+
+                           {isError && (
+                <p className="text-red-500 text-[13px] font-family-poppins pt-[30px]">
+                   {'status' in (error as FetchBaseQueryError)
+                    ? (error as FetchBaseQueryError & { data: ErrorResponse }).data?.message || 'Invalid email or password'
+                    : 'Invalid email or password'}
+                </p>)}
             </div>
           </div>
         </div>

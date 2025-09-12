@@ -10,13 +10,16 @@ import logo from '../assets/logo 2.png';
 import Navigation from '../Components/Navigation';
 import Footer from '../Components/Footer';
 import {useLoginMutation} from '../App/api/Auth/auth';
+import { useUser } from '../Hooks/useUser';
 
-type ErrorResponse={
+export type ErrorResponse={
   message:string;
 }
 
 export default function Login() {
-
+ 
+  const{user}=useUser();
+  console.log(user);
   const[Login , {isLoading , isError ,error }] = useLoginMutation();
   const [formData, setFormData] = useState({
     email: '',
@@ -62,19 +65,36 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   if (validateForm()) {
     try {
-      await Login({
+      const response = await Login({
         email: formData.email,
         password: formData.password,
-      }).unwrap(); // unwrap throws error if request failed
+      }).unwrap();
 
-      //  only navigate if login succeeds
-      navigate('/success');
+      // Save token
+      if (response?.data?.token) {
+        localStorage.setItem('token', response.data.token);
+      }
 
-    } catch (error) {
-      console.error('Login failed:', error);
+      // Use the user info directly from response
+      const respon = response?.data;
+      const roleName = response?.data?.user?.role?.name;
+     
+      console.log(respon);
+      console.log(roleName);
+
+      if (roleName === 'SchoolManager') {
+        navigate('/schoolAdmin/dashboard');
+      } else if (roleName === 'Admin') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
+    } catch (err) {
+      console.error('Login failed:', err);
     }
   }
 };
+
 
 
   return (

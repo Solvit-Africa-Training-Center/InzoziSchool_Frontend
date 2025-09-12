@@ -1,4 +1,5 @@
 import {apiSlice} from '../EntryApi.ts';
+import type{LoggedResponse} from '../../../Context/LoggedUser.tsx';
 
 export const LoginApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,9 +18,23 @@ export const LoginApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getLoggedUser: builder.query<LoggedResponse, void>({
+  query: () => ({
+    url: '/users/me',
+    method: 'GET',
+  }),
+}),
+
      ResetePassword: builder.mutation({
       query: (data) => ({
         url: '/auth/reset-password',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+     Registration: builder.mutation({
+      query: (data) => ({
+        url: '/users/school-manager',
         method: 'POST',
         body: data,
       }),
@@ -35,5 +50,5 @@ export const LoginApi = apiSlice.injectEndpoints({
 });
 
 export const {
- useLoginMutation , useLogoutMutation , useForgotPasswordMutation , useResetePasswordMutation,
+ useLoginMutation , useGetLoggedUserQuery, useRegistrationMutation, useLogoutMutation , useForgotPasswordMutation , useResetePasswordMutation,
 } = LoginApi;

@@ -1,8 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import { SlLocationPin } from 'react-icons/sl';
 import { LuUsers } from 'react-icons/lu';
-import { LuCircleCheckBig } from 'react-icons/lu';
-import { RiEyeLine } from 'react-icons/ri';
 import Button from './Button';
 type customSchool = {
   images: string;
@@ -42,29 +40,26 @@ export default function SchoolCard({
       <div className="flex gap-3 px-3 py-4">
         <LuUsers className="text-[#6B7280]" />
         <h1>
-          <span className="text-[#157F3C] text-[14px] font-medium font-family-poppins">
+          <span className="text-[#f09c00] text-[14px] font-medium font-family-poppins">
             {seats} seats available
           </span>
         </h1>
-        <LuCircleCheckBig className=" text-xl text-[#157F3C] " />
+        
       </div>
 
-      <div className="text-[#282C34] font-semibold text-[10px] pl-1 flex gap-4 pb-[20px]">
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">library</h2>
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">ComputerLab</h2>
-        <h2 className="px-2 cursor-pointer border border-red-50 rounded-2xl font-family-poppins">
-          Sport Ground
+      <div className="text-[#282C34] font-semibold text-[10px] pl-1 flex gap-8 pb-[20px]">
+        <h2 className="px-6 py-1 cursor-pointer border border-[#f09c00] rounded-2xl font-family-poppins">Hostels</h2>
+        <h2 className="px-2 py-1 cursor-pointer border border-[#f09c00] rounded-2xl font-family-poppins">ComputerLab</h2>
+        <h2 className="px-2 py-1 cursor-pointer border border-[#f09c00] rounded-2xl font-family-poppins">
+          Playgrounds
         </h2>
-        <div>
-          <h2 className="px-2 border cursor-pointer border-red-50 rounded-2xl font-family-poppins">+2 more</h2>
-        </div>
+       
         <br />
       </div>
  <div className='border-t border-gray-200 mx-3'></div>
   {/* Right: Actions */}
- <div className="flex items-center gap-2 justify-between px-2 py-8">
-  <RiEyeLine className="text-xl text-[#6B7280]" />
-  <Button label="Preview" variant="thirdly" />
+ <div className="flex justify-center gap-5 py-8">
+  <Button label="Apply" variant="thirdly" />
   <Button label="View Details" variant="secondary" />
 </div>
 

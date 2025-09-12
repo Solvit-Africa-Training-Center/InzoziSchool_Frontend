@@ -9,28 +9,30 @@ import SchoolOwnerSection from '../Components/SchoolOwnerSection';
 import SchoolSection from '../Components/SchoolSection';
 import TrustedBySection from '../Components/TrustedBySection';
 import WhyChooseInzoziSection from '../Components/WhyChooseInzoziSection';
+import { useUser } from '../Hooks/useUser';
 
 export default function LandingPage() {
+  const { user } = useUser();
+  console.log(user);
   return (
     <div>
+      <Navigation />
+      <div className="pt-[40px]">
+        <Hero />
+      </div>
 
-        <Navigation/>
-        <div className='pt-[40px]'>
-        <Hero/>
-        </div>
-        
-        <SchoolSection/>
-        <WhyChooseInzoziSection/>
-        <ParentSection/>
-        <PowerfulFeaturesSection/>
-        <SchoolOwnerSection/>
-        <div id='howitWorks'>
-        <HowItWorks/>
-        </div>
-        
-        <ResourcesSupportSection/>
-        <TrustedBySection/>
-        <Footer/>
+      <SchoolSection />
+      <WhyChooseInzoziSection />
+      <ParentSection />
+      <PowerfulFeaturesSection />
+      <SchoolOwnerSection />
+      <div id="howitWorks">
+        <HowItWorks />
+      </div>
+
+      <ResourcesSupportSection />
+      <TrustedBySection />
+      <Footer />
     </div>
   );
 }
