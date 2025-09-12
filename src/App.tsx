@@ -5,11 +5,12 @@ import ScrollToTop from './Components/ScrollTop';
 
 
 
+
 function App() {
   return (
     <div>
-       <BrowserRouter>
-        <ScrollToTop/>
+      <BrowserRouter>
+        <ScrollToTop />
         <AppRoutes />
       </BrowserRouter>
       
