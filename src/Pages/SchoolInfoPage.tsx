@@ -1,4 +1,5 @@
 import React from 'react';
+import SchoolFacilities from '../Components/cards/SchoolFacilities';
 
 interface ClassLevel {
   level: string;
@@ -119,6 +120,7 @@ const SchoolInfoPage: React.FC = () => {
                 {secondaryLevels.map((classLevel, index) => renderClassLevelButton(classLevel, index + 9))}
               </div>
             </div>
+            <SchoolFacilities/>
           </div>
         </div>
       </div>

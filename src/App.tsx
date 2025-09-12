@@ -4,10 +4,11 @@ import ScrollToTop from './Components/ScrollTop';
 
 
 
+
 function App() {
   return (
     <div>
-      <BrowserRouter>
+       <BrowserRouter>
         <ScrollToTop/>
         <AppRoutes />
       </BrowserRouter>
