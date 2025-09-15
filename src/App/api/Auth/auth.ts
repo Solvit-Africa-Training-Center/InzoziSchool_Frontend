@@ -12,10 +12,9 @@ export const LoginApi = apiSlice.injectEndpoints({
     }),
 
     Logout: builder.mutation({
-      query: (data) => ({
+      query: () => ({
         url: '/auth/logout',
         method: 'POST',
-        body: data,
       }),
     }),
     getLoggedUser: builder.query<LoggedResponse, void>({

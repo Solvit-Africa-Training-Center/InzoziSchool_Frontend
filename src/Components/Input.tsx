@@ -13,8 +13,8 @@ type InputType = {
   label: string;
   placeholder:string;
   name: string;
-  type: 'text' | 'email' | 'password';
-  value: string;
+  type: 'text' | 'email' | 'password'|'file';
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   variant?: keyof typeof classVariant;
 };
@@ -40,7 +40,7 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className={`w-full rounded-lg px-3 py-2 ${classVariant[variant]}`}
+        className={`w-full  px-3 py-2 ${classVariant[variant]}`}
       />
     </div>
   );

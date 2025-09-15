@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from '../Components/Navigation';
 
 interface ClassLevel {
   level: string;
@@ -45,6 +46,8 @@ const SchoolInfoPage: React.FC = () => {
   );
 
   return (
+    <>
+    <Navigation/>
     <div className="min-h-screen bg-primary-color">
       <div className="relative">
         <img 
@@ -123,6 +126,7 @@ const SchoolInfoPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,8 @@ import { FaStar } from 'react-icons/fa';
 import { SlLocationPin } from 'react-icons/sl';
 import { LuUsers } from 'react-icons/lu';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
+
 type customSchool = {
   images: string;
   category: string;
@@ -19,6 +21,7 @@ export default function SchoolCard({
   location,
   seats,
 }: customSchool) {
+  const navigate = useNavigate();
   return (
     <div className="w-full cursor-pointer transform hover:scale-101 duration-200 rounded-lg  bg-gradient-to-r from-[#FFFFFF] to-[#F9FAFB] ">
       <div className="relative w-full flex justify-center items-center h-[225px] bg-gradient-to-r from-[#05416B] to-[#0867AA]">
@@ -60,7 +63,7 @@ export default function SchoolCard({
   {/* Right: Actions */}
  <div className="flex justify-center gap-5 py-8">
   <Button label="Apply" variant="thirdly" />
-  <Button label="View Details" variant="secondary" />
+  <Button label="View Details" variant="secondary" onClick={()=>{navigate('/viewSchool');}} />
 </div>
 
 

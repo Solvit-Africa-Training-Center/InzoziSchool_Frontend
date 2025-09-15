@@ -2,9 +2,8 @@
 //import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import profile from '../assets/profile.png';
-
-import Language from './Language';
 import LogoutComp from './school/LogoutComp';
+import { useUser } from '../Hooks/useUser';
 
 const classVariant = {
   defoult: 'bg-[#0b4d7c]',
@@ -16,26 +15,11 @@ type Navigation = {
 };
 
 export default function ContNav({ variant = 'defoult' }: Navigation) {
-
+   
+  const {user}=useUser();
    const [open, setOpen] = useState(false);
 
-  //  const handleGoBack=()=>{
-  //   window.history.back();
-  //  };
 
-  const languages = [
-    { label: 'English', value: 'English' },
-    { label: 'Kinyarwanda', value: 'kinyarwanda' },
-    { label: 'French', value: 'French' },
-  ];
-
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
-
-  const handleSelect = (value: string) => {
-    setSelectedLanguage(value);
-    const selected = languages.find((lang) => lang.value === value);
-    console.log('Selected Language:', selected?.label);
-  };
   return (
 
     <>
@@ -49,14 +33,9 @@ export default function ContNav({ variant = 'defoult' }: Navigation) {
         <h1 className='text-white font-medium text-[16px]'>Back</h1>
       </div> */}
 
-      <div className=" ml-[68%] flex gap-[90px]">
-        <nav className="flex items-center gap-[32px] text-white max-sm:hidden">
-          <Language
-            options={languages}
-            value={selectedLanguage}
-            variant="defoult"
-            onChange={handleSelect}
-          />
+      <div className=" ml-[68%] flex gap-[60px]">
+        <nav className="flex items-center text-white max-sm:hidden">
+          <h1 className='text-white font-bold '>{user?.email}</h1>
         </nav>
         <div onClick={() => setOpen(!open)} className="flex items-center text-white">
           <div className="flex justify-center">

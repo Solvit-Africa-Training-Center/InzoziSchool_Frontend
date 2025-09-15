@@ -1,14 +1,14 @@
 
 import { Link } from 'react-router-dom';
-import AuthNav from '../Components/AuthNav';
 import Button from '../Components/Button';
 import Footer from '../Components/Footer';
+import ContNav from '../Components/ContNav';
 
 export default function SchoolPage() {
   return (
     <div className='bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] '>
         <div>
-            <AuthNav/>
+            <ContNav/>
         </div>
 
         <div>

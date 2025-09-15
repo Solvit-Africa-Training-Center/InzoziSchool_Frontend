@@ -7,6 +7,7 @@ type roleType={
 // The user structure from your API
 export type LoggedUserType = {
   id: string;
+  name:string;
   firstName: string;
   lastName: string;
   email: string;
@@ -32,7 +33,11 @@ export type UserCont = {
   loading: boolean;
   error: string | null;
   success: boolean;
+  setUserFromLogin?: (payload: { user: LoggedUserType; token: string }) => void;
+  clearUser: () => void;
 };
+
+
 
 // Create context with default values
 export const UserContext = createContext<UserCont>({
@@ -40,4 +45,6 @@ export const UserContext = createContext<UserCont>({
   loading: false,
   error: null,
   success: false,
+  setUserFromLogin: () => {}, // default no-op
+  clearUser: () => {},// default no-op
 });

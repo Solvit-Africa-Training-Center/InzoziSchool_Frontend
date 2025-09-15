@@ -12,14 +12,13 @@ import Footer from '../Components/Footer';
 import {useLoginMutation} from '../App/api/Auth/auth';
 import { useUser } from '../Hooks/useUser';
 
+
 export type ErrorResponse={
   message:string;
 }
 
 export default function Login() {
- 
-  const{user}=useUser();
-  console.log(user);
+  const{setUserFromLogin}=useUser();
   const[Login , {isLoading , isError ,error }] = useLoginMutation();
   const [formData, setFormData] = useState({
     email: '',
@@ -71,23 +70,36 @@ const handleSubmit = async (e: React.FormEvent) => {
       }).unwrap();
 
       // Save token
-      if (response?.data?.token) {
-        localStorage.setItem('token', response.data.token);
-      }
+     if (response?.data?.token && response?.data?.user) {
+  setUserFromLogin?.({
+    user: response.data.user,
+    token: response.data.token,
+  });
+}
+
 
       // Use the user info directly from response
-      const respon = response?.data;
-      const roleName = response?.data?.user?.role?.name;
-     
-      console.log(respon);
-      console.log(roleName);
+      const roleName = response?.data?.user?.roleName;
+      const schoolStatus= response?.data?.schoolStatus;
 
-      if (roleName === 'SchoolManager') {
-        navigate('/schoolAdmin/dashboard');
-      } else if (roleName === 'Admin') {
+
+      console.log(roleName);
+      console.log(schoolStatus);
+
+       if (roleName === 'Admin') {
         navigate('/admin');
-      } else {
-        navigate('/');
+      }
+      else if( schoolStatus === 'not_registered'){
+            navigate('/schoolManager');
+      }
+       else if( schoolStatus === 'pending'){
+            navigate('/pending');
+      }
+       else if( schoolStatus === 'approved'){
+            navigate('/schoolAdmin/dashboard');
+      }
+       else {
+        navigate('/login');
       }
     } catch (err) {
       console.error('Login failed:', err);
@@ -147,6 +159,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   name="email"
                   type="email"
                   onChange={handleChange}
+                  variant={error?'danger':'default'}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-[12px]">{errors.email}</p>
@@ -160,6 +173,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   name="password"
                   type="password"
                   onChange={handleChange}
+                  variant={error?'danger':'default'}
                  
                 />
                 {errors.password && (
@@ -167,8 +181,14 @@ const handleSubmit = async (e: React.FormEvent) => {
                 )}
 
                 <div className="py-[20px]">
-                  <Button label="Log in" variant="loginForm" type="submit" />
+                  <Button disabled={isLoading} label={isLoading ? 'Logging in' :'login'} variant="loginForm" type="submit" />
                 </div>
+                      {isError && (
+  <p className="text-red-500 text-[15px] text-center font-family-poppins pt-[10px]">
+     {'status' in (error as FetchBaseQueryError)
+      ? (error as FetchBaseQueryError & { data: ErrorResponse }).data?.message || 'Invalid email or password'
+      : 'Invalid email or password'}
+  </p>)}
 
                 <Link to="/reset">
                   <h1 className="text-right py-2 text-[#F09C00] cursor-pointer">
@@ -186,15 +206,9 @@ const handleSubmit = async (e: React.FormEvent) => {
               <div className="flex justify-center ">
                 <div className="pt-4 pb-[60px]">
                   <Link to="/register">
-                    <Button disabled={isLoading} label="Sign Up" variant="signupForm" />
+                    <Button label="Sign Up" variant="signupForm" />
                   </Link>
-
-                  {isError && (
-  <p className="text-red-500 text-[13px] font-family-poppins pt-[30px]">
-     {'status' in (error as FetchBaseQueryError)
-      ? (error as FetchBaseQueryError & { data: ErrorResponse }).data?.message || 'Invalid email or password'
-      : 'Invalid email or password'}
-  </p>)}
+            
                 </div>
               </div>
             </div>

@@ -1,10 +1,13 @@
 
 
-  import ContNav from '../Components/ContNav';
+import ContNav from '../Components/ContNav';
 import Footer from '../Components/Footer';
 import { TbDots } from 'react-icons/tb';
+import { useUser } from '../Hooks/useUser';
 
 export default function SuccessPage() {
+  const {user} = useUser();
+  console.log(user);
   return (
     <div>
       <ContNav />
@@ -36,7 +39,7 @@ export default function SuccessPage() {
                   </div>
                   <h1 className="text-[#F09C00] py-3 text-[26px]">Pending...</h1>
                   <h3 className="px-[80px] text-[#4E5155] pb-7 font-family-poppins text-[15px]">
-                   Your request to register this school was successfully received. You will get a confirmation email after the NESA Inspector in your school District approves the eligibility of your school.
+                   Your request to register the school was successfully received. You will get a confirmation email after Our Administrator approves the eligibility of your school.
                   </h3>
                 </div>
               </div>

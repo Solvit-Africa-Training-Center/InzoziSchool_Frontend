@@ -9,10 +9,9 @@ interface UserProviderProps {
 }
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const token = localStorage.getItem('token');
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('token'));
 
-  // skip query if no token
-  const { data, isError, isLoading, refetch, error } = useGetLoggedUserQuery(undefined, {
+  const { data, isError, isLoading, error, refetch } = useGetLoggedUserQuery(undefined, {
     skip: !token,
   });
 
@@ -20,13 +19,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
 
-  // Handle API response
   useEffect(() => {
     if (!token) {
-      // no token → user not logged in
       setUser(null);
       setSuccess(false);
-      setErrMsg('No token found, please login.');
+      setErrMsg(null);
       return;
     }
 
@@ -43,8 +40,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     } else if (isError) {
       setUser(null);
       setSuccess(false);
-
-      // Try to get error message from RTK Query
       const message =
         'status' in error && error.status === 401
           ? 'Unauthorized. Please login again.'
@@ -53,10 +48,28 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     }
   }, [data, isError, error, token]);
 
-  // Optional: refetch user if token changes
   useEffect(() => {
-    if (token) {refetch();}
-  }, [token, refetch]);
+  if (token) {
+    refetch();
+  }
+}, [token, refetch]);
+
+ const setUserFromLogin = (payload: { user: LoggedUserType; token: string }) => {
+  localStorage.setItem('token', payload.token);
+  setToken(payload.token);
+  setUser(payload.user);
+  setSuccess(true);
+  setErrMsg(null);
+};
+
+
+  const clearUser = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+    setUser(null);
+    setSuccess(false);
+    setErrMsg(null);
+  };
 
   return (
     <UserContext.Provider
@@ -65,6 +78,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         loading: isLoading,
         error: errMsg,
         success,
+        setUserFromLogin,
+        clearUser,
       }}
     >
       {children}

@@ -12,8 +12,7 @@ export const SchoolAdminPage = () => (
 
       {/* Wrapper */}
       <div className="bg-white/80 rounded-2xl shadow-md p-6">
-         
-        <Outlet /> {/* Nested routes (dashboard, applications, etc.) render here */}
+        <Outlet /> {/* Nested routes render here */}
       </div>
     </div>
   </div>

@@ -125,7 +125,7 @@ const handleSelectChange = (name: string) => (value: string) => {
       password:formData.password,
     }).unwrap();
 
-    navigate('/schoolManager');
+    navigate('/haveaccount');
     
    } catch (error) {
      console.log('error' , error);

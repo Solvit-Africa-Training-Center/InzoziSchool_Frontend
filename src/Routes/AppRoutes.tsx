@@ -16,6 +16,9 @@ import { Application } from '../Pages/Admin/Application';
 import Dashboard from '../Pages/Admin/Dashboard';
 import NotFound from '../Pages/NotFound';
 import ProtectedRoute from '../Components/ProtectedRoutes';
+import SchoolInfoPage from '../Pages/SchoolInfoPage';
+import HaveAccountPage from '../Pages/HaveAccount';
+import OtpPage from '../Pages/Otp';
 
 
 
@@ -28,11 +31,15 @@ export default function AppRoutes() {
             <Route path='/register' element={<Registration/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/schoolManager' element={<SchoolPage/>}/>
-            <Route path='/schoolRegister' element={<SchoolRegister/>}/>
+            <Route path='/schoolRegister' element={<ProtectedRoute><SchoolRegister/></ProtectedRoute> }/>
             <Route path='/success' element={<SuccessPage/>}/>
-            <Route path='/pending' element={<Pending/>}/>
+            <Route path='/pending' element={ <ProtectedRoute><Pending/></ProtectedRoute> }/>
+            <Route path='/viewSchool' element={<SchoolInfoPage/>}/>
             <Route path='/reset' element={<ResetPasswordPage/>}/>
             <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
+            <Route path='/haveaccount' element={<HaveAccountPage/>}/>
+            <Route path='/verification' element={<OtpPage/>}/>
+
           
             <Route path='/schoolAdmin' element={
               <ProtectedRoute><SchoolAdminPage/> </ProtectedRoute>}>
