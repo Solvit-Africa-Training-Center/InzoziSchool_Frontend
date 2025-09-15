@@ -20,6 +20,7 @@ import SchoolInfoPage from '../Pages/SchoolInfoPage';
 import HaveAccountPage from '../Pages/HaveAccount';
 import OtpPage from '../Pages/Otp';
 import SchoolProfile from '../Pages/Admin/schoolProfile';
+import Gallery from '../Pages/Admin/Gallery';
 
 
 
@@ -47,6 +48,7 @@ export default function AppRoutes() {
                <Route path='application' element={<Application />} />
                <Route path='dashboard' element={<Dashboard />} />
                <Route path='schoolProfile' element={<SchoolProfile/>} />
+               <Route path='gallery' element={<Gallery/>} />
              </Route>
              
             <Route path='/admin' element={<Admin/>}> </Route>

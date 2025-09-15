@@ -10,7 +10,6 @@ import {
   MdHome, 
   MdSportsEsports, 
   MdPhotoLibrary, 
-  MdMoreHoriz,
   MdAccountCircle,
 } from 'react-icons/md';
 import { useUser } from '../../Hooks/useUser';
@@ -40,8 +39,8 @@ export default function Sidebar() {
     { to: '/', label: 'Available Seats', icon: <MdEventSeat className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Hostels', icon: <MdHome className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Playgrounds', icon: <MdSportsEsports className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Gallery', icon: <MdPhotoLibrary className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Other', icon: <MdMoreHoriz className="mr-3 text-xl flex-shrink-0" /> },
+    { to: '/SchoolAdmin/gallery', label: 'Gallery', icon: <MdPhotoLibrary className="mr-3 text-xl flex-shrink-0" /> },
+    
   ];
 
   return (
