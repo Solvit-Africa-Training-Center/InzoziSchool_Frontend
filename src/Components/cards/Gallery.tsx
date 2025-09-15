@@ -2,18 +2,18 @@ import React from 'react';
 
 const Gallery: React.FC = () => {
   const galleryImages = [
-    { src: '/images/school-exterior-1.png', alt: 'School exterior view' },
-    { src: '/images/school-grounds-1.png', alt: 'School sports ground' },
-    { src: '/images/school-corridor-1.png', alt: 'School corridor' },
-    { src: '/images/school-entrance-1.png', alt: 'School entrance gate' },
-    { src: '/images/school-bridge-1.png', alt: 'School bridge walkway' },
-    { src: '/images/playground-1.png', alt: 'Playground equipment' },
-    { src: '/images/computer-lab-1.png', alt: 'Computer lab classroom' },
-    { src: '/images/computer-lab-2.png', alt: 'Computer lab with desks' },
-    { src: '/images/school-field-1.png', alt: 'School field area' },
-    { src: '/images/sky-view-1.png', alt: 'Sky and clouds view' },
-    { src: '/images/sports-field-1.png', alt: 'Sports field with markings' },
-    { src: '/images/basketball-court-1.png', alt: 'Basketball court' },
+    { src: '/images/vecteezy_empty-swing-under-tree-on-overcast-day-in-open-field_69633486.jpg', alt: 'School exterior view' },
+    { src: '/images/vecteezy_rustic-tree-swing-in-natural-landscape-open-field_69633466.jpg', alt: 'School sports ground' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'School corridor' },
+    {src: '/images/vecteezy_rustic-tree-swing-in-natural-landscape-open-field_69633466.jpg', alt: 'School entrance gate' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'School bridge walkway' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Playground equipment' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Computer lab classroom' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Computer lab with desks' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'School field area' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Sky and clouds view' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Sports field with markings' },
+    { src: '/images/vecteezy_covered-walkway-with-columns-and-windows-in-architectural_70374917.jpg', alt: 'Basketball court' },
   ];
 
   return (
