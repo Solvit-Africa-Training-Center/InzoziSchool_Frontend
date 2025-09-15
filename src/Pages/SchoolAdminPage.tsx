@@ -11,7 +11,7 @@ export const SchoolAdminPage = () => (
       <ContNav />
 
       {/* Wrapper */}
-      <div className="bg-white/80 rounded-2xl shadow-md p-6">
+      <div className="bg-white/80 rounded-xl shadow-md p-6">
         <Outlet /> {/* Nested routes render here */}
       </div>
     </div>

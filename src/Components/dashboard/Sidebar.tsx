@@ -35,7 +35,7 @@ export default function Sidebar() {
     { to: '/schoolAdmin/dashboard', label: 'Dashboard', icon: <MdDashboard className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/schoolAdmin/application', label: 'Applications', icon: <MdPeople className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Admissions', icon: <MdSchool className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'School Profile', icon: <MdPerson className="mr-3 text-xl flex-shrink-0" /> },
+    { to: '/schoolAdmin/schoolProfile', label: 'School Profile', icon: <MdPerson className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Admin Profile', icon: <MdAccountCircle className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Available Seats', icon: <MdEventSeat className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Hostels', icon: <MdHome className="mr-3 text-xl flex-shrink-0" /> },
