@@ -1,22 +1,14 @@
-// import { BrowserRouter } from 'react-router-dom';
-// import AppRoutes from './Routes/AppRoutes';
-// import ScrollToTop from './Components/ScrollTop';
-
-import SchoolInfoPage from './Pages/SchoolInfoPage';
-
-
-
-
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './Routes/AppRoutes';
+import ScrollToTop from './Components/ScrollTop';
 
 function App() {
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <ScrollToTop />
         <AppRoutes />
-      </BrowserRouter> */}
-      <SchoolInfoPage/>
-      
+      </BrowserRouter>
     </div>
   );
 }

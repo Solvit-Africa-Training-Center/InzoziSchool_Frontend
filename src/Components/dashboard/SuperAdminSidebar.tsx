@@ -1,23 +1,19 @@
 import { Link } from 'react-router-dom';
 import JeanImage from '/images/jean.png';
-import { skipToken } from '@reduxjs/toolkit/query';
+// import { skipToken } from '@reduxjs/toolkit/query';
 import { MdDashboard, MdSchool } from 'react-icons/md';
-import { useUser } from '../../Hooks/useUser';
-import { useGetSchoolDetailsQuery } from '../../App/api/school/school';
-
+// import { useUser } from '../../Hooks/useUser';
 export default function SuperAdminSidebar() {
   const className = '';
   const onClose = () => {}; 
-  const { user } = useUser();
-  const { data, isLoading, error } = useGetSchoolDetailsQuery(
-    user?.schoolId ?? skipToken,
-  );
+  // const { user } = useUser();
+  
 
-  const schoolName = isLoading
-    ? 'Loading...'
-    : error
-    ? 'Error fetching school'
-    : data?.data?.schoolName || 'Loading...';
+  // const schoolName = isLoading
+  //   ? 'Loading...'
+  //   : error
+  //   ? 'Error fetching school'
+  //   : data?.data?.schoolName || 'Loading...';
 
   const navItems = [
     { to: '/schoolAdmin/dashboard', label: 'Dashboard', icon: <MdDashboard className="mr-3 text-xl flex-shrink-0" /> },
@@ -35,7 +31,7 @@ export default function SuperAdminSidebar() {
       </div>
 
       <h2 className='px-4 w-full text-yellow-400 font-semibold text-lg leading-tight mb-9'>
-        {schoolName}
+        {/* {schoolName} */}
       </h2>
 
         <nav className="flex-1">
