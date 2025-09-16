@@ -19,8 +19,8 @@ import ProtectedRoute from '../Components/ProtectedRoutes';
 import SchoolInfoPage from '../Pages/SchoolInfoPage';
 import HaveAccountPage from '../Pages/HaveAccount';
 import OtpPage from '../Pages/Otp';
-import SchoolProfile from '../Pages/Admin/schoolProfile';
 import Gallery from '../Pages/Admin/Gallery';
+import SchoolProfile from '../Pages/Admin/SchoolProfile';
 
 
 
