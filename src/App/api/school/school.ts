@@ -1,4 +1,5 @@
 import { apiSlice } from '../EntryApi';
+import type{SchoolsResponse} from '../../../Types/SchoolResponse';
 
 export interface schooldetail{
     id: string;
@@ -38,6 +39,13 @@ export const SchoolsApi = apiSlice.injectEndpoints({
       getSchoolDetails: builder.query<SchoolDetailsResponse, string>({
       query: (id) => ({
         url: `/schools/${id}`,
+        method: 'GET',
+      }),
+    }),
+
+      getAllSchools: builder.query<SchoolsResponse, void>({
+      query: () => ({
+        url: '/schools',
         method: 'GET',
       }),
     }),

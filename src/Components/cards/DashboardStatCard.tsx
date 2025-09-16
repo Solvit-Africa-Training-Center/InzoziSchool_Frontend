@@ -8,12 +8,14 @@ interface DashboardStatCardProps {
   icon: React.ReactNode;
   iconColor?: string;
   backgroundColor?: string;
+  subtitleColor?: string;
 }
 
 const DashboardStatCard: React.FC<DashboardStatCardProps> = ({
   title,
   value,
   subtitle,
+  subtitleColor = 'text-gray-500',
   icon,
   iconColor = 'text-yellow-500',
   backgroundColor = 'bg-white',
@@ -34,7 +36,7 @@ const DashboardStatCard: React.FC<DashboardStatCardProps> = ({
         </span>
       </div>
 
-      <p className="text-xs text-[#6B7280] font-poppins">
+        <p className={`${subtitleColor}text-xs text-[#6B7280] font-popp`}>
         {subtitle}
       </p>
     </div>

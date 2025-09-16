@@ -17,10 +17,11 @@ import Dashboard from '../Pages/Admin/Dashboard';
 import NotFound from '../Pages/NotFound';
 import ProtectedRoute from '../Components/ProtectedRoutes';
 import SchoolInfoPage from '../Pages/SchoolInfoPage';
-import HaveAccountPage from '../Pages/HaveAccount';
-import OtpPage from '../Pages/Otp';
-import Gallery from '../Pages/Admin/Gallery';
-import SchoolProfile from '../Pages/Admin/SchoolProfile';
+ import HaveAccountPage from '../Pages/HaveAccount';
+ import OtpPage from '../Pages/Otp';
+ import SchoolProfile from '../Pages/Admin/SchoolProfile';
+import { SuperAdminPage } from '../Pages/SuperAdminPage';
+import SuperAdminDashboard from '../Pages/Admin/SuperAdminDashboard';
 
 
 
@@ -48,7 +49,10 @@ export default function AppRoutes() {
                <Route path='application' element={<Application />} />
                <Route path='dashboard' element={<Dashboard />} />
                <Route path='schoolProfile' element={<SchoolProfile/>} />
-               <Route path='gallery' element={<Gallery/>} />
+             </Route>
+             <Route path='/superAdmin' element={
+              <SuperAdminPage/> }>
+                <Route path='dashboard' element={<SuperAdminDashboard/>} />
              </Route>
              
             <Route path='/admin' element={<Admin/>}> </Route>
