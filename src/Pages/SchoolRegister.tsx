@@ -75,22 +75,11 @@ export default function SchoolRegister() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const MAX_FILE_SIZE_MB = 5; // max 5MB
-  const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
-
-
+  
 const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   if (!validateForm()) {return;}
-
-  if (formData.licenseDocument && formData.licenseDocument.size > MAX_FILE_SIZE_BYTES) {
-    setErrors((prev) => ({
-      ...prev,
-      file: `File is too large. Maximum allowed size is ${MAX_FILE_SIZE_MB}MB.`,
-    }));
-    return;
-  }
 
   try {
     const form = new FormData();
@@ -149,8 +138,9 @@ const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
               Register Your School
             </h1>
             <div className="border-t border-gray-100"></div>
-
-            <div className="flex justify-center items-center pt-[40px]">
+             <div> {errors.file && <p className="text-red-500 text-sm pl-9 pt-3">{errors.file}</p>}</div>
+            <div className="flex justify-center items-center pt-[20px]">
+             
               <form onSubmit={handleCreate}>
                 <Input
                   label="School Code"
@@ -186,13 +176,13 @@ const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
                 {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
                <Input
-  label="Certificate"
-  placeholder="Certificate"
-  onChange={handleChange}
-  name="licenseDocument"
-  type="file"
-/>
-                {errors.file && <p className="text-red-500 text-sm">{errors.file}</p>}
+               label="Certificate"
+               placeholder="Certificate"
+               onChange={handleChange}
+               name="licenseDocument"
+               type="file"
+               />
+                
 
                 <div className="py-[20px]">
                   <Button
@@ -211,6 +201,7 @@ const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
                       : 'Failed to register school'}
                   </p>
                 )}
+                
               </form>
             </div>
           </div>

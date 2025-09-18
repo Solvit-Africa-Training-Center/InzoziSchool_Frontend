@@ -32,15 +32,13 @@ const ResetPasswordForm: React.FC = () => {
   }
 
     try {
-       await ForgotPassword({ email }).unwrap();
-       navigate('/newpassword');
+       await ForgotPassword({email}).unwrap();
+       console.log('email sent successfully');
+       navigate('/verification');
 
     } catch (error) {
        console.log(error);
-    }
-
-    
-    
+    } 
     setEmail('');
   };
 

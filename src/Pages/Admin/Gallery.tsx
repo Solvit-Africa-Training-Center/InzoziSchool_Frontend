@@ -17,7 +17,7 @@ export default function Gallery() {
     const{user}=useUser();
 
     const[createGallery , {isError , isLoading , error}]=useAddGalleryMutation();
-    const {data}= useGetAllGalleryQuery(user?.schoolId ?? '');
+    const {data , refetch}= useGetAllGalleryQuery(user?.schoolId ?? '');
     const[deleteGallery]=useDeleteGalleryMutation();
    
     //delete image
@@ -28,6 +28,7 @@ export default function Gallery() {
 
   try {
     await deleteGallery({ id, schoolId: user.schoolId }).unwrap();
+    refetch();
   } catch (err) {
     console.error('Failed to delete image:', err);
   }
@@ -106,6 +107,7 @@ export default function Gallery() {
         category:'',
         imageUrl:null,
       });
+      refetch();
       
       setOpen(false);
       } catch (error) {

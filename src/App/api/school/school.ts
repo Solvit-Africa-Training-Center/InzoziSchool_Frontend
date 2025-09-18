@@ -49,7 +49,36 @@ export const SchoolsApi = apiSlice.injectEndpoints({
         method: 'GET',
       }),
     }),
+
+     getSchoolById: builder.query<SchoolDetailsResponse, string>({
+      query: (id) => ({
+        url: `/schools/${id}`,
+        method: 'GET',
+      }),
+    }),
+
+      ApproveSchool: builder.mutation<SchoolDetailsResponse, string>({
+      query: (id) => ({
+        url: `/schools/approve/${id}`,
+        method: 'PATCH',
+      }),
+    }),
+
+      RejectSchool: builder.mutation<SchoolDetailsResponse, {id:string, message:string}>({
+      query: ({id , message}) => ({
+        url: `/schools/reject/${id}`,
+        method: 'PATCH',
+        body:{ reason: message },
+      }),
+    }),
+
+     DeleteSchool: builder.mutation<SchoolDetailsResponse, string>({
+      query: (id) => ({
+        url: `/schools/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
-export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery } = SchoolsApi;
+export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery , useGetAllSchoolsQuery , useGetSchoolByIdQuery , useApproveSchoolMutation , useRejectSchoolMutation , useDeleteSchoolMutation } = SchoolsApi;

@@ -1,10 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
-import Navigation from '../Components/Navigation';
-=======
 import SchoolFacilities from '../Components/cards/SchoolFacilities';
 import Gallery from '../Components/cards/Gallery';
->>>>>>> 65f8791258b2915447d9bc45247f07a8d620ec6d
+import Navigation from '../Components/Navigation';
 
 interface ClassLevel {
   level: string;

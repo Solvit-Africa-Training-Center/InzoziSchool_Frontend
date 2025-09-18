@@ -22,6 +22,13 @@ import SchoolInfoPage from '../Pages/SchoolInfoPage';
  import SchoolProfile from '../Pages/Admin/SchoolProfile';
 import { SuperAdminPage } from '../Pages/SuperAdminPage';
 import SuperAdminDashboard from '../Pages/Admin/SuperAdminDashboard';
+import SuperAdminSchool from '../Pages/superAdmin/SuperAdminSchool';
+import Gallery from '../Pages/Admin/Gallery';
+import ViewSchool from '../Pages/superAdmin/ViewSchool';
+import Users from '../Pages/superAdmin/Users';
+import Analytics from '../Pages/superAdmin/Analytics';
+import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
+
 
 
 
@@ -49,10 +56,16 @@ export default function AppRoutes() {
                <Route path='application' element={<Application />} />
                <Route path='dashboard' element={<Dashboard />} />
                <Route path='schoolProfile' element={<SchoolProfile/>} />
+               <Route path='gallery' element={<Gallery/>} />
              </Route>
              <Route path='/superAdmin' element={
               <SuperAdminPage/> }>
                 <Route path='dashboard' element={<SuperAdminDashboard/>} />
+                <Route path='schools' element={<SuperAdminSchool/>} />
+                <Route path='ViewSchool/:id' element={<ViewSchool/>} />
+                <Route path='users' element={<Users/>} />
+                <Route path='analytics' element={<Analytics/>} />
+                <Route path='superSettings' element={<SuperAdminSettings/>} />
              </Route>
              
             <Route path='/admin' element={<Admin/>}> </Route>

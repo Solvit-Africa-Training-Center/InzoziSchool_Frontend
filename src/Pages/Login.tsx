@@ -87,7 +87,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       console.log(schoolStatus);
 
        if (roleName === 'Admin') {
-        navigate('/admin');
+        navigate('/superAdmin/dashboard');
       }
       else if( schoolStatus === 'not_registered'){
             navigate('/schoolManager');

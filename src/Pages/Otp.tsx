@@ -1,10 +1,12 @@
 
 
+import { useState } from 'react';
 import logo from '../assets/logo 2.png';
 import Button from '../Components/Button';
 
 
 export default function OtpPage() {
+    const [formData , setFormData]=useState({});
     const handleVerification=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();    
     };
