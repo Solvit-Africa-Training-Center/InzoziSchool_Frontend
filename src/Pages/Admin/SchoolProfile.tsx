@@ -8,7 +8,7 @@ export default function SchoolProfile() {
   return (
     <div className='bg-gradient-to-r  from-[#FFFFFF] to-[#CFDCEA]'>
         <div className='flex justify-between pr-5 py-4'>
-            <h1 className='font-bold font-family-poppins text-[24px] text-black'>School Profile</h1>
+            <h1 className=' font-family-poppins text-[24px] text-primary-color font-bold'>School Profile</h1>
             <button className='border flex justify-center gap-2 items-center border-none text-[12px] bg-[#F09C00] px-3 cursor-pointer text-white rounded-sm'> <MdModeEdit/> <p>Edit Profile</p></button>
         </div>
         <div className='flex gap-3'>

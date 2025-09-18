@@ -28,6 +28,8 @@ import ViewSchool from '../Pages/superAdmin/ViewSchool';
 import Users from '../Pages/superAdmin/Users';
 import Analytics from '../Pages/superAdmin/Analytics';
 import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
+import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
+
 
 
 
@@ -49,6 +51,7 @@ export default function AppRoutes() {
             <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
             <Route path='/haveaccount' element={<HaveAccountPage/>}/>
             <Route path='/verification' element={<OtpPage/>}/>
+             <Route path='/resetSucess' element={<ResetPasswordSuccessPagenp/>}/>
 
           
             <Route path='/schoolAdmin' element={

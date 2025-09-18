@@ -27,7 +27,7 @@ export default function SuperAdminSidebar() {
   ];
 
   return (
-    <div className={`fixed w-64  min-h-screen flex flex-col justify-between  text-white shadow-lg ${className}`}>
+    <div className={`fixed w-64  min-h-screen flex flex-col justify-between bg-gradient-to-r from-[#ffffff] to-[#CFDCEA]  text-white shadow-lg ${className}`}>
         <div className='pl-6 pt-6 text-[18px] flex items-center gap-3 '>
         <img 
           src={JeanImage} 

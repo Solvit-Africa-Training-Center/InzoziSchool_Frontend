@@ -45,7 +45,7 @@ export default function ResetPasswordSuccessPagenp() {
                     Your New Password was successfully registered. Now you can log into your account.
                   </h3>
 
-                  <Link to="/">
+                  <Link to="/login">
                     <div className="py-[35px]">
                       <Button label="Return to Login" variant="loginForm" />
                     </div>

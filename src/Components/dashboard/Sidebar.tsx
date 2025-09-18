@@ -6,9 +6,7 @@ import {
   MdSchool, 
   MdPeople, 
   MdPerson, 
-  MdEventSeat, 
-  MdHome, 
-  MdSportsEsports, 
+  MdEventSeat,  
   MdPhotoLibrary, 
   MdAccountCircle,
 } from 'react-icons/md';
@@ -37,9 +35,7 @@ export default function Sidebar() {
     { to: '/schoolAdmin/schoolProfile', label: 'School Profile', icon: <MdPerson className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Admin Profile', icon: <MdAccountCircle className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/', label: 'Available Seats', icon: <MdEventSeat className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Hostels', icon: <MdHome className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Playgrounds', icon: <MdSportsEsports className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/SchoolAdmin/gallery', label: 'Gallery', icon: <MdPhotoLibrary className="mr-3 text-xl flex-shrink-0" /> },
+    { to: '/SchoolAdmin/gallery', label: 'Facilities', icon: <MdPhotoLibrary className="mr-3 text-xl flex-shrink-0" /> },
     
   ];
 
@@ -53,7 +49,7 @@ export default function Sidebar() {
         />
       </div>
 
-      <h2 className='px-4 w-full text-yellow-400 font-semibold text-lg leading-tight mb-9'>
+      <h2 className='px-4 w-full text-yellow-400 font-semibold text-xl leading-tight mb-9'>
         {schoolName}
       </h2>
       
@@ -62,13 +58,13 @@ export default function Sidebar() {
           <Link 
             key={index}
             to={item.to}
-            className="flex items-center px-4 py-3 cursor-pointer hover:bg-white hover:text-primary-color transition-all duration-200 group"
+            className="flex items-center px-4 py-4 cursor-pointer hover:bg-white hover:text-primary-color transition-all duration-200 group"
             onClick={onClose}
           >
-            <span className="text-white group-hover:text-primary-color transition-colors">
+            <span className="text-white group-hover:text-primary-color transition-colors text-[20px]">
               {item.icon}
             </span>
-            <span className="text-sm font-medium text-gray-300 group-hover:text-primary-color transition-colors">
+            <span className="text-[17px] font-medium text-gray-300 group-hover:text-primary-color transition-colors">
               {item.label}
             </span>
           </Link>

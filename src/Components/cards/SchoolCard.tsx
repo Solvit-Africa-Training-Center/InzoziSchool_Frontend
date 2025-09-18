@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiEye } from 'react-icons/fi';
+import { CiLocationOn } from 'react-icons/ci';
 
 interface SchoolCardProps {
   schoolName: string;
@@ -13,11 +14,11 @@ const SchoolCard: React.FC<SchoolCardProps> = ({
   schoolName,
   location,
   schoolCode,
-  status = 'approved',
+  status = 'pending',
   onViewProfile,
 }) => {
   const statusConfig = {
-    approved: 'bg-orange-400 text-white',
+    approved: 'bg-primary-color text-white',
     pending: 'bg-yellow-400 text-white',
     rejected: 'bg-red-500 text-white',
   };
@@ -29,7 +30,7 @@ const SchoolCard: React.FC<SchoolCardProps> = ({
           <h3 className="font-semibold text-gray-900 text-base mb-1">
             {schoolName}
           </h3>
-          <p className="text-sm text-gray-500">@ {location}</p>
+          <p className="text-sm text-gray-500 flex gap-1"><CiLocationOn className='pt-1/2 text-lg'/> {location}</p>
         </div>
         <div className="ml-3">
           <span
@@ -47,10 +48,10 @@ const SchoolCard: React.FC<SchoolCardProps> = ({
 
       <button
         onClick={onViewProfile}
-        className="w-full bg-[#F09C00] hover:bg-[#F09C00] text-white py-2.5 px-4 rounded-lg font-medium text-sm transition-colors duration-200 flex items-center justify-center"
+        className="w-full cursor-pointer bg-[#F09C00] hover:bg-[#F09C00] text-white py-2.5 px-4 rounded-lg font-medium text-sm transition-colors duration-200 flex items-center justify-center"
       >
         <FiEye className="w-4 h-4 mr-2" />
-        View Profile
+        View {schoolName}
       </button>
     </div>
   );

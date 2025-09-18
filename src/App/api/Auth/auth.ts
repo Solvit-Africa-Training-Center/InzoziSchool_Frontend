@@ -17,6 +17,14 @@ export const LoginApi = apiSlice.injectEndpoints({
         method: 'POST',
       }),
     }),
+
+    VerifyOtp: builder.mutation({
+      query: (otp:number) => ({
+        url: '/auth/verify-otp',
+        method: 'POST',
+        body:{otp},
+      }),
+    }),
     getLoggedUser: builder.query<LoggedResponse, void>({
   query: () => ({
     url: '/users/me',
@@ -38,6 +46,7 @@ export const LoginApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    
     ForgotPassword: builder.mutation({
       query: (data) => ({
         url: '/auth/forgot-password',
@@ -49,5 +58,5 @@ export const LoginApi = apiSlice.injectEndpoints({
 });
 
 export const {
- useLoginMutation , useGetLoggedUserQuery, useRegistrationMutation, useLogoutMutation , useForgotPasswordMutation , useResetePasswordMutation,
+ useLoginMutation , useGetLoggedUserQuery, useRegistrationMutation, useLogoutMutation , useForgotPasswordMutation , useResetePasswordMutation, useVerifyOtpMutation,
 } = LoginApi;

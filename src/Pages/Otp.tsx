@@ -1,14 +1,53 @@
 
 
+//import { useState } from 'react';
 import { useState } from 'react';
+import { useVerifyOtpMutation } from '../App/api/Auth/auth';
 import logo from '../assets/logo 2.png';
 import Button from '../Components/Button';
+import { useNavigate } from 'react-router-dom';
+
+type FormDataType = {
+  firstNumber: string;
+  secondNumber: string;
+  thirdNumber: string;
+  fouthNumber: string;
+  firthNumber: string;
+  sixthNumber:string,
+
+};
 
 
 export default function OtpPage() {
-    const [formData , setFormData]=useState({});
-    const handleVerification=(e:React.FormEvent<HTMLFormElement>)=>{
-        e.preventDefault();    
+    const navigate = useNavigate();
+    const [formData , setFormData]=useState<FormDataType>({
+        firstNumber:'',
+        secondNumber:'',
+        thirdNumber:'',
+        fouthNumber:'',
+        firthNumber:'',
+        sixthNumber:'',
+    });
+    const[verify]=useVerifyOtpMutation();
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+          const{name , value} = e.target;
+          setFormData((prev)=>({... prev , [name]: value}));
+    };
+
+    const handleVerification=async(e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault(); 
+        
+        try {
+          const otp = Number(formData.firstNumber+formData.secondNumber+formData.thirdNumber+formData.fouthNumber+formData.firthNumber+formData.sixthNumber);
+          await verify(otp).unwrap();
+          navigate('/newpassword');
+        } catch (error) {
+          console.log(error);
+        }
+
+        console.log('form data are' , formData);
+        
     };
   return (
     <div>
@@ -48,12 +87,12 @@ export default function OtpPage() {
                         
                         <form onSubmit={handleVerification} className=''>
                             <div className='flex gap-4'>
-                            <input type="text" value={1}className='border text-center text-[20px] focus:outline-none font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px]' />
-                            <input type="text" value={2}className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
-                            <input type="text" value={3}className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
-                            <input type="text" value={4}className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
-                            <input type="text" value={5}className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
-                            <input type="text" value={6}className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
+                            <input type="text" name='firstNumber' value={formData.firstNumber} onChange={handleChange} className='border text-center text-[20px] focus:outline-none font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px]' />
+                            <input type="text" name='secondNumber' value={formData.secondNumber} onChange={handleChange} className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
+                            <input type="text" name='thirdNumber' value={formData.thirdNumber} onChange={handleChange} className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
+                            <input type="text" name='fouthNumber' value={formData.fouthNumber} onChange={handleChange} className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
+                            <input type="text" name='firthNumber' value={formData.firthNumber} onChange={handleChange} className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
+                            <input type="text" name='sixthNumber' value={formData.sixthNumber} onChange={handleChange} className='border text-center text-[20px] font-family-playfair font-bold border-[#F09C00] w-[45px] h-[80px] rounded-[24px] focus:outline-none' />
                             </div>
 
                              <div className=" pt-[45px]">

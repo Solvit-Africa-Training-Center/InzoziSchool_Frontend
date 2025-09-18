@@ -4,8 +4,13 @@ import { FaLock } from 'react-icons/fa';
 import LoginInput from '../LoginInput';
 import Button from '../buttons/Button';
 import logo from '../../assets/logo 2.png';
+import { useResetePasswordMutation } from '../../App/api/Auth/auth';
+import { useNavigate } from 'react-router-dom';
+
 
 const CreateNewPasswordForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [resetpass]=useResetePasswordMutation();
   const[formError , setFormError] = useState({
      newpassword:'',
      confirmpassword:'',
@@ -31,11 +36,14 @@ const CreateNewPasswordForm: React.FC = () => {
     return regex.test(password);
   };
 
-const handleCreatePassword = (e: React.FormEvent<HTMLFormElement>) => {
+const handleCreatePassword = async(e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const newpass = newPassword.trim();
   const confirmpass = confirmPassword.trim();
+
+
+
 
   const errors = {
     newpassword: '',
@@ -68,6 +76,18 @@ const handleCreatePassword = (e: React.FormEvent<HTMLFormElement>) => {
   if (errors.newpassword || errors.confirmpassword || errors.notmatch) {
     return;
   }
+   
+ try {
+  await resetpass({
+    newPassword: newpass,
+    confirmPassword: confirmpass,
+  }).unwrap();
+
+  navigate('/resetSucess');
+} catch (error) {
+  console.log('error message', error);
+}
+
 
   // 4) Success
   alert('Password reset successfully');
