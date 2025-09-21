@@ -1,7 +1,6 @@
 
-import React, { useState } from 'react';
+
 import { TextInput } from '../../Components/seats/InputSeats';
-import { ToggleSwitch } from '../../Components/seats/ToggleSwitch';
 import { SelectInput } from '../../Components/seats/SelectInput';
 import {Levels, StudentType, MinimumGrade} from '../../Types/Seats';
 import {Button} from '../../Components/seats/AddSeats';
@@ -9,13 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddSeats() {
   const navigate = useNavigate();  
-  const [isRegistrationOpen, setIsRegistrationOpen] = useState(true);
-
-  const handleToggleChange = (newCheckedState: boolean) => {
-    
-    setIsRegistrationOpen(newCheckedState);
-    console.log(`Registration status updated to: ${newCheckedState ? 'OPEN' : 'CLOSED'}`);
-  };
 
   const handleCancel=()=>{
     navigate('/schoolAdmin/seats');
@@ -42,12 +34,7 @@ export default function AddSeats() {
                     </div>
 
                     <div>
-                      <ToggleSwitch
-                         label="Registration Open" 
-                         name="registrationStatus" 
-                         checked={isRegistrationOpen} 
-                         onChange={handleToggleChange} 
-                        />
+                      
                     </div>
                     
                     <h1 className='text-black py-12 font-semibold text-[18px] pb-4 font-family-playfair'>Admission Condition</h1>
