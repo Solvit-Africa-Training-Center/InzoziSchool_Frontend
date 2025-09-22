@@ -5,8 +5,16 @@ import { SeatCapacityCard } from '../../Components/seats/CardSeats';
 import { SearchInput } from '../../Components/seats/Search';
 import { SelectInput } from '../../Components/seats/SelectInput';
 import {Levels, StudentType} from '../../Types/Seats';
+import { useGetAllSpotsQuery } from '../../App/api/spots/spot';
+import { useUser } from '../../Hooks/useUser';
+import { skipToken } from '@reduxjs/toolkit/query';
 
 export default function Seats() {
+    const{user}=useUser();
+
+    const{data}=useGetAllSpotsQuery(user?.schoolId ?? skipToken);
+
+    console.log(data);
     const navigate = useNavigate();
 
     const handleAddSeats =()=>{
@@ -25,13 +33,22 @@ export default function Seats() {
                 <Button label={'Add Available Seats'} onClick={handleAddSeats} />
             </div>
         </div>
+<div className='grid grid-cols-3 gap-7 px-5 py-10'>
+  {data?.data.spots.length? (
+    data.data.spots.map((seat) => (
+      <SeatCapacityCard
+        key={seat.level}
+        title={seat.yearofstudy}
+        totalSeats={Number(seat.totalSpots)}
+        occupied={seat.occupiedSpots ?? 0}
+      />
+    ))
+  ) : (
+    <p>No seats available</p>
+  )}
+</div>
 
-        <div className='grid grid-cols-3 gap-7 px-5 py-10'>
-            <SeatCapacityCard title='Primary' totalSeats={50} occupied={20}/>
-            <SeatCapacityCard title='O-level' totalSeats={40} occupied={10}/>
-            <SeatCapacityCard title='A-level' totalSeats={30} occupied={10}/>
 
-        </div>
 
         <div className='border border-gray-200 rounded-lg px-5 py-5 mx-5 '>
 

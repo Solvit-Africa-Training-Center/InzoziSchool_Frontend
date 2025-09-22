@@ -14,6 +14,14 @@ export interface schooldetail{
     rejectedReason: string;
 }
 
+export interface schoolProfile{
+  description:string;
+  mission:string;
+  vision:string;
+  foundedYear:number;
+  profilePhoto:string;
+}
+
 export interface SchoolDetailsResponse{
     data:schooldetail;
     message:string;
@@ -24,6 +32,35 @@ export interface RegisterSchoolResponse {
   message: string
   schoolId: string
 }
+
+// Define the individual profile structure
+interface Profile {
+  id: string;
+  foundedYear:string;
+  profilePhoto:string;
+  schoolId: string;
+  description: string | null;
+  mission: string | null;
+  vision: string | null;
+  // Add other properties here if needed
+}
+
+// Define the data object containing pagination info and profiles
+interface ProfileData {
+  limit: number;
+  page: number;
+  profiles: Profile[];
+  total: number;
+  totalPages: number;
+}
+
+// Define the full API response
+interface ProfileResponse {
+  data: ProfileData;
+  message: string;
+  success: boolean;
+}
+
 
 export const SchoolsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -39,6 +76,13 @@ export const SchoolsApi = apiSlice.injectEndpoints({
       getSchoolDetails: builder.query<SchoolDetailsResponse, string>({
       query: (id) => ({
         url: `/schools/${id}`,
+        method: 'GET',
+      }),
+    }),
+
+       getProfile: builder.query<ProfileResponse, string>({
+      query: (id) => ({
+        url: `/schools/${id}/profile`,
         method: 'GET',
       }),
     }),
@@ -71,6 +115,16 @@ export const SchoolsApi = apiSlice.injectEndpoints({
         body:{ reason: message },
       }),
     }),
+    
+    UpdateProfile: builder.mutation<schoolProfile,{id:string, data:FormData}>({
+      query: ({id , data}) => ({
+        url: `/schools/${id}/profile`,
+        method: 'PUT',
+        body:data,
+      }),
+    }),
+    
+  
 
      DeleteSchool: builder.mutation<SchoolDetailsResponse, string>({
       query: (id) => ({
@@ -81,4 +135,4 @@ export const SchoolsApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery , useGetAllSchoolsQuery , useGetSchoolByIdQuery , useApproveSchoolMutation , useRejectSchoolMutation , useDeleteSchoolMutation } = SchoolsApi;
+export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery , useGetAllSchoolsQuery , useGetSchoolByIdQuery , useApproveSchoolMutation , useRejectSchoolMutation , useDeleteSchoolMutation, useUpdateProfileMutation , useGetProfileQuery } = SchoolsApi;

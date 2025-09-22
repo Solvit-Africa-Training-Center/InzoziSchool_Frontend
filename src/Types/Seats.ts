@@ -6,8 +6,8 @@ export const Levels=[
 ];
 
 export const StudentType=[
-    {label:'Newcomer' , value:'Newcomer'},
-    {label:'Transfer' , value:'Transfer'},
+    {label:'newcomer' , value:'newcomer'},
+    {label:'transfer' , value:'transfer'},
 ];
 
 export const MinimumGrade=[

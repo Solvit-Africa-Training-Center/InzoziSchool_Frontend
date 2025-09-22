@@ -6,17 +6,103 @@ import SchoolDescriptionTextarea from '../../Components/schoolProfile/TextArea';
 import { TextInput } from '../../Components/seats/InputSeats';
 import { SelectInput } from '../../Components/seats/SelectInput';
 import {category} from '../../Types/Category';
+import { useGetProfileQuery,useUpdateProfileMutation } from '../../App/api/school/school';
+import { useUser } from '../../Hooks/useUser';
+
+
 //import { LuUsers } from 'react-icons/lu';
 //import { IoLocationOutline } from 'react-icons/io5';
 //import { MdModeEdit } from 'react-icons/md';
 
 export default function SchoolProfile() {
+    
+  const{user}=useUser();
+//   const schoolId = user?.schoolId;
+
+ const { data} = useGetProfileQuery(user?.schoolId ?? '');
+
+ console.log(data);
+  
+  const[updateProfile]=useUpdateProfileMutation();
     const[editProfile , setEditProfile]=useState(false);
     const[editSchoolInformation , setEditSchoolInformation]=useState(false);
 
-   const editProfileForm=()=>{
+    // formDatas
+
+  const [profileFormData, setProfileFormData] = useState<{
+  description: string;
+  mission: string;
+  vision: string;
+  foundedYear: string;
+  profilePhoto: File | null;
+}>({
+  description: '',
+  mission: '',
+  vision: '',
+  foundedYear: '',
+  profilePhoto: null,
+});
+
+  // Handle inputs
+const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const target = e.target;
+
+  if (target.type === 'file') {
+    const input = target as HTMLInputElement;
+    const files = input.files;
+
+    if (files && files.length > 0) {
+      setProfileFormData((prev) => ({
+        ...prev,
+        profilePhoto: files[0], // store the File object
+      }));
+    }
+  } else {
+    setProfileFormData((prev) => ({
+      ...prev,
+      [target.name]: target.value,
+    }));
+  }
+};
+
+
+  // Open edit modal
+  const editProfileForm = () => {
     setEditProfile(true);
-   };
+  };
+
+  // Submit form
+  const handleEditingProfile = async(e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Create FormData to send to backend
+    const form = new FormData();
+    form.append('description', profileFormData.description);
+    form.append('mission', profileFormData.mission);
+    form.append('vision', profileFormData.vision);
+    form.append('foundedYear', profileFormData.foundedYear);
+    if (profileFormData.profilePhoto) {
+      form.append('profilePhoto', profileFormData.profilePhoto);
+    }
+
+    // For debugging: convert FormData to object
+ const profiles: Record<string, string | File> = {};
+form.forEach((value, key) => {
+  profiles[key] = value as string | File;
+});
+console.log('Submitting object:', profiles);
+
+try {
+  await updateProfile({ id: user?.schoolId || '', data: form }).unwrap();
+    setEditProfile(false);
+    //refetch();
+} catch (error) {
+  console.log('error occured', error);
+}
+
+
+  };
+
   return (
     <>
     <div className='bg-gradient-to-r  from-[#FFFFFF] to-[#CFDCEA] pl-[40px]'>
@@ -26,14 +112,24 @@ export default function SchoolProfile() {
         </div>
 
         <div className='bg-white rounded-lg shadow-xl p-3 mr-5 py-3 mt-4 mb-9'>
+           {data?.data.profiles.map((profile)=>(
+
+            <div key={profile.id}>
            <div className='flex justify-center items-center py-5'>
               <div className='relative '>
-               <img src="/images/school.png" alt="" className='rounded-[50%] h-[150px] w-[150px]' />
+               <img src={profile.profilePhoto?profile.profilePhoto:'/images/school.png'} alt="" className='rounded-[50%] h-[150px] w-[150px]' />
                <div className='absolute left-16 top-33 cursor-pointer text-white px-1 py-1 bg-gradient-to-r from-[#F09C00] via-[#FFB833] to-[#F09C00] rounded-[50%] text-2xl'> <CiCamera/> </div>
               </div>
            </div>
+          
+              
             <div>
-                <h1 className='text-primary-color font-semibold text-center py-2 font-family-playfair text-[23px]'>School Name Not Set</h1>
+              <div >
+                 <h1 className='text-primary-color font-semibold text-center py-2 font-family-playfair text-[23px]'>School Name not Set <h2>Year : {profile.foundedYear}</h2> </h1>
+
+                 
+              </div>
+               
                 <div className='flex justify-center py-2'>
                 <EditProfileButton label='Edit Profile' onClick={editProfileForm}/>
                 </div>
@@ -43,21 +139,25 @@ export default function SchoolProfile() {
             <div className='px-7'>
                 <div className=' pt-12 '>
                   <h2 className='text-primary-color font-bold text-[17px] py-2'>About</h2>
-                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>No description provided yet.</h3>
+                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>{profile.description}</h3>
                   <div className='border-b border-gray-500'></div>
                 </div>
 
                  <div className=' pt-3'>
                   <h2 className='text-primary-color font-bold text-[17px] py-2'>Mission</h2>
-                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>Mission Not Set yet.</h3>
+                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>{profile.mission}</h3>
                 </div>
 
                   <div className=' pt-3 pb-4'>
                   <h2 className='text-primary-color font-bold text-[17px] py-2'>Vision</h2>
-                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>Vision Not Set yet.</h3>
+                  <h3 className='text-gray-500 text-[16px] font-medium pb-4'>{profile.vision}</h3>
                 </div>
                
             </div>
+
+            </div>
+            
+           ))}
         </div>
 
         <div className='bg-white rounded-lg shadow-xl p-3 mr-5 py-3 my-4 px-7 '>
@@ -191,13 +291,14 @@ export default function SchoolProfile() {
        </div>
 
        <div>
-        <form >
-          <SchoolDescriptionTextarea label='Description'/>
-          <SchoolDescriptionTextarea label='Mission' placeholder='Enter Mission Statement'/>
-          <SchoolDescriptionTextarea label='Vision' placeholder='Enter Vision Statement'/>
-          <TextInput label='Profile picture ' type='file' placeholder='Enter image Url'/>
+        <form onSubmit={handleEditingProfile} >
+          <SchoolDescriptionTextarea label='Description' name='description' value={profileFormData.description} onChange={handleProfileChange}/>
+          <SchoolDescriptionTextarea label='Mission' placeholder='Enter Mission Statement' value={profileFormData.mission} name='mission' onChange={handleProfileChange}/>
+          <SchoolDescriptionTextarea label='Vision' placeholder='Enter Vision Statement' value={profileFormData.vision} name='vision' onChange={handleProfileChange}/>
+          <TextInput label='Founded Year ' type='number' value={profileFormData.foundedYear} placeholder='founded year' name='foundedYear' onChange={handleProfileChange}/>
+          <TextInput label='Profile picture ' type='file' placeholder='Enter image Url' name='ProfilePhoto' onChange={handleProfileChange}/>
           <div className='flex justify-end pr-[40px] pt-7'>
-            <EditProfileButton label='Save Profile' type='submit' />
+          <EditProfileButton label='Save Profile' type='submit' />
           </div>
         </form>
        </div> 
@@ -210,7 +311,7 @@ export default function SchoolProfile() {
     <div className="bg-white p-6 rounded-xl shadow-lg z-50 w-[730px] h-[550px] overflow-y-auto">
        <div className='flex justify-between pb-7'>
         <div>
-         <h1 className='text-primary-color font-bold font-family-playfair text-[23px]'>Update School Onformation</h1>
+         <h1 className='text-primary-color font-bold font-family-playfair py-2 text-[23px]'>Update School Information</h1>
          <h3 className='text-gray-500 font-medium text-[16px]'>Edit Your School Basic information , location and Contact information </h3>
         </div>
        

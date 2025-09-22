@@ -6,7 +6,7 @@ interface TextInputProps {
   label: string;
   placeholder?: string;
   required?: boolean;
-  value?: string; // The current value of the input
+  value?: string | number; // The current value of the input
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // Function to handle input changes
   name?: string; // The name attribute for the input (important for forms)
   type?: string; // e.g., 'text', 'number', 'email'
