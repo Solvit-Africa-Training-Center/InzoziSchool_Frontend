@@ -3,7 +3,6 @@ import schoolImage from '/images/school.png';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { 
   MdDashboard, 
-  MdSchool, 
   MdPeople, 
   MdPerson, 
   MdEventSeat,  
@@ -11,14 +10,18 @@ import {
   MdAccountCircle,
 } from 'react-icons/md';
 import { useUser } from '../../Hooks/useUser';
-import { useGetSchoolDetailsQuery } from '../../App/api/school/school';
+import { useGetProfileQuery, useGetSchoolDetailsQuery } from '../../App/api/school/school';
+
 
 export default function Sidebar() {
   const className ='';
   const onClose = () => {}; 
 
+
+  
   const{user}=useUser();
   const{data , isLoading , error}=useGetSchoolDetailsQuery(user?.schoolId ?? skipToken);
+  const{data:profiles}=useGetProfileQuery(user?.schoolId ?? skipToken);
 
   const schoolName = isLoading
     ? 'Loading...'
@@ -30,10 +33,9 @@ export default function Sidebar() {
 
   const navItems = [
     { to: '/schoolAdmin/dashboard', label: 'Dashboard', icon: <MdDashboard className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/schoolAdmin/application', label: 'Applications', icon: <MdPeople className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Admissions', icon: <MdSchool className="mr-3 text-xl flex-shrink-0" /> },
+    { to: '/schoolAdmin/application', label: 'Students', icon: <MdPeople className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/schoolAdmin/schoolProfile', label: 'School Profile', icon: <MdPerson className="mr-3 text-xl flex-shrink-0" /> },
-    { to: '/', label: 'Admin Profile', icon: <MdAccountCircle className="mr-3 text-xl flex-shrink-0" /> },
+    { to: '/', label: 'Admission Manager', icon: <MdAccountCircle className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/schoolAdmin/seats', label: 'Available Seats', icon: <MdEventSeat className="mr-3 text-xl flex-shrink-0" /> },
     { to: '/SchoolAdmin/gallery', label: 'Facilities', icon: <MdPhotoLibrary className="mr-3 text-xl flex-shrink-0" /> },
     
@@ -42,11 +44,17 @@ export default function Sidebar() {
   return (
     <div className={`fixed w-64 bg-primary-color text-white h-full flex flex-col ${className}`}>
       <div className='p-4 flex items-center justify-center bg-primary-color'>
-        <img 
-          src={schoolImage} 
+        {
+          profiles?.data.profiles.map((profile)=>(
+            <img 
+            key={profile.id}
+          src={profile.profilePhoto ? profile.profilePhoto :schoolImage} 
           alt='School' 
           className='w-16 h-12 rounded object-cover mb-3 bg-primary-color'
         />
+          ))
+        }
+      
       </div>
 
       <h2 className='px-4 w-full text-yellow-400 font-semibold text-xl leading-tight mb-9'>

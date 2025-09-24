@@ -62,7 +62,7 @@ export default function SchoolCard({
  <div className='border-t border-gray-200 mx-3'></div>
   {/* Right: Actions */}
  <div className="flex justify-center gap-5 py-8">
-  <Button label="Apply" variant="thirdly" />
+  <Button label="Apply" variant="thirdly" onClick={()=>{navigate('/apply');}}/>
   <Button label="View Details" variant="secondary" onClick={()=>{navigate('/viewSchool');}} />
 </div>
 

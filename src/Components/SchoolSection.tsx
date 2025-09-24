@@ -1,6 +1,25 @@
+import { useGetAllApprovedSchoolQuery } from '../App/api/school/school';
 import SchoolCard from './SchoolCard';
 
 export default function SchoolSection() {
+  const{data , isLoading , isError , error}=useGetAllApprovedSchoolQuery();
+
+  if (isLoading) {
+  console.log('Loading...');
+}
+
+if (isError) {
+  console.log('Error fetching schools', error);
+}
+
+// Check data after load
+if (data) {
+  console.log('Raw data from backend:', data); // This is an array of { data, message, success }
+  const schools = data.map(item => item.data); // Extract SchoolData
+  console.log('List of schools:', schools);
+}
+
+ 
   return (
     <div className="bg-gradient-to-r from-[#FFFFFF] to-[#CFDCEA] py-[40px] px-[80px] max-sm:px-[20px]">
       <h1 className="font-bold text-[30px] text-[#282C34] font-family-playfair">Featured Schools</h1>

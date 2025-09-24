@@ -39,12 +39,12 @@ export const SelectInput: React.FC<SelectInputProps> = ({
     'px-4 py-2 ' + // Padding matches the visual size of the image
     'border border-gray-300 ' + // Light gray border
     'rounded-lg ' + // Rounded corners
-    'bg-white ' +                 // Explicit white background
-    'text-base ' +                // Standard text size
+    'bg-white ' + // Explicit white background
+    'text-base ' + // Standard text size
     'focus:border-gray-200 focus:ring-1 focus:ring-gray-200 ' + // Focus effect
     'outline-none transition-all duration-150 ' +
-    'appearance-none ' +          // Hides default browser arrow
-    'pr-10';                      // Ensures space for our custom arrow
+    'appearance-none ' + // Hides default browser arrow
+    'pr-10'; // Ensures space for our custom arrow
 
   // Tailwind classes for the custom arrow icon (using a div for positioning)
   const arrowClasses = 

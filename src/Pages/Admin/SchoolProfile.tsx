@@ -5,23 +5,24 @@ import { IoClose } from 'react-icons/io5';
 import SchoolDescriptionTextarea from '../../Components/schoolProfile/TextArea';
 import { TextInput } from '../../Components/seats/InputSeats';
 import { SelectInput } from '../../Components/seats/SelectInput';
-import {category} from '../../Types/Category';
-import { useGetProfileQuery,useUpdateProfileMutation } from '../../App/api/school/school';
+import {categ, Levels , Provinces , schoolType} from '../../Types/Seats';
+import { useGetProfileQuery,useGetSchoolDetailsQuery,useUpdateProfileMutation, useUpdateSchoolInfoMutation } from '../../App/api/school/school';
 import { useUser } from '../../Hooks/useUser';
+import type{SchoolInformation} from '../../Types/schoolProfile';
+import{districts} from '../../Types/district';
+import { skipToken } from '@reduxjs/toolkit/query';
 
-
-//import { LuUsers } from 'react-icons/lu';
-//import { IoLocationOutline } from 'react-icons/io5';
-//import { MdModeEdit } from 'react-icons/md';
 
 export default function SchoolProfile() {
     
   const{user}=useUser();
-//   const schoolId = user?.schoolId;
-
+  const{data:schoolDetails}=useGetSchoolDetailsQuery(user?.schoolId ??skipToken);
+ const[updateSchoolInfo]=useUpdateSchoolInfoMutation();
  const { data} = useGetProfileQuery(user?.schoolId ?? '');
 
- console.log(data);
+ console.log(schoolDetails?.data);
+
+ console.log(user?.schoolId);
   
   const[updateProfile]=useUpdateProfileMutation();
     const[editProfile , setEditProfile]=useState(false);
@@ -36,7 +37,7 @@ export default function SchoolProfile() {
   foundedYear: string;
   profilePhoto: File | null;
 }>({
-  description: '',
+  description:'',
   mission: '',
   vision: '',
   foundedYear: '',
@@ -85,12 +86,12 @@ const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAre
       form.append('profilePhoto', profileFormData.profilePhoto);
     }
 
-    // For debugging: convert FormData to object
- const profiles: Record<string, string | File> = {};
-form.forEach((value, key) => {
-  profiles[key] = value as string | File;
-});
-console.log('Submitting object:', profiles);
+// For debugging: convert FormData to object
+//  const profiles: Record<string, string | File> = {};
+// form.forEach((value, key) => {
+//   profiles[key] = value as string | File;
+// });
+//console.log('Submitting object:', profiles);
 
 try {
   await updateProfile({ id: user?.schoolId || '', data: form }).unwrap();
@@ -100,6 +101,77 @@ try {
   console.log('error occured', error);
 }
 
+  };
+
+
+  // information logics
+
+   // Input handler (receives event)
+const handleInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value, type, files } = e.target;
+
+  if (type === 'file' && files) {
+    setSchoolInfo((prev) => ({
+      ...prev,
+      [name]: files[0], // store the uploaded file object
+    }));
+  } else {
+    setSchoolInfo((prev) => ({
+      ...prev,
+      [name]: value, // update text/email/number inputs
+    }));
+  }
+};
+
+
+// Select handler ()
+const handleSelectChange = (e:React.ChangeEvent<HTMLSelectElement>)=> {
+  const { name, value } = e.target;
+  setSchoolInfo((prev) => ({ ...prev, [name]: value }));
+};
+
+  const[schoolInfo , setSchoolInfo]=useState<SchoolInformation>({
+  schoolName:schoolDetails?.data.schoolName || '',
+  schoolCode:schoolDetails?.data.schoolCode || '',
+  schoolLevel:schoolDetails?.data.schoolLevel || '',
+  schoolCategory:schoolDetails?.data.schoolCategory || '',
+  schoolType: schoolDetails?.data.schoolType || '',
+  province:schoolDetails?.data.province || '',
+  district:schoolDetails?.data.district || '',
+  sector:schoolDetails?.data.sector || '',
+  cell:schoolDetails?.data.cell || '',
+  village: schoolDetails?.data.village || '',
+  email: schoolDetails?.data.email || '',
+  telephone: schoolDetails?.data.telephone || '',
+  licenseDocument:null,
+  });
+
+  const handleInformation =async(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+
+    try {
+      const payload ={
+        schoolName:schoolInfo.schoolName,
+        schoolCode:schoolInfo.schoolCode,
+        schoolLevel:schoolInfo.schoolLevel,
+        email:schoolInfo.email,
+        schoolCategory:schoolInfo.schoolCategory,
+        schoolType:schoolInfo.schoolType,
+        province:schoolInfo.province,
+        telephone:schoolInfo.telephone,
+        district:schoolInfo.district,
+        sector:schoolInfo.sector,
+        cell:schoolInfo.cell,
+        village:schoolInfo.village,
+        licenseDocument:schoolInfo.licenseDocument,
+
+      };
+      await updateSchoolInfo({data:payload , id:user?.schoolId ?? ''}).unwrap();
+      console.log('submitted data are ', payload);
+      setEditSchoolInformation(false);
+    } catch (error) {
+      console.log('error is', error);
+    }
 
   };
 
@@ -125,7 +197,7 @@ try {
               
             <div>
               <div >
-                 <h1 className='text-primary-color font-semibold text-center py-2 font-family-playfair text-[23px]'>School Name not Set <h2>Year : {profile.foundedYear}</h2> </h1>
+                 <h1 className='text-primary-color font-semibold text-center py-2 font-family-playfair text-[23px]'>{schoolDetails?.data.schoolName ?schoolDetails.data.schoolName :'School Name Not Specified'} <h2>Year : {profile.foundedYear}</h2> </h1>
 
                  
               </div>
@@ -179,27 +251,27 @@ try {
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>School Name</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.schoolName ?schoolDetails.data.schoolName :'Not Specified'}</h3>
                         </div>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Category</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.schoolCategory ?schoolDetails.data.schoolCategory :'Not Specified'}</h3>
                         </div>
 
                          <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Type</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.schoolType ?schoolDetails.data.schoolType :'Not Specified'}</h3>
                         </div>
                     </div>
 
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>School Code</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.schoolCode ?schoolDetails.data.schoolCode :'Not Specified'}</h3>
                         </div>
                           <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Levels</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.schoolLevel ?schoolDetails.data.schoolLevel :'Not Specified'}</h3>
                         </div>
 
 
@@ -213,27 +285,27 @@ try {
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Province</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.province ?schoolDetails.data.province :'Not Specified'}</h3>
                         </div>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Sector</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.sector ?schoolDetails.data.sector :'Not Specified'}</h3>
                         </div>
 
                          <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Village</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.village ?schoolDetails.data.village :'Not Specified'}</h3>
                         </div>
                     </div>
 
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>District</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.district ?schoolDetails.data.district :'Not Specified'}</h3>
                         </div>
                           <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Cell</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.cell ?schoolDetails.data.cell :'Not Specified'}</h3>
                         </div>
 
 
@@ -247,14 +319,14 @@ try {
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Email</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.email ?schoolDetails.data.email :'Not Specified'}</h3>
                         </div>
                     </div>
 
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>Telephone Number</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Specified</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.telephone ?schoolDetails.data.telephone :'Not Specified'}</h3>
                         </div>
 
                     </div>
@@ -267,7 +339,7 @@ try {
                     <div className='py-3'>
                         <div className='pt-2'>
                             <h1 className='text-gray-400 font-semibold text-[14px]'>License Document</h1>
-                            <h3 className='font-semibold text-[16px]'>Not Uploaded</h3>
+                            <h3 className='font-semibold text-[16px]'>{schoolDetails?.data.licenseDocument ?schoolDetails.data.licenseDocument :'Not Specified'}</h3>
                         </div>
                     </div>
                     
@@ -319,55 +391,55 @@ try {
        </div>
 
        <div>
-        <form >
+        <form onSubmit={handleInformation}>
          <div>
            <h2 className='text-primary-color font-bold font-family-playfair text-[17px]' >Basic Information</h2>
          </div>
            <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='School Name' placeholder='Enter School Name'/>
-            <TextInput label='School Code' placeholder='Enter School Code'/>
+            <TextInput label='School Name' placeholder='Enter School Name' name='schoolName' value={schoolInfo.schoolName} onChange={handleInfoChange}/>
+            <TextInput label='School Code' placeholder='Enter School Code' onChange={handleInfoChange} name='schoolCode' value={schoolInfo.schoolCode}/>
            </div>
 
            <div className='pt-3 flex gap-[30px]'>
-             <SelectInput options={category}/>
-             <TextInput label='Level' placeholder='Enter Level'/>
+             <SelectInput options={categ} label='Category' onChange={handleSelectChange} name='schoolCategory' value={schoolInfo.schoolCategory}/>
+             <SelectInput options={Levels} label='Level' name='schoolLevel' value={schoolInfo.schoolLevel} onChange={handleSelectChange}/>
            </div>
 
            <div className='pt-3'>
-             <TextInput label='Type' placeholder='e.g., mixed'/>
+             <SelectInput options={schoolType} label='Type' placeholder='e.g., mixed' name='schoolType' value={schoolInfo.schoolType} onChange={handleSelectChange}/>
            </div>
 
            <div className='py-5'><h1 className='text-primary-color font-bold font-family-playfair text-[17px]'>Location Details</h1></div>
 
             <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='Province' placeholder='Enter Province'/>
-            <TextInput label='District' placeholder='Enter district'/>
+              <SelectInput options={Provinces} label='provinces' name='province' value={schoolInfo.province} onChange={handleSelectChange}/>
+              <SelectInput options={districts} label='district' name='district' value={schoolInfo.district} onChange={handleSelectChange}/>
            </div>
 
-             <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='Sector' placeholder='Enter Sector'/>
-            <TextInput label='Cell' placeholder='Enter Cell'/>
+           <div className='pt-3 flex gap-[30px]'>
+            <TextInput label='Sector' placeholder='Enter Sector' name='sector' value={schoolInfo.sector} onChange={handleInfoChange}/>
+            <TextInput label='Cell' placeholder='Enter Cell' name='cell' value={schoolInfo.cell} onChange={handleInfoChange}/>
            </div>
 
           <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='Village' placeholder='Enter Village'/>
+            <TextInput label='Village' placeholder='Enter Village' value={schoolInfo.village} name='village' onChange={handleInfoChange}/>
           </div>
 
           <div className='py-5'><h1 className='text-primary-color font-bold font-family-playfair text-[17px]'>Contact Information</h1></div>
 
          <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='Email' placeholder='example@gmail.com' type='email'/>
-            <TextInput label='Phone Number' placeholder='+2507888876'/>
+            <TextInput label='Email' placeholder='example@gmail.com' type='email' name='email' value={schoolInfo.email} onChange={handleInfoChange}/>
+            <TextInput label='Phone Number' placeholder='+2507888876' name='telephone' value={schoolInfo.telephone} onChange={handleInfoChange}/>
         </div>
 
           <div className='py-5'><h1 className='text-primary-color font-bold font-family-playfair text-[17px]'>Documents</h1></div>
 
          <div className='pt-3 flex gap-[30px]'>
-            <TextInput label='License Document Url' placeholder='license Url' type='file'/>   
+            <TextInput label='License Document Url' placeholder='license Url' type='file' name='licenseDocumentUrl'/>   
         </div>
 
         <div className='flex justify-end mr-8'>
-            <EditProfileButton label='Save Information'/>
+            <EditProfileButton label='Save Information' type='submit'/>
         </div>
         </form>
        </div> 

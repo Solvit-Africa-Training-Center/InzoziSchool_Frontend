@@ -2,6 +2,7 @@ import { apiSlice } from '../EntryApi';
 import type{SeatAvailability} from '../../../Pages/Admin/AddSeats';
 
 export interface AllSeats {
+  id:string;
   level: string;
   studentType: string;
   academicYear?: string;
@@ -24,6 +25,12 @@ export interface SeatsApiResponse {
   success: boolean;
 }
 
+export interface DeleteSpotInfo{
+  success: boolean;
+  message: string;
+  data: string;
+}
+
 
 export const SpotsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -32,6 +39,13 @@ registerSpot: builder.mutation<SeatAvailability, { data: Partial<SeatAvailabilit
     url: `/schools/${id}/spots`,
     method: 'POST',
     body: data, // RTK Query will serialize as JSON
+  }),
+}),
+
+DeleteSpot: builder.mutation<DeleteSpotInfo, { schoolId:string, spotId: string }>({
+  query: ({ schoolId, spotId }) => ({
+    url: `/schools/${schoolId}/spots/${spotId}`,
+    method: 'DELETE',
   }),
 }),
 
@@ -45,4 +59,4 @@ getAllSpots: builder.query<SeatsApiResponse, string>({
   }),
 });
 
-export const {useRegisterSpotMutation , useGetAllSpotsQuery} = SpotsApi;
+export const {useRegisterSpotMutation , useGetAllSpotsQuery , useDeleteSpotMutation} = SpotsApi;

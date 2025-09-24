@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Button} from '../../Components/seats/AddSeats';
 import { useNavigate } from 'react-router-dom';
 import { SeatCapacityCard } from '../../Components/seats/CardSeats';
 import { SearchInput } from '../../Components/seats/Search';
 import { SelectInput } from '../../Components/seats/SelectInput';
 import {Levels, StudentType} from '../../Types/Seats';
-import { useGetAllSpotsQuery } from '../../App/api/spots/spot';
+import { useDeleteSpotMutation, useGetAllSpotsQuery } from '../../App/api/spots/spot';
 import { useUser } from '../../Hooks/useUser';
 import { skipToken } from '@reduxjs/toolkit/query';
+import { ConfirmDialog } from '../../Components/seats/Confirm';
 
 export default function Seats() {
     const{user}=useUser();
-
-    const{data}=useGetAllSpotsQuery(user?.schoolId ?? skipToken);
+    const{data , refetch}=useGetAllSpotsQuery(user?.schoolId ?? skipToken);
 
     console.log(data);
     const navigate = useNavigate();
 
+  const [deleteId, setDeleteId] = useState<string | null>(null); // 👈 track which id to delete
+  const [deleteSpot] = useDeleteSpotMutation();
+
     const handleAddSeats =()=>{
         navigate('/schoolAdmin/addSeats');
     };
+
+    const handleDelete=(id:string)=>{
+         setDeleteId(id);
+    };
+
+      const confirmDelete = async () => {
+    if (deleteId) {
+      try {
+        await deleteSpot({schoolId:user?.schoolId ?? '' , spotId:deleteId}).unwrap();
+        console.log('Deleted:', deleteId);
+        refetch();
+      } catch (error) {
+        console.error('Delete failed', error);
+      } finally {
+        setDeleteId(null); // close modal
+      }
+    }
+  };
     
   return (
     <div>
@@ -41,6 +62,7 @@ export default function Seats() {
         title={seat.yearofstudy}
         totalSeats={Number(seat.totalSpots)}
         occupied={seat.occupiedSpots ?? 0}
+        onDelete={()=>handleDelete(seat.id)}
       />
     ))
   ) : (
@@ -67,6 +89,15 @@ export default function Seats() {
             </div>
 
         </div>
+        
+      {/* Confirmation Popup */}
+      <ConfirmDialog
+        isOpen={!!deleteId}
+        title="Delete Sport Level?"
+        message="Are you sure you want to delete this sport level? Click OK to delete it permanently."
+        onConfirm={confirmDelete}
+        onCancel={() => setDeleteId(null)}
+      />
     </div>
   );
 }

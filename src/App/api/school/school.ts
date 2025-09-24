@@ -1,17 +1,41 @@
 import { apiSlice } from '../EntryApi';
 import type{SchoolsResponse} from '../../../Types/SchoolResponse';
+import type{SchoolInformation} from '../../../Types/schoolProfile';
+import type{SchoolListResponse} from '../../../Types/GetSchools';
+
+export type SchoolManager = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  district: string;
+  profileImage: string | null;
+};
 
 export interface schooldetail{
-    id: string;
-    schoolName: string;
-    schoolCode: string;
-    email: string;
-    district: string;
-    status: string;
-    licenseDocument:string;
-    approvedBy: string;
-    approvedAt: string;
-    rejectedReason: string;
+ id: string;
+  schoolName: string;
+  schoolCode: string;
+  schoolCategory: string; // e.g. "REB"
+  schoolLevel: string; // e.g. "Primary"
+  schoolType: string; // e.g. "Mixed"
+  province: string;
+  district: string;
+  sector: string;
+  cell: string;
+  village: string;
+  email: string;
+  telephone: string;
+  status: 'approved' | 'rejected' | 'pending'; // narrow union is safer
+  userId: string;
+  approvedBy: string | null;
+  approvedAt: string | null; // ISO date string
+  rejectedReason: string | null;
+  licenseDocument: string | null;
+  deletedAt: string | null;
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
+  SchoolManager: SchoolManager;
 }
 
 export interface schoolProfile{
@@ -80,6 +104,13 @@ export const SchoolsApi = apiSlice.injectEndpoints({
       }),
     }),
 
+      getAllApprovedSchool: builder.query<SchoolListResponse, void>({
+      query: () => ({
+        url: '/schools',
+        method: 'GET',
+      }),
+    }),
+
        getProfile: builder.query<ProfileResponse, string>({
       query: (id) => ({
         url: `/schools/${id}/profile`,
@@ -124,6 +155,13 @@ export const SchoolsApi = apiSlice.injectEndpoints({
       }),
     }),
     
+       UpdateSchoolInfo: builder.mutation<SchoolInformation,{id:string, data:Partial<SchoolInformation>}>({
+      query: ({id , data}) => ({
+        url: `/schools/${id}`,
+        method: 'PUT',
+        body:data,
+      }),
+    }),
   
 
      DeleteSchool: builder.mutation<SchoolDetailsResponse, string>({
@@ -135,4 +173,4 @@ export const SchoolsApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery , useGetAllSchoolsQuery , useGetSchoolByIdQuery , useApproveSchoolMutation , useRejectSchoolMutation , useDeleteSchoolMutation, useUpdateProfileMutation , useGetProfileQuery } = SchoolsApi;
+export const { useRegisterSchoolMutation , useGetSchoolDetailsQuery , useGetAllSchoolsQuery , useGetSchoolByIdQuery , useApproveSchoolMutation , useRejectSchoolMutation , useDeleteSchoolMutation, useUpdateProfileMutation , useGetProfileQuery, useUpdateSchoolInfoMutation , useGetAllApprovedSchoolQuery} = SchoolsApi;

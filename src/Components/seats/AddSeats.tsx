@@ -15,8 +15,8 @@ const variantClasses = {
   // --- Default (Primary) Variant: Matches the provided image ---
   primary: 
     'bg-gradient-to-r from-[#F09C00] via-[#FFB833] to-[#F09C00] text-white ' + // Color and Text (Same as image)
-    'hover:bg-orange-500 ' +       // Darker on hover
-    'shadow-md',                 // Slight shadow for depth
+    'hover:bg-orange-500 ' + // Darker on hover
+    'shadow-md', // Slight shadow for depth
 
   // --- Example Secondary Variant ---
   secondary: 

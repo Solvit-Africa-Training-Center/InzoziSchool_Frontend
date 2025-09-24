@@ -1,48 +1,45 @@
 import React from 'react';
 
-// 1. Define the props structure for the component
 interface SeatCapacityCardProps {
-  title: string;          // e.g., "Primary Level"
-  totalSeats: number;     // e.g., 50
-  occupied: number;       // e.g., 15
+  title: string;
+  totalSeats: number;
+  occupied: number;
+  onAdd?: () => void;
+  onEdit?: () => void;
+  onDelete?: () => void;
 }
 
-// 2. The main component function
 export const SeatCapacityCard: React.FC<SeatCapacityCardProps> = ({
   title,
   totalSeats,
   occupied,
+  //onAdd,
+  onEdit,
+  onDelete,
 }) => {
-  
-  // --- Data Calculation ---
   const available = totalSeats - occupied;
   const availablePercentage = ((available / totalSeats) * 100).toFixed(0);
-  
-  // Determine if availability is high (for green badge color)
-  const isHighAvailability = availablePercentage >= '50';
+  const isHighAvailability = parseInt(availablePercentage) >= 50;
 
-  // --- Tailwind Classes ---
-
-  // Card container styling (blue left border, shadow, rounded corners)
-  const cardClasses = 
-    'bg-white shadow-lg rounded-lg overflow-hidden ' +
+  const cardClasses =
+    'relative group bg-white shadow-lg rounded-lg overflow-hidden ' +
     'border-l-4 border-blue-500 p-6 w-full max-w-sm';
 
-  // Badge styling (Green badge for availability)
-  const badgeClasses = 
+  const badgeClasses =
     'inline-flex items-center px-3 py-1 text-xs font-medium rounded-full ' +
-    (isHighAvailability ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700');
-    
-  // Icon for the badge (simple user group icon)
+    (isHighAvailability
+      ? 'bg-green-100 text-green-700'
+      : 'bg-yellow-100 text-yellow-700');
+
   const PersonIcon = (
-    <svg 
-      className="w-4 h-4 mr-1" 
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
+    <svg
+      className="w-4 h-4 mr-1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -51,16 +48,15 @@ export const SeatCapacityCard: React.FC<SeatCapacityCardProps> = ({
     </svg>
   );
 
-  // Icon for labels (simple user icon)
   const SmallPersonIcon = (
-    <svg 
-      className="w-4 h-4 mr-1 text-gray-500" 
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
+    <svg
+      className="w-4 h-4 mr-1 text-gray-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -70,52 +66,66 @@ export const SeatCapacityCard: React.FC<SeatCapacityCardProps> = ({
 
   return (
     <div className={cardClasses}>
-      
-      {/* --- Card Header: Title and Badge --- */}
+      {/* Action Buttons (hidden until hover) */}
+      <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* <button
+          onClick={onAdd}
+          className="p-1 bg-green-100 text-green-600 rounded-full hover:bg-green-200"
+        >
+          ➕
+        </button> */}
+        <button
+          onClick={onEdit}
+          className="p-1 bg-blue-100 text-blue-600 rounded-full hover:bg-blue-200 cursor-pointer"
+        >
+          ✏️
+        </button>
+        <button
+          onClick={onDelete}
+          className="p-1 bg-red-100 text-red-600 rounded-full hover:bg-red-200 cursor-pointer"
+        >
+          🗑️
+        </button>
+      </div>
+
+      {/* Card Header */}
       <div className="flex justify-between items-start mb-4">
-        {/* Title */}
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        
-        {/* Availability Badge */}
         <span className={badgeClasses}>
           {PersonIcon}
           {availablePercentage}% Available
         </span>
       </div>
 
-      {/* --- Top Row: Total Seats & Occupied --- */}
+      {/* Total & Occupied */}
       <div className="grid grid-cols-2 gap-4 border-b pb-4 mb-4">
-        
-        {/* Total Seats Column */}
         <div>
           <div className="flex items-center text-sm font-medium text-gray-500 mb-1">
             {SmallPersonIcon} Total Seats
           </div>
-          <p className="text-2xl font-bold text-primary-color font-family-playfair">{totalSeats}</p>
+          <p className="text-2xl font-bold text-primary-color font-family-playfair">
+            {totalSeats}
+          </p>
         </div>
-        
-        {/* Occupied Column */}
         <div>
-          <div className="flex items-center text-sm font-medium text-gray-400 mb-1 ">
+          <div className="flex items-center text-sm font-medium text-gray-400 mb-1">
             {SmallPersonIcon} Occupied
           </div>
-          <p className="text-2xl font-bold text-gray-800 font-family-playfair">{occupied}</p>
+          <p className="text-2xl font-bold text-gray-800 font-family-playfair">
+            {occupied}
+          </p>
         </div>
       </div>
 
-      {/* --- Bottom Row: Available Seats --- */}
+      {/* Available */}
       <div className="grid grid-cols-2 gap-4">
-        
-        {/* Available Column (We use grid-cols-2 for layout, even with one main item) */}
         <div>
           <div className="text-base font-medium text-gray-500 mb-1">
             Available
           </div>
-          <p className="text-2xl font-semibold  text-blue-500">{available}</p>
+          <p className="text-2xl font-semibold text-blue-500">{available}</p>
         </div>
-
-        {/* The second column is left empty to maintain the two-column structure if needed later */}
-        <div /> 
+        <div />
       </div>
     </div>
   );

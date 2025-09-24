@@ -12,7 +12,7 @@ import CreateNewPasswordPage from '../Pages/CreateNewPasswordPage';
 import { SchoolAdminPage } from '../Pages/SchoolAdminPage';
 import Admin from '../Pages/Admin';
 import Settings from '../Pages/Settings';
-import { Application } from '../Pages/Admin/Application';
+import Application from '../Pages/Admin/Application';
 import Dashboard from '../Pages/Admin/Dashboard';
 import NotFound from '../Pages/NotFound';
 import ProtectedRoute from '../Components/ProtectedRoutes';
@@ -31,6 +31,8 @@ import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
 import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
 import Seats from '../Pages/Admin/Seats';
 import AddSeats from '../Pages/Admin/AddSeats';
+import StudentApplication from '../Pages/StudentApplication';
+
 
 
 
@@ -54,6 +56,7 @@ export default function AppRoutes() {
             <Route path='/haveaccount' element={<HaveAccountPage/>}/>
             <Route path='/verification' element={<OtpPage/>}/>
              <Route path='/resetSucess' element={<ResetPasswordSuccessPagenp/>}/>
+             <Route path='/apply' element={<StudentApplication/>}/>
 
           
             <Route path='/schoolAdmin' element={

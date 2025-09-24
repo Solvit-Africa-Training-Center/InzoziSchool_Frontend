@@ -27,12 +27,12 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   // Tailwind classes for the actual input field
   const inputClasses = 
     'w-[500px] ' +
-    'py-2 px-4 pl-12 ' +           // Padding: Increased left padding (pl-12) for the icon
-    'border border-gray-300 ' +    // Light gray border
-    'rounded-lg ' +                // Rounded corners
-    'bg-white ' +                  // White background
+    'py-2 px-4 pl-12 ' + // Padding: Increased left padding (pl-12) for the icon
+    'border border-gray-300 ' + // Light gray border
+    'rounded-lg ' + // Rounded corners
+    'bg-white ' + // White background
     'text-base text-gray-800 ' +
-    'placeholder-gray-500 ' +  // Placeholder color
+    'placeholder-gray-500 ' + // Placeholder color
     'focus:border-gray-200 focus:ring-1 focus:ring-gray-200 ' + // Focus effect
     'outline-none transition-all duration-150';
 

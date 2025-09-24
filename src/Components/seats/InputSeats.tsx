@@ -28,17 +28,17 @@ export const TextInput: React.FC<TextInputProps> = ({
   // Tailwind classes for the input field to match the visual style
   const inputClasses = 
     'w-full ' +
-    'px-4 py-2 ' +                // Padding: Matches size of image input
-    'border border-gray-300 ' +   // Light gray border
-    'rounded-lg ' +               // Rounded corners
-    'text-base ' +                // Standard text size
+    'px-4 py-2 ' + // Padding: Matches size of image input
+    'border border-gray-300 ' + // Light gray border
+    'rounded-lg ' + // Rounded corners
+    'text-base ' + // Standard text size
     'placeholder-gray-400 italic ' + // Placeholder styling (color and italic)
     'focus:border-gray-200 focus:ring-1 focus:ring-gray-200 ' + // Focus effect
     'outline-none transition-all duration-150';
 
   // Tailwind classes for the label
   const labelClasses = 
-    'block mb-2 ' +               // Display block and margin bottom for spacing
+    'block mb-2 ' + // Display block and margin bottom for spacing
     'text-gray-800 font-semibold'; // Dark text and semi-bold font
 
   return (
