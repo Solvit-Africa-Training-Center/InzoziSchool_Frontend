@@ -29,10 +29,10 @@ import Users from '../Pages/superAdmin/Users';
 import Analytics from '../Pages/superAdmin/Analytics';
 import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
 import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
+import StudentInfo from '../Pages/Admin/StudentInfo';
 import Seats from '../Pages/Admin/Seats';
+//import StudentApplication from '../Pages/StudentApplication';
 import AddSeats from '../Pages/Admin/AddSeats';
-import StudentApplication from '../Pages/StudentApplication';
-
 
 
 
@@ -56,7 +56,7 @@ export default function AppRoutes() {
             <Route path='/haveaccount' element={<HaveAccountPage/>}/>
             <Route path='/verification' element={<OtpPage/>}/>
              <Route path='/resetSucess' element={<ResetPasswordSuccessPagenp/>}/>
-             <Route path='/apply' element={<StudentApplication/>}/>
+             <Route path='/apply' element={<Application/>}/>
 
           
             <Route path='/schoolAdmin' element={
@@ -64,6 +64,8 @@ export default function AppRoutes() {
                <Route path='application' element={<Application />} />
                <Route path='dashboard' element={<Dashboard />} />
                <Route path='schoolProfile' element={<SchoolProfile/>} />
+               <Route path='studentInfo' element={<StudentInfo/>} />
+
                <Route path='gallery' element={<Gallery/>} />
                <Route path='seats' element={<Seats/>} />
                <Route path='addSeats' element={<AddSeats/>} />
