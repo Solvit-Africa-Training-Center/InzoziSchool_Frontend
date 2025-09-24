@@ -30,6 +30,8 @@ import Analytics from '../Pages/superAdmin/Analytics';
 import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
 import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
 import StudentInfo from '../Pages/Admin/StudentInfo';
+import ViewSchoolInfo from '../Pages/superAdmin/ViewShoolInfo';
+// import ViewSchoolInfo from '../Pages/superAdmin/ViewSchoolInfo';
 
 
 
@@ -69,6 +71,8 @@ export default function AppRoutes() {
                 <Route path='dashboard' element={<SuperAdminDashboard/>} />
                 <Route path='schools' element={<SuperAdminSchool/>} />
                 <Route path='ViewSchool/:id' element={<ViewSchool/>} />
+                <Route path='viewSchoolInfo' element={<ViewSchoolInfo/>} />
+
                 <Route path='users' element={<Users/>} />
                 <Route path='analytics' element={<Analytics/>} />
                 <Route path='superSettings' element={<SuperAdminSettings/>} />
