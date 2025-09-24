@@ -29,6 +29,7 @@ import Users from '../Pages/superAdmin/Users';
 import Analytics from '../Pages/superAdmin/Analytics';
 import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
 import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
+import StudentInfo from '../Pages/Admin/StudentInfo';
 
 
 
@@ -59,6 +60,8 @@ export default function AppRoutes() {
                <Route path='application' element={<Application />} />
                <Route path='dashboard' element={<Dashboard />} />
                <Route path='schoolProfile' element={<SchoolProfile/>} />
+               <Route path='studentInfo' element={<StudentInfo/>} />
+
                <Route path='gallery' element={<Gallery/>} />
              </Route>
              <Route path='/superAdmin' element={
