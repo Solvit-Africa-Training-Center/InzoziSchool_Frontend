@@ -1,0 +1,89 @@
+
+import { Route , Routes } from 'react-router-dom';
+import LandingPage from '../Pages/LandingPage';
+import Registration from '../Pages/Registration';
+import Login from '../Pages/Login';
+import SchoolPage from '../Pages/SchoolPage';
+import SchoolRegister from '../Pages/SchoolRegister';
+import SuccessPage from '../Pages/SuccessPage';
+import Pending from '../Pages/Pending';
+import ResetPasswordPage from '../Pages/ResetPasswordPage';
+import CreateNewPasswordPage from '../Pages/CreateNewPasswordPage';
+import { SchoolAdminPage } from '../Pages/SchoolAdminPage';
+import Admin from '../Pages/Admin';
+import Settings from '../Pages/Settings';
+import Application from '../Pages/Admin/Application';
+import Dashboard from '../Pages/Admin/Dashboard';
+import NotFound from '../Pages/NotFound';
+import ProtectedRoute from '../Components/ProtectedRoutes';
+import SchoolInfoPage from '../Pages/SchoolInfoPage';
+ import HaveAccountPage from '../Pages/HaveAccount';
+ import OtpPage from '../Pages/Otp';
+ import SchoolProfile from '../Pages/Admin/SchoolProfile';
+import { SuperAdminPage } from '../Pages/SuperAdminPage';
+import SuperAdminDashboard from '../Pages/Admin/SuperAdminDashboard';
+import SuperAdminSchool from '../Pages/superAdmin/SuperAdminSchool';
+import Gallery from '../Pages/Admin/Gallery';
+import ViewSchool from '../Pages/superAdmin/ViewSchool';
+import Users from '../Pages/superAdmin/Users';
+import Analytics from '../Pages/superAdmin/Analytics';
+import SuperAdminSettings from '../Pages/superAdmin/SuperAdminSettings';
+import ResetPasswordSuccessPagenp from '../Pages/ResetPasswordSuccessPage';
+import StudentInfo from '../Pages/Admin/StudentInfo';
+import Seats from '../Pages/Admin/Seats';
+//import StudentApplication from '../Pages/StudentApplication';
+import AddSeats from '../Pages/Admin/AddSeats';
+
+
+
+
+
+export default function AppRoutes() {
+  return (
+    <div>
+        <Routes>
+            <Route path='/' element={<LandingPage/>}/>
+            <Route path='*' element={<NotFound/>}/>
+            <Route path='/register' element={<Registration/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/schoolManager' element={<SchoolPage/>}/>
+            <Route path='/schoolRegister' element={<ProtectedRoute><SchoolRegister/></ProtectedRoute> }/>
+            <Route path='/success' element={<SuccessPage/>}/>
+            <Route path='/pending' element={ <ProtectedRoute><Pending/></ProtectedRoute> }/>
+            <Route path='/viewSchool/:id' element={<SchoolInfoPage/>}/>
+            <Route path='/reset' element={<ResetPasswordPage/>}/>
+            <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
+            <Route path='/haveaccount' element={<HaveAccountPage/>}/>
+            <Route path='/verification' element={<OtpPage/>}/>
+             <Route path='/resetSucess' element={<ResetPasswordSuccessPagenp/>}/>
+             <Route path='/apply' element={<Application/>}/>
+
+          
+            <Route path='/schoolAdmin' element={
+              <SchoolAdminPage/> }>
+               <Route path='application' element={<Application />} />
+               <Route path='dashboard' element={<Dashboard />} />
+               <Route path='schoolProfile' element={<SchoolProfile/>} />
+               <Route path='studentInfo' element={<StudentInfo/>} />
+
+               <Route path='gallery' element={<Gallery/>} />
+               <Route path='seats' element={<Seats/>} />
+               <Route path='addSeats' element={<AddSeats/>} />
+             </Route>
+             <Route path='/superAdmin' element={
+              <SuperAdminPage/> }>
+                <Route path='dashboard' element={<SuperAdminDashboard/>} />
+                <Route path='schools' element={<SuperAdminSchool/>} />
+                <Route path='ViewSchool/:id' element={<ViewSchool/>} />
+                <Route path='users' element={<Users/>} />
+                <Route path='analytics' element={<Analytics/>} />
+                <Route path='superSettings' element={<SuperAdminSettings/>} />
+             </Route>
+             
+            <Route path='/admin' element={<Admin/>}> </Route>
+            <Route path='/setting' element={<Settings/>}> </Route>
+            
+        </Routes>
+    </div>
+  );
+}
