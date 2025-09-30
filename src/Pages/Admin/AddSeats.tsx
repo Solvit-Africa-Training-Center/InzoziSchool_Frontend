@@ -216,6 +216,8 @@ const createSeats = async (e: React.FormEvent<HTMLFormElement>) => {
     await registerSpot({ data: payload, id: user?.schoolId ?? '' }).unwrap();
     console.log('Submitted successfully:', payload);
     navigate('/schoolAdmin/seats');
+    
+    
   } catch (error) {
     console.log('error is', error);
   }

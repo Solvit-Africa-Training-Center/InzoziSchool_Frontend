@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // import { TextInput } from '../../Components/seats/InputSeats';
 // import{AllStatus} from '../../Types/Seats';
 import { FaEye, FaTrash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 type StatusType = 'Pending' | 'Admitted' | 'Rejected' | 'All';
 
@@ -16,6 +17,7 @@ type Student = {
 };
 
 export default function Application() {
+  const navigate=useNavigate();
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState<StatusType>('All');
    const students:Student[] = [
@@ -114,7 +116,7 @@ export default function Application() {
               </td>
               <td className="py-3 px-4">{s.date}</td>
               <td className="py-3 px-4 flex gap-2">
-                <button className="flex items-center gap-1 px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 cursor-pointer">
+                <button onClick={()=>{navigate('/schoolAdmin/studentInfo');}} className="flex items-center gap-1 px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 cursor-pointer">
                   <FaEye size={14} />
                   View
                 </button>

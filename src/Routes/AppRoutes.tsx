@@ -50,7 +50,7 @@ export default function AppRoutes() {
             <Route path='/schoolRegister' element={<ProtectedRoute><SchoolRegister/></ProtectedRoute> }/>
             <Route path='/success' element={<SuccessPage/>}/>
             <Route path='/pending' element={ <ProtectedRoute><Pending/></ProtectedRoute> }/>
-            <Route path='/viewSchool' element={<SchoolInfoPage/>}/>
+            <Route path='/viewSchool/:id' element={<SchoolInfoPage/>}/>
             <Route path='/reset' element={<ResetPasswordPage/>}/>
             <Route path='/newpassword' element={<CreateNewPasswordPage/>}/>
             <Route path='/haveaccount' element={<HaveAccountPage/>}/>

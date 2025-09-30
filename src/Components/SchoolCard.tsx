@@ -5,6 +5,7 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
 type customSchool = {
+  id: string; 
   images: string;
   category: string;
   title: string;
@@ -14,6 +15,7 @@ type customSchool = {
 };
 
 export default function SchoolCard({
+    id,
   images,
   rating,
   category,
@@ -63,7 +65,7 @@ export default function SchoolCard({
   {/* Right: Actions */}
  <div className="flex justify-center gap-5 py-8">
   <Button label="Apply" variant="thirdly" onClick={()=>{navigate('/apply');}}/>
-  <Button label="View Details" variant="secondary" onClick={()=>{navigate('/viewSchool');}} />
+  <Button label="View Details" variant="secondary" onClick={()=>{navigate(`/viewSchool/${id}`);}} />
 </div>
 
 

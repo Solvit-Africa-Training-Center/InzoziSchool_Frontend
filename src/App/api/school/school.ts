@@ -1,7 +1,7 @@
 import { apiSlice } from '../EntryApi';
 import type{SchoolsResponse} from '../../../Types/SchoolResponse';
 import type{SchoolInformation} from '../../../Types/schoolProfile';
-import type{SchoolListResponse} from '../../../Types/GetSchools';
+import type{PaginatedSchoolResponse} from '../../../Types/GetSchools';
 
 export type SchoolManager = {
   id: string;
@@ -104,9 +104,9 @@ export const SchoolsApi = apiSlice.injectEndpoints({
       }),
     }),
 
-      getAllApprovedSchool: builder.query<SchoolListResponse, void>({
+      getAllApprovedSchool: builder.query<PaginatedSchoolResponse, void>({
       query: () => ({
-        url: '/schools',
+        url: '/schools/approved',
         method: 'GET',
       }),
     }),

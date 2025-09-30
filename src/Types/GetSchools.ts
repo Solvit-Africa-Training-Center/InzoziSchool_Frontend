@@ -1,8 +1,9 @@
 export interface SchoolData {
-  id: string;
+  id: string; // UUID
   schoolName: string;
   schoolCode: string;
   email: string;
+  profilePhoto:string,
   district: string;
   status: 'pending' | 'approved' | 'rejected';
   licenseDocument: string;
@@ -13,11 +14,16 @@ export interface SchoolData {
   updatedAt: string;
 }
 
-export interface SchoolResponse {
-  data: SchoolData;
+export interface PaginatedSchools {
+  limit: number;
+  page: number;
+  total: number;
+  totalPages: number;
+  schools: SchoolData[];
+}
+
+export interface PaginatedSchoolResponse {
+  data: PaginatedSchools;
   message: string;
   success: boolean;
 }
-
-// This matches your backend: array of SchoolResponse
-export type SchoolListResponse = SchoolResponse[];

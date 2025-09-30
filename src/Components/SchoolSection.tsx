@@ -12,12 +12,7 @@ if (isError) {
   console.log('Error fetching schools', error);
 }
 
-// Check data after load
-if (data) {
-  console.log('Raw data from backend:', data); // This is an array of { data, message, success }
-  const schools = data.map(item => item.data); // Extract SchoolData
-  console.log('List of schools:', schools);
-}
+console.log(data?.data.schools);
 
  
   return (
@@ -28,61 +23,22 @@ if (data) {
       </p>
 
       <div className="grid grid-cols-3 gap-3 max-sm:grid-cols-1">
-        <SchoolCard
-          title="Rwanda Excellence School"
+        {
+          data?.data.schools.map((school)=>(
+          <SchoolCard
+          id={school.id}
+          key={school.id}
+          title={school.schoolName}
           rating={4.6}
-          location="Kigali , Kicukiro District"
+          location={school.district}
           seats={12}
-          category="Secondary"
-          images="R"
+          category={''}
+          images={school.profilePhoto}
         />
-        <SchoolCard
-          title="Green Hills Primary School"
-          rating={4.7}
-          location="Kigali , Gasabo District"
-          seats={35}
-          
-          category="Primary"
-          images="G"
-        />
-
-        <SchoolCard
-          title="Hillside International School"
-          rating={4.9}
-          location="Northen Province , Musanze District"
-          seats={18}
-          
-          category="Primary & Secondary"
-          images="H"
-        />
-
-        <SchoolCard
-          title="Unity Secondary School"
-          rating={4.5}
-          location="Southern Province , Huye District"
-          seats={8}
-         
-          category="Primary & Secondary"
-          images="U"
-        />
-        <SchoolCard
-          title="Future Leaders Academy"
-          rating={4.4}
-          location="Western Province , Rubavu District"
-          seats={42}
-         
-          category="Primary & Secondary"
-          images="F"
-        />
-        <SchoolCard
-          images="K"
-          title="Kigali international Academy"
-          category="primary and secondary "
-          location="Kigali , Gasabo District"
-          seats={25}
-        
-          rating={4.6}
-        />
+          ))
+        }
+      
+    
       </div>
     </div>
   );
