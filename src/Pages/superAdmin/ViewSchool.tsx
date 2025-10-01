@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useApproveSchoolMutation, useGetSchoolByIdQuery, useRejectSchoolMutation } from '../../App/api/school/school';
 import { MdDone } from 'react-icons/md';
@@ -35,7 +35,8 @@ export default function ViewSchool() {
     setTimeout(() => setFadeOut(true), 3500); // fade out
     setTimeout(() => setShowPopup(false), 4000); // hide completely
   } catch (err) {
-    console.error('Approve failed ', err);
+    return err;
+   // console.error('Approve failed ', err);
   }
 };
 
@@ -53,7 +54,8 @@ const handleReject = async () => {
     setTimeout(() => setFadeOut(true), 3500); // fade out
     setTimeout(() => setShowPopup(false), 4000); // hide completely
   } catch (err) {
-    console.error('Reject failed ', err);
+    return err;
+    //console.error('Reject failed ', err);
   }
 };
   return (

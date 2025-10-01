@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import{ useState } from 'react';
 // import { SelectInput } from '../../Components/seats/SelectInput';
 // import { TextInput } from '../../Components/seats/InputSeats';
 // import{AllStatus} from '../../Types/Seats';
