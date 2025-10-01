@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import {Button} from '../../Components/seats/AddSeats';
 import { useNavigate } from 'react-router-dom';
 import { SeatCapacityCard } from '../../Components/seats/CardSeats';
@@ -14,7 +14,7 @@ export default function Seats() {
     const{user}=useUser();
     const{data , refetch}=useGetAllSpotsQuery(user?.schoolId ?? skipToken);
 
-    console.log(data);
+  //  console.log(data);
     const navigate = useNavigate();
 
   const [deleteId, setDeleteId] = useState<string | null>(null); // 👈 track which id to delete
@@ -32,10 +32,11 @@ export default function Seats() {
     if (deleteId) {
       try {
         await deleteSpot({schoolId:user?.schoolId ?? '' , spotId:deleteId}).unwrap();
-        console.log('Deleted:', deleteId);
+      //  console.log('Deleted:', deleteId);
         refetch();
       } catch (error) {
-        console.error('Delete failed', error);
+        return error;
+       // console.error('Delete failed', error);
       } finally {
         setDeleteId(null); // close modal
       }
