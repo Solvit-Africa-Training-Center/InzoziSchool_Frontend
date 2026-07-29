@@ -7,11 +7,11 @@ export const SuperAdminPage = () => (
     {/* Sidebar always visible */}
     <SuperAdminSidebar />
 
-    <div className="bg-[#E5E7EB]/80 ml-64 w-full">
+    <div className="bg-[#E5E7EB]/80 w-full min-w-0 overflow-x-hidden md:ml-64 md:w-[calc(100%-16rem)]">
       <ContNav />
 
       {/* Wrapper */}
-      <div className="bg-white/80 rounded-xl shadow-md">
+      <div className="bg-white/80 rounded-xl shadow-md min-w-0">
         <Outlet /> {/* Nested routes render here */}
       </div>
     </div>
