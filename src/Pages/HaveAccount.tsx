@@ -12,7 +12,7 @@ export default function HaveAccountPage() {
       <div className="bg-gradient-to-r flex justify-center items-center  from-[#FFFFFF] to-[#CFDCEA] border-b">
         <div className="flex justify-center w-[610px]">
           <div className="bg-white my-[45px] rounded-md">
-            <div className="flex justify-between py-[25px] pl-[40px] pr-[10px]">
+            <div className="flex justify-between py-[24px] pl-[40px] pr-[10px]">
               <div>
                 <div className="flex items-center">
                   <div className="text-white font-bold text-xl">
