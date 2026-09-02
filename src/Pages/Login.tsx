@@ -95,6 +95,9 @@ const handleSubmit = async (e: React.FormEvent) => {
        else if( schoolStatus === 'pending'){
             navigate('/pending');
       }
+       else if( schoolStatus === 'rejected'){
+            navigate('/rejected');
+      }
        else if( schoolStatus === 'approved'){
             navigate('/schoolAdmin/dashboard');
       }

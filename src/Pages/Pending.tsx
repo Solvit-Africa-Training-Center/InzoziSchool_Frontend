@@ -1,11 +1,10 @@
 
 
 import ContNav from '../Components/ContNav';
-import Footer from '../Components/Footer';
 import { TbDots } from 'react-icons/tb';
 import { useUser } from '../Hooks/useUser';
 
-export default function SuccessPage() {
+export default function Pending() {
   const {user} = useUser();
   console.log(user);
   return (
@@ -48,7 +47,6 @@ export default function SuccessPage() {
         </div>
       </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import Button from '../Components/Button';
 import logo from '../assets/logo 2.png';
 import Input from '../Components/Input';
 import { useState } from 'react';
-import Footer from '../Components/Footer';
 import { useRegisterSchoolMutation } from '../App/api/school/school';
 import Select from '../Components/Select';
 import { districts } from '../Types/district';
@@ -207,7 +206,6 @@ const handleCreate = async (e: React.FormEvent<HTMLFormElement>) => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaUser, FaClipboardList, FaChartLine } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import FeatureCard from './cards/FeatureCard';
 
 const SchoolOwnerSection: React.FC = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: <FaUser className="w-5 h-5" />,
@@ -69,8 +71,11 @@ const SchoolOwnerSection: React.FC = () => {
             <p className="text-[#223D60] mb-6">
               Make informed decisions about your child's education with comprehensive school data and seamless application management.
             </p>
-            <button className="bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95">
-              Continue As  Owner
+            <button
+              onClick={() => navigate('/login')}
+              className="bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              Continue As Owner
             </button>
           </div>
         </div>

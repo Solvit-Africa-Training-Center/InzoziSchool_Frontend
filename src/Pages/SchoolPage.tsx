@@ -1,7 +1,6 @@
 
 import { Link } from 'react-router-dom';
 import Button from '../Components/Button';
-import Footer from '../Components/Footer';
 import ContNav from '../Components/ContNav';
 
 export default function SchoolPage() {
@@ -24,8 +23,6 @@ export default function SchoolPage() {
                 
             </div>
         </div>
-
-        <Footer/>
     </div>
   );
 }

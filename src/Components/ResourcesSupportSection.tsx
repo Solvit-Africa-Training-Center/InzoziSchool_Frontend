@@ -113,7 +113,10 @@ const ResourcesSupportSection: React.FC = () => {
               </div>
 
               <div className="space-y-4 mb-6">
-                <div className="flex items-center space-x-3">
+                <a
+                  href="mailto:support@inzozi.rw"
+                  className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+                >
                   <div className="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center">
                     <FaEnvelope className="w-4 h-4 text-white" />
                   </div>
@@ -121,7 +124,7 @@ const ResourcesSupportSection: React.FC = () => {
                     <div className="text-white font-medium text-sm">Email Support</div>
                     <div className="text-gray-400 text-xs">support@inzozi.rw</div>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-center space-x-3">
                   <div className="bg-green-600 w-8 h-8 rounded-lg flex items-center justify-center">
@@ -134,9 +137,12 @@ const ResourcesSupportSection: React.FC = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-colors duration-200">
+              <a
+                href="mailto:support@inzozi.rw"
+                className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-colors duration-200"
+              >
                 Contact Support
-              </button>
+              </a>
             </div>
           </div>
         </div>

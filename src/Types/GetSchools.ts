@@ -5,6 +5,8 @@ export interface SchoolData {
   email: string;
   profilePhoto:string,
   district: string;
+  schoolLevel?: string;
+  schoolType?: string;
   status: 'pending' | 'approved' | 'rejected';
   licenseDocument: string;
   approvedBy: string | null;

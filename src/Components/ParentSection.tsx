@@ -69,9 +69,12 @@ const ParentSection: React.FC = () => {
             <p className="text-[#223D60] mb-6 font-family-poppins">
               Make informed decisions about your child's education with comprehensive school data and seamless application management.
             </p>
-            <button className="bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95">
+            <a
+              href="#schools-section"
+              className="inline-block bg-gradient-to-r from-[#053f69] to-[#cad9e9] hover:from-[#E69500] hover:to-[#E69500] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg transform hover:scale-105 active:scale-95"
+            >
               Continue As a Parent
-            </button>
+            </a>
           </div>
         </div>
       </div>

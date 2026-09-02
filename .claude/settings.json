@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT_CODE=$?\")",
+      "Bash(npx eslint *)",
+      "Bash(command -v chromium-cli)",
+      "Read(//c/Users/infom/.claude/**)",
+      "Read(//c//**)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx playwright *)",
+      "Bash(nohup npm run dev -- --port 5173 --strictPort)",
+      "Bash(echo \"started with pid $!\")",
+      "Read(//tmp/**)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:5173 >/dev/null; do sleep 1; done')",
+      "Bash(node \"C:\\\\Users\\\\infom\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-infom-Documents-Inzozi-InzoziSchool-Frontend\\\\93b89c6b-5c15-46d1-80d6-70817e7d7f34\\\\scratchpad\\\\verify.mjs\")",
+      "Read(//c/Users/infom/AppData/Local/npm-cache/_npx/**)",
+      "Bash(npm root *)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node verify.mjs)",
+      "Bash(sed -i \"s/await page.click\\('text=How It Works'\\);/await page.click\\('a:visible >> text=How It Works'\\);/\" verify.mjs)",
+      "Bash(sed -i \"s/await page.click\\('a:has-text\\(\\\\\"Login\\\\\"\\)'\\);/await page.click\\('a:visible >> text=Login'\\);/\" verify.mjs)",
+      "Bash(node verify2.mjs)",
+      "Bash(lsof -ti:5173 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)",
+      "Bash(grep -E \"^C:.*\\\\.\\(tsx|ts\\)$\" -A0)",
+      "Bash(rm -f /tmp/vite.log)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}
