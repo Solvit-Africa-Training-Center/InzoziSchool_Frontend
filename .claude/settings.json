@@ -25,7 +25,9 @@
       "Bash(lsof -ti:5173 -sTCP:LISTEN)",
       "Bash(xargs -r kill)",
       "Bash(grep -E \"^C:.*\\\\.\\(tsx|ts\\)$\" -A0)",
-      "Bash(rm -f /tmp/vite.log)"
+      "Bash(rm -f /tmp/vite.log)",
+      "Bash(echo \"pid $!\")",
+      "Bash(node verify_email.mjs)"
     ],
     "additionalDirectories": [
       "\\tmp"
