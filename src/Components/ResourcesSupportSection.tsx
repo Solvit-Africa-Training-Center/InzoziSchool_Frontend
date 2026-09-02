@@ -114,7 +114,7 @@ const ResourcesSupportSection: React.FC = () => {
 
               <div className="space-y-4 mb-6">
                 <a
-                  href="mailto:support@inzozi.rw"
+                  href="mailto:info@inzoziedu.com"
                   className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
                 >
                   <div className="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center">
@@ -122,7 +122,7 @@ const ResourcesSupportSection: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-white font-medium text-sm">Email Support</div>
-                    <div className="text-gray-400 text-xs">support@inzozi.rw</div>
+                    <div className="text-gray-400 text-xs">info@inzoziedu.com</div>
                   </div>
                 </a>
 
@@ -138,7 +138,7 @@ const ResourcesSupportSection: React.FC = () => {
               </div>
 
               <a
-                href="mailto:support@inzozi.rw"
+                href="mailto:info@inzoziedu.com"
                 className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold text-sm transition-colors duration-200"
               >
                 Contact Support

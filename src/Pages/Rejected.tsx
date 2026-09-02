@@ -56,7 +56,7 @@ export default function Rejected() {
 
                     <div className="pb-[35px] flex gap-3">
                       <a
-                        href="mailto:support@inzozi.rw"
+                        href="mailto:info@inzoziedu.com"
                         className="flex items-center justify-center rounded-[12px] border border-[#F09C00] text-[#F09C00] hover:bg-[#FFF3E0] font-family-poppins text-[15px] px-6 py-2"
                       >
                         Contact Support
